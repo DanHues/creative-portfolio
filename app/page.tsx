@@ -16,7 +16,7 @@ const disciplines = [
 
 export default function Home() {
   const featured = getProjects().filter((project) => project.featured).slice(0, 3);
-  const latestPost = getPosts()[0];
+  const journalPages = getPosts().slice(0, 3);
   const basePath = process.env.PAGES_BASE_PATH || "";
 
   return (
@@ -112,7 +112,7 @@ export default function Home() {
       </section>
 
       <section className="about" id="about">
-        <p className="eyebrow">A practice without borders</p>
+        <p className="eyebrow">Creativity without limit</p>
         <div>
           <h2>I don’t fit neatly into one box. That’s the point.</h2>
           <div className="about-copy">
@@ -126,24 +126,46 @@ export default function Home() {
               building the thing that story lives inside.
             </p>
           </div>
+          <div className="collaborators">
+            <p>People &amp; worlds I’ve worked with</p>
+            <div>
+              <span>Dream</span>
+              <span>TikTok</span>
+              <span>SkyCastleToys</span>
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="journal-preview section-shell">
         <div className="section-heading">
-          <p>From the journal</p>
+          <p>Pages from my journal</p>
           <Link href="/journal">Read all thoughts ↗</Link>
         </div>
-        <Link className="essay-feature" href={`/journal/${latestPost.slug}`}>
-          <div className="essay-art">
-            <span>∞</span>
-          </div>
-          <div>
-            <p className="project-meta">Latest note · {latestPost.readTime} read</p>
-            <h2>{latestPost.title}</h2>
-            <p>{latestPost.summary}</p>
-          </div>
-        </Link>
+        <div className="journal-heading">
+          <h2>Loose pages from my head.</h2>
+          <p>
+            Small definitions for the things I’m noticing, questioning,
+            learning, and trying not to forget.
+          </p>
+        </div>
+        <div className="journal-pages">
+          {journalPages.map((post, index) => (
+            <Link
+              className={`journal-page journal-page-${index + 1}`}
+              href={`/journal/${post.slug}`}
+              key={post.slug}
+            >
+              <div className={`journal-snapshot snapshot-${index + 1}`}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+              </div>
+              <p className="project-meta">{post.readTime} read · a personal note</p>
+              <h3>{post.title}</h3>
+              <p>{post.summary}</p>
+              <span className="page-link">Turn the page ↗</span>
+            </Link>
+          ))}
+        </div>
       </section>
 
       <SiteFooter />
