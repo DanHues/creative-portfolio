@@ -17,6 +17,7 @@ const disciplines = [
 export default function Home() {
   const featured = getProjects().filter((project) => project.featured).slice(0, 3);
   const latestPost = getPosts()[0];
+  const basePath = process.env.PAGES_BASE_PATH || "";
 
   return (
     <main>
@@ -40,7 +41,7 @@ export default function Home() {
 
         <figure className="brand-poster">
           <Image
-            src="/danhues-banner.png"
+            src={`${basePath}/danhues-banner.png`}
             alt="DanHues hand-lettered logo surrounded by layered pink and purple forms"
             width={854}
             height={480}
