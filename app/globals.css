@@ -1088,8 +1088,8 @@ nav a:nth-child(even):hover { transform: translateY(-3px) rotate(1.4deg) scale(1
   position: relative;
   overflow: hidden;
   z-index: 2;
-  margin-top: -6vw;
-  padding-top: 10vw;
+  margin-top: -8vw;
+  padding-top: calc(8vw + 40px);
   padding-bottom: 6vw;
   background:
     radial-gradient(circle at 16% 40%, rgba(90,65,129,.15), transparent 24%),
@@ -1613,7 +1613,7 @@ footer > div {
   .throughline-copy h2 { margin: 6vw 0; font-size: 12vw; }
   .throughline-copy > p:not(.eyebrow) { font-size: 15px; }
   .throughline-signals div { min-height: 120px; padding: 15px; }
-  .journal-preview { margin-top: -5vw; padding-top: 15vw; padding-bottom: 12vw; }
+  .journal-preview { margin-top: -8vw; padding-top: calc(8vw + 36px); padding-bottom: 12vw; }
   .journal-preview::before { height: 27vw; }
   .journal-heading { grid-template-columns: 1fr; padding: 10vw 0 8vw; }
   .journal-heading h2 { font-size: 12vw; }
