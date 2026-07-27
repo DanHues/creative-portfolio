@@ -3,19 +3,44 @@ import { DM_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 
 const sans = Manrope({ variable: "--font-sans", subsets: ["latin"] });
-const mono = DM_Mono({ variable: "--font-mono", weight: ["300", "400", "500"], subsets: ["latin"] });
+const mono = DM_Mono({
+  variable: "--font-mono",
+  weight: ["300", "400", "500"],
+  subsets: ["latin"],
+});
+
+const siteUrl = "https://danhues.github.io/creative-portfolio";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Your Name — Multidisciplinary Creative",
-    template: "%s — Your Name",
+    default: "DanHues — Multidisciplinary Creative",
+    template: "%s — DanHues",
   },
   description:
-    "Photography, worlds, films, brands, code, and physical objects by a multidisciplinary creative.",
+    "Photography, Minecraft worlds, films, brands, code, 3D design, and physical objects by DanHues.",
   icons: { icon: "/favicon.svg" },
+  openGraph: {
+    title: "DanHues — Multidisciplinary Creative",
+    description:
+      "A living archive of images, worlds, stories, brands, code, and physical objects.",
+    url: siteUrl,
+    siteName: "DanHues",
+    images: [
+      {
+        url: `${siteUrl}/danhues-banner.png`,
+        width: 854,
+        height: 480,
+        alt: "DanHues logo in layered pink and purple forms",
+      },
+    ],
+    type: "website",
+  },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`${sans.variable} ${mono.variable}`}>{children}</body>

@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { getPosts, getProjects } from "@/lib/content";
 
 const disciplines = [
@@ -15,40 +17,44 @@ const disciplines = [
 export default function Home() {
   const featured = getProjects().filter((project) => project.featured).slice(0, 3);
   const latestPost = getPosts()[0];
+
   return (
     <main>
-      <header className="site-header">
-        <Link className="wordmark" href="/" aria-label="Home">
-          YOUR NAME<span>®</span>
-        </Link>
-        <nav aria-label="Main navigation">
-          <Link href="/archive">Archive</Link>
-          <Link href="/journal">Journal</Link>
-          <a href="#about">About</a>
-        </nav>
-        <a className="availability" href="mailto:hello@example.com">
-          <i /> Available for select projects
-        </a>
-      </header>
+      <SiteHeader />
 
       <section className="hero">
-        <p className="eyebrow">Multidisciplinary creative · Based everywhere</p>
-        <h1>
-          I make <em>worlds,</em>
-          <br />
-          images &amp; ideas
-          <br />
-          worth <span>remembering.</span>
-        </h1>
-        <div className="hero-foot">
-          <p>
+        <div className="hero-copy">
+          <p className="eyebrow">DanHues · Multidisciplinary creative</p>
+          <h1>
+            I make <em>worlds,</em>
+            <br />
+            images &amp; ideas
+            <br />
+            worth <span>remembering.</span>
+          </h1>
+          <p className="hero-summary">
             I work across physical and digital space—bringing the same curiosity
             to a photograph, a server, a brand, a film, or an object.
           </p>
-          <a className="round-link" href="#featured" aria-label="See selected work">
-            ↓
-          </a>
         </div>
+
+        <figure className="brand-poster">
+          <Image
+            src="/danhues-banner.png"
+            alt="DanHues hand-lettered logo surrounded by layered pink and purple forms"
+            width={854}
+            height={480}
+            priority
+          />
+          <figcaption>
+            <span>Curiosity in every medium</span>
+            <span>Est. forever learning</span>
+          </figcaption>
+        </figure>
+
+        <a className="round-link" href="#featured" aria-label="See selected work">
+          ↓
+        </a>
       </section>
 
       <section className="ticker" aria-label="Creative disciplines">
@@ -62,7 +68,7 @@ export default function Home() {
       <section className="featured section-shell" id="featured">
         <div className="section-heading">
           <p>Selected work</p>
-          <p>2022—Now</p>
+          <p>Best of the archive · 2022—Now</p>
         </div>
         {featured.map((project, index) => (
           <article className="project" key={project.slug}>
@@ -74,13 +80,17 @@ export default function Home() {
               <p className="project-meta">{project.category}</p>
               <h2>{project.title}</h2>
               <p>{project.summary}</p>
-              <Link href={`/archive/${project.slug}`}>View project <span>↗</span></Link>
+              <Link href={`/archive/${project.slug}`}>
+                View project <span>↗</span>
+              </Link>
             </div>
           </article>
         ))}
         <div className="archive-callout">
-          <p>There’s more where that came from.</p>
-          <Link href="/archive">Explore the full archive <span>↗</span></Link>
+          <p>Every experiment deserves a place to live.</p>
+          <Link href="/archive">
+            Explore the full archive <span>↗</span>
+          </Link>
         </div>
       </section>
 
@@ -108,7 +118,9 @@ export default function Home() {
           <Link href="/journal">Read all thoughts ↗</Link>
         </div>
         <Link className="essay-feature" href={`/journal/${latestPost.slug}`}>
-          <div className="essay-art"><span>∞</span></div>
+          <div className="essay-art">
+            <span>∞</span>
+          </div>
           <div>
             <p className="project-meta">Latest note · {latestPost.readTime} read</p>
             <h2>{latestPost.title}</h2>
@@ -117,14 +129,7 @@ export default function Home() {
         </Link>
       </section>
 
-      <footer>
-        <p>Have a strange idea?</p>
-        <a href="mailto:hello@example.com">Let’s make it real. ↗</a>
-        <div>
-          <span>© 2026 Your Name</span>
-          <span>Instagram · YouTube · TikTok</span>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

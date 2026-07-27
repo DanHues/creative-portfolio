@@ -21,6 +21,16 @@ export type JournalPost = {
   body: string;
 };
 
+export type PhotoStory = {
+  slug: string;
+  title: string;
+  year: string;
+  category: string;
+  location: string;
+  image?: string;
+  alt: string;
+};
+
 function readCollection<T>(directory: string): T[] {
   const location = path.join(process.cwd(), "content", directory);
   return fs
@@ -43,6 +53,12 @@ export function getPosts() {
 
 export function getPost(slug: string) {
   return getPosts().find((post) => post.slug === slug);
+}
+
+export function getPhotography() {
+  return readCollection<PhotoStory>("photography").sort(
+    (a, b) => Number(b.year) - Number(a.year),
+  );
 }
 
 export function formatDate(date: string) {
