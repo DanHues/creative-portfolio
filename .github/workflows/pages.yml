@@ -31,7 +31,7 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           static_site_generator: next
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install --frozen-lockfile --dangerously-allow-all-builds
       - run: pnpm build
         env:
           PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
