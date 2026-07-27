@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { DM_Mono, Heebo } from "next/font/google";
-import { RouteWash } from "@/components/route-wash";
 import "./globals.css";
 
 const sans = Heebo({ variable: "--font-sans", subsets: ["latin"] });
@@ -44,10 +43,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${sans.variable} ${mono.variable}`}>
-        <RouteWash />
-        {children}
-      </body>
+      <body className={`${sans.variable} ${mono.variable}`}>{children}</body>
     </html>
   );
 }

@@ -35,10 +35,17 @@ export function ArchiveBrowser({ projects }: { projects: Project[] }) {
       </p>
       {filtered.map((project, index) => (
         <Link className="archive-row" href={`/archive/${project.slug}`} key={project.slug}>
-          <span>{String(index + 1).padStart(2, "0")}</span>
-          <h2>{project.title}</h2>
-          <p>{project.category}</p>
-          <span>{project.year} ↗</span>
+          <div className={`archive-thumb project-visual ${project.accent}`}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div className="visual-mark" />
+          </div>
+          <div className="archive-row-copy">
+            <h2>{project.title}</h2>
+            <div className="archive-row-meta">
+              <p>{project.category}</p>
+              <span>{project.year} ↗</span>
+            </div>
+          </div>
         </Link>
       ))}
       {filtered.length === 0 ? (

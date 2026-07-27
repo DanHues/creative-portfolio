@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { CyclingWords } from "@/components/cycling-words";
+import { CyclingVisuals } from "@/components/cycling-visuals";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { getPosts, getProjects } from "@/lib/content";
 
@@ -16,14 +16,14 @@ const disciplines = [
 ];
 
 const clients = [
-  "Adin Ross",
-  "Club Obsidian",
-  "TikTok",
-  "Jamie Levine Photography",
-  "SkyCastleToys",
-  "Dream",
-  "EmpoweredProsthetics",
-  "Rising Phoenix Forums",
+  { name: "Adin Ross", href: "/archive?tag=Video" },
+  { name: "Club Obsidian", href: "/archive?tag=Minecraft" },
+  { name: "TikTok", href: "/archive?tag=Video" },
+  { name: "Jamie Levine Photography", href: "/photography" },
+  { name: "SkyCastleToys", href: "/archive/object-no-four" },
+  { name: "Dream", href: "/archive/minecraft-world" },
+  { name: "EmpoweredProsthetics", href: "/archive/object-no-four" },
+  { name: "Rising Phoenix Forums", href: "/archive?tag=Development" },
 ];
 
 export default function Home() {
@@ -39,9 +39,12 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">DanHues · Multidisciplinary creative</p>
           <h1 className="cycling-headline">
-            <span>I make</span>
-            <CyclingWords />
-            <strong>worth remembering.</strong>
+            <span className="making-line">
+              I make <CyclingWords />
+            </span>
+            <strong>
+              worth <mark>remembering.</mark>
+            </strong>
           </h1>
           <p className="hero-summary">
             I work across physical and digital space—bringing the same curiosity
@@ -49,19 +52,7 @@ export default function Home() {
           </p>
         </div>
 
-        <figure className="brand-poster">
-          <Image
-            src={`${basePath}/danhues-banner.png`}
-            alt="DanHues hand-lettered logo surrounded by layered pink and purple forms"
-            width={854}
-            height={480}
-            priority
-          />
-          <figcaption>
-            <span>Curiosity in every medium</span>
-            <span>Est. forever learning</span>
-          </figcaption>
-        </figure>
+        <CyclingVisuals basePath={basePath} />
 
         <a className="round-link" href="#featured" aria-label="See selected work">
           ↓
@@ -126,28 +117,41 @@ export default function Home() {
       </section>
 
       <section className="about" id="about">
+        <div className="about-objects" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
         <p className="eyebrow">Creativity without limit</p>
         <div>
-          <h2>I don’t fit neatly into one box. That’s the point.</h2>
-          <div className="about-copy">
-            <p>
-              My work lives in the overlap: between storytelling and systems,
-              aesthetics and utility, internet culture and the real world.
-            </p>
-            <p>
-              I collaborate with people who care deeply about what they make.
-              Sometimes that means directing a visual story. Sometimes it means
-              building the thing that story lives inside.
-            </p>
+          <h2>
+            I don’t fit neatly into one box.
+            <strong>That’s the point.</strong>
+          </h2>
+          <div className="about-identity">
+            <img
+              src="https://avatars.githubusercontent.com/u/43981251?v=4"
+              alt="Portrait of DanHues"
+            />
+            <div className="about-copy">
+              <p>
+                I’m a multidisciplinary creative working in the overlap between
+                storytelling and systems, aesthetics and utility, internet
+                culture and the physical world—building the image, object,
+                experience, or space a story needs.
+              </p>
+            </div>
           </div>
           <div className="collaborators">
             <p>People, teams &amp; worlds I’ve worked with</p>
             <div className="client-marquee">
               <div className="client-track">
                 {[...clients, ...clients].map((client, index) => (
-                  <span key={`${client}-${index}`}>
-                    {client} <i>✦</i>
-                  </span>
+                  <Link href={client.href} key={`${client.name}-${index}`}>
+                    {client.name} <i>✦</i>
+                  </Link>
                 ))}
               </div>
             </div>

@@ -1,30 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
+import { ScrollHeader } from "@/components/scroll-header";
 
 export function SiteHeader() {
   const basePath = process.env.PAGES_BASE_PATH || "";
 
   return (
-    <header className="site-header">
-      <Link className="wordmark" href="/" aria-label="DanHues home">
-        <Image
-          src={`${basePath}/danhuestext.png`}
-          alt="DanHues"
-          width={1280}
-          height={360}
-          priority
-        />
-      </Link>
-      <nav aria-label="Main navigation">
-        <Link href="/archive">Projects</Link>
-        <Link href="/journal">Journal</Link>
-        <Link href="/photography">Photography</Link>
-        <Link href="/#about">About</Link>
-      </nav>
-      <a className="availability" href="mailto:hello@example.com">
-        <i /> Available for select projects
-      </a>
-    </header>
+    <ScrollHeader basePath={basePath} />
   );
 }
 
