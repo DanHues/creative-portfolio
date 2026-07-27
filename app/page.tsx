@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CyclingWords } from "@/components/cycling-words";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { getPosts, getProjects } from "@/lib/content";
 
@@ -14,6 +15,17 @@ const disciplines = [
   { label: "3D printing", href: "/archive?tag=3D" },
 ];
 
+const clients = [
+  "Adin Ross",
+  "Club Obsidian",
+  "TikTok",
+  "Jamie Levine Photography",
+  "SkyCastleToys",
+  "Dream",
+  "EmpoweredProsthetics",
+  "Rising Phoenix Forums",
+];
+
 export default function Home() {
   const featured = getProjects().filter((project) => project.featured).slice(0, 3);
   const journalPages = getPosts().slice(0, 3);
@@ -26,12 +38,10 @@ export default function Home() {
       <section className="hero">
         <div className="hero-copy">
           <p className="eyebrow">DanHues · Multidisciplinary creative</p>
-          <h1>
-            I make <em>things</em>
-            <br />
-            across <span>worlds</span>
-            <br />
-            worth <strong>remembering.</strong>
+          <h1 className="cycling-headline">
+            <span>I make</span>
+            <CyclingWords />
+            <strong>worth remembering.</strong>
           </h1>
           <p className="hero-summary">
             I work across physical and digital space—bringing the same curiosity
@@ -58,15 +68,19 @@ export default function Home() {
         </a>
       </section>
 
-      <section className="ticker" aria-label="Creative disciplines">
-        <div className="ticker-track">
-          {[...disciplines, ...disciplines].map((item, index) => (
-            <Link href={item.href} key={`${item.label}-${index}`}>
-              {item.label} <span>✦</span>
-            </Link>
-          ))}
-        </div>
-      </section>
+      <div className="ticker-stack">
+        <i className="ticker-block ticker-block-one" />
+        <i className="ticker-block ticker-block-two" />
+        <section className="ticker" aria-label="Creative disciplines">
+          <div className="ticker-track">
+            {[...disciplines, ...disciplines].map((item, index) => (
+              <Link href={item.href} key={`${item.label}-${index}`}>
+                {item.label} <span>✦</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </div>
 
       <section className="featured section-shell" id="featured">
         <div className="section-heading">
@@ -127,11 +141,15 @@ export default function Home() {
             </p>
           </div>
           <div className="collaborators">
-            <p>People &amp; worlds I’ve worked with</p>
-            <div>
-              <span>Dream</span>
-              <span>TikTok</span>
-              <span>SkyCastleToys</span>
+            <p>People, teams &amp; worlds I’ve worked with</p>
+            <div className="client-marquee">
+              <div className="client-track">
+                {[...clients, ...clients].map((client, index) => (
+                  <span key={`${client}-${index}`}>
+                    {client} <i>✦</i>
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
