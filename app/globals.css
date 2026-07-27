@@ -985,6 +985,40 @@ nav a:nth-child(even):hover { transform: translateY(-3px) rotate(1.4deg) scale(1
   color: #d9dcef;
   font-size: 13px;
 }
+.self-taught {
+  margin-top: 2.3vw;
+  padding-top: 15px;
+  border-top: 1px solid rgba(188,199,224,.28);
+}
+.self-taught > span {
+  color: #9eadc9;
+  font: 9px var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: .09em;
+}
+.self-taught > div {
+  margin: 13px 0 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.self-taught i {
+  padding: 6px 9px;
+  border: 1px solid rgba(188,199,224,.26);
+  border-radius: 999px;
+  color: rgba(236,235,244,.74);
+  background: rgba(255,255,255,.025);
+  font: 9px var(--font-mono);
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+.self-taught > p {
+  max-width: 590px;
+  color: #cdd4e8;
+  font-size: 14px;
+  line-height: 1.55;
+}
 .throughline-signals {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1478,6 +1512,7 @@ footer > div {
   .throughline-copy > p:not(.eyebrow) { font-size: 15px; }
   .now-building { grid-template-columns: 1fr; margin-top: 8vw; }
   .now-building > p + p { padding-left: 0; border-left: 0; }
+  .self-taught { margin-top: 8vw; }
   .throughline-signals div { min-height: 120px; padding: 15px; }
   .journal-preview { padding-top: 18vw; padding-bottom: 12vw; }
   .journal-preview::before { height: 27vw; }

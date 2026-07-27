@@ -197,6 +197,29 @@ export default function Home() {
               moving into development.
             </p>
           </div>
+          <div className="self-taught">
+            <span>Learned by making</span>
+            <div>
+              {[
+                "Editing suites",
+                "Music production",
+                "Agentic AI",
+                "3D modeling",
+                "Architecture",
+                "3D printing",
+                "Server development",
+                "Image + video diffusion",
+                "LLM + LoRA training",
+              ].map((skill) => (
+                <i key={skill}>{skill}</i>
+              ))}
+            </div>
+            <p>
+              One experiment tied it all together: an AI-assisted pipeline that
+              turns images into 3D models, then translates those models into
+              buildable Minecraft structures.
+            </p>
+          </div>
         </div>
         <div className="throughline-signals" aria-label="A snapshot of DanHues' creative practice">
           <div>
