@@ -190,6 +190,8 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="journal-gradient-bar" aria-hidden="true" />
+
       <section className="journal-preview section-shell">
         <JournalReveal>
           <div className="journal-heading">
