@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CyclingWords } from "@/components/cycling-words";
 import { CyclingVisuals } from "@/components/cycling-visuals";
+import { ImpactCounters } from "@/components/impact-counters";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { getPosts, getProjects } from "@/lib/content";
 
@@ -149,16 +150,14 @@ export default function Home() {
       </section>
 
       <section className="client-showcase" aria-labelledby="client-showcase-title">
-        <p>Selected collaborators</p>
-        <h2 id="client-showcase-title">
-          People, teams &amp; worlds I’ve worked with
-        </h2>
+        <h2 id="client-showcase-title">Teams I’ve worked with</h2>
         <div className="client-marquee">
           <div className="client-track">
             {[...clients, ...clients].map((client, index) => (
-              <Link href={client.href} key={`${client.name}-${index}`}>
-                {client.name} <i>✦</i>
-              </Link>
+              <span className="client-item" key={`${client.name}-${index}`}>
+                <Link href={client.href}>{client.name}</Link>
+                <i aria-hidden="true">✦</i>
+              </span>
             ))}
           </div>
         </div>
@@ -167,7 +166,7 @@ export default function Home() {
       <section className="throughline">
         <div className="throughline-copy">
           <p className="eyebrow">How I got here</p>
-          <h2>I started by building worlds. Then I kept going.</h2>
+          <h2>I started by building worlds.</h2>
           <p>
             At 16, I built a Minecraft server that grew into one of the era’s
             largest independent networks, with over a million unique joins. That
@@ -180,37 +179,23 @@ export default function Home() {
             programs.
           </p>
         </div>
-        <div className="throughline-signals" aria-label="A snapshot of DanHues' creative practice">
-          <div>
-            <strong>1M+</strong>
-            <span>unique Minecraft joins</span>
-          </div>
-          <div>
-            <strong>250K+</strong>
-            <span>TikTok followers</span>
-          </div>
-          <div>
-            <strong>8M+</strong>
-            <span>likes generated</span>
-          </div>
-          <div>
-            <strong>500K+</strong>
-            <span>product downloads</span>
-          </div>
+        <div className="numbers-panel">
+          <p>Okay, let’s talk numbers.</p>
+          <ImpactCounters />
         </div>
       </section>
 
       <section className="journal-preview section-shell">
-        <div className="section-heading">
-          <p>A more personal archive</p>
-          <Link href="/journal">Read all thoughts ↗</Link>
-        </div>
         <div className="journal-heading">
-          <h2>Peek into my mind.</h2>
+          <div>
+            <p className="eyebrow">The journal</p>
+            <h2>Come sit with a thought.</h2>
+          </div>
           <p>
-            A quieter, one-on-one space for the things I’m noticing,
-            questioning, learning, and trying not to forget.
+            Unfinished ideas, observations, and questions—shared before they
+            become anything else.
           </p>
+          <Link href="/journal">Open the journal ↗</Link>
         </div>
         <div className="journal-pages">
           {journalPages.map((post, index) => (
