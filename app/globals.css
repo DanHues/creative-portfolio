@@ -144,6 +144,7 @@ nav a:hover {
 nav a:nth-child(even):hover { transform: translateY(-3px) rotate(1.5deg); }
 .availability {
   justify-self: end;
+  white-space: nowrap;
   padding: 10px 14px;
   border: 1px solid rgba(75,20,87,.25);
   border-radius: 58% 42% 54% 46% / 48% 57% 43% 52%;
