@@ -134,7 +134,7 @@ export default function Home() {
         <div className="about-content">
           <p className="eyebrow">Creativity without limit</p>
           <h2>
-            I don’t fit neatly into one box.
+            <span>I don’t fit neatly into one box.</span>
             <strong>That’s the point.</strong>
           </h2>
           <div className="about-copy">
@@ -145,17 +145,21 @@ export default function Home() {
               experience, or space a story needs.
             </p>
           </div>
-          <div className="collaborators">
-            <h3>People, teams &amp; worlds I’ve worked with</h3>
-            <div className="client-marquee">
-              <div className="client-track">
-                {[...clients, ...clients].map((client, index) => (
-                  <Link href={client.href} key={`${client.name}-${index}`}>
-                    {client.name} <i>✦</i>
-                  </Link>
-                ))}
-              </div>
-            </div>
+        </div>
+      </section>
+
+      <section className="client-showcase" aria-labelledby="client-showcase-title">
+        <p>Selected collaborators</p>
+        <h2 id="client-showcase-title">
+          People, teams &amp; worlds I’ve worked with
+        </h2>
+        <div className="client-marquee">
+          <div className="client-track">
+            {[...clients, ...clients].map((client, index) => (
+              <Link href={client.href} key={`${client.name}-${index}`}>
+                {client.name} <i>✦</i>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

@@ -725,10 +725,12 @@ nav a:nth-child(even):hover { transform: translateY(-3px) rotate(1.4deg) scale(1
     radial-gradient(circle at 82% 14%, rgba(38,116,126,.2), transparent 30%),
     linear-gradient(135deg, #090712, #151126 55%, #0c1720);
   color: white;
-  padding: 5vw 3.2vw 4vw;
+  min-height: 560px;
+  padding: 3.5vw 3.2vw;
   display: grid;
-  grid-template-columns: minmax(250px, 36%) 1fr;
-  gap: clamp(28px, 4vw, 70px);
+  grid-template-columns: minmax(250px, 34%) minmax(0, 1fr);
+  gap: clamp(28px, 3.5vw, 58px);
+  align-items: center;
   position: relative;
   overflow: hidden;
 }
@@ -774,8 +776,9 @@ nav a:nth-child(even):hover { transform: translateY(-3px) rotate(1.4deg) scale(1
 }
 .about-portrait {
   align-self: stretch;
-  min-height: 520px;
-  margin: -2vw 0 -4vw -3.2vw;
+  height: clamp(430px, 39vw, 560px);
+  min-height: 0;
+  margin: -1.5vw 0 -3.5vw -3.2vw;
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -810,7 +813,8 @@ nav a:nth-child(even):hover { transform: translateY(-3px) rotate(1.4deg) scale(1
   color: rgba(255,255,255,.62);
 }
 .about-content {
-  padding: 0 0 1vw;
+  min-width: 0;
+  padding: 0 clamp(12px, 2vw, 34px) 0 0;
   align-self: center;
 }
 .about-content > .eyebrow {
@@ -818,32 +822,69 @@ nav a:nth-child(even):hover { transform: translateY(-3px) rotate(1.4deg) scale(1
   color: #aebbdc;
 }
 .about h2 {
-  font-size: clamp(38px, 4.8vw, 70px);
-  line-height: .92;
+  width: 100%;
+  max-width: 790px;
+  font-size: clamp(36px, 4.25vw, 64px);
+  line-height: .95;
   letter-spacing: -.065em;
-  max-width: 980px;
+}
+.about h2 > span {
+  display: block;
+  max-width: 100%;
 }
 .about h2 strong {
-  display: inline-block;
-  max-width: calc(100% - .3em);
-  margin: .12em 0 0 .08em;
+  display: block;
+  width: fit-content;
+  max-width: 96%;
+  margin: .16em 0 0;
   padding: .03em .13em .08em;
   color: #10101c;
   background: #b8bde4;
   font-weight: 850;
-  line-height: .98;
+  font-size: .78em;
+  line-height: 1;
   white-space: normal;
-  overflow-wrap: anywhere;
-  transform: rotate(-1.6deg);
+  overflow-wrap: normal;
+  transform: rotate(-1deg);
   box-shadow: 7px 7px 0 rgba(50,134,144,.25);
 }
 .about-copy {
   display: block;
-  margin-top: 2.6vw;
-  font-size: 16px;
+  margin-top: clamp(20px, 2.2vw, 34px);
+  font-size: 15px;
   line-height: 1.55;
   max-width: 610px;
   color: rgba(255,255,255,.76);
+}
+.client-showcase {
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  padding: 3.2vw 0 3.8vw;
+  color: #ecebf4;
+  text-align: center;
+  background: #11101c;
+  border-top: 1px solid rgba(188,199,224,.18);
+}
+.client-showcase > p {
+  margin-bottom: 10px;
+  color: #9eadc9;
+  font: 9px var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+.client-showcase > h2 {
+  width: min(880px, calc(100% - 40px));
+  margin: 0 auto 2vw;
+  font-size: clamp(26px, 3.5vw, 52px);
+  line-height: 1;
+  letter-spacing: -.045em;
+  color: white;
+}
+.client-showcase .client-marquee {
+  margin: 0;
+  padding: 11px 0;
+  transform: rotate(.35deg);
 }
 .collaborators {
   margin-top: 3.5vw;
@@ -1463,14 +1504,18 @@ footer > div {
   .brand-poster { width: 88%; margin-left: 4%; }
   .cycling-visuals { width: 88%; margin-left: 4%; }
   .round-link { display: none; }
-  .about { grid-template-columns: 1fr; padding: 0 5vw 10vw; }
-  .about-portrait { height: 58vw; min-height: 420px; margin: 0 -5vw; }
-  .about-portrait::after {
-    background: linear-gradient(to top, #0d0a18 0%, transparent 52%);
+  .about {
+    min-height: 500px;
+    grid-template-columns: minmax(210px, 32%) minmax(0, 1fr);
+    gap: 4vw;
+    padding: 3.5vw 5vw;
   }
+  .about-portrait { height: 440px; min-height: 0; margin: -1vw 0 -3.5vw -5vw; }
   .about-portrait span { left: 5vw; bottom: 4vw; }
-  .about-content > .eyebrow { margin: 5vw 0 3vw; }
-  .about h2 { max-width: 780px; font-size: 8vw; }
+  .about-content > .eyebrow { margin: 0 0 3vw; }
+  .about h2 { max-width: 620px; font-size: clamp(34px, 5.4vw, 50px); }
+  .client-showcase { padding: 5vw 0; }
+  .client-showcase > h2 { margin-bottom: 3vw; }
   .client-marquee { margin-left: -5vw; margin-right: -5vw; }
   .throughline { grid-template-columns: 1fr; gap: 6vw; }
   .throughline-signals { width: min(620px, 100%); }
@@ -1497,15 +1542,18 @@ footer > div {
   .project-box { margin: 0; padding: 28px; transform: none; box-shadow: 7px 7px 0 var(--pink); }
   .archive-callout { display: block; }
   .archive-callout p { margin-bottom: 30px; }
-  .about { grid-template-columns: 1fr; gap: 28px; padding: 0 5vw 14vw; }
-  .about-portrait { min-height: 88vw; margin: 0 -5vw; }
+  .about { min-height: 0; grid-template-columns: 1fr; gap: 22px; padding: 0 5vw 10vw; }
+  .about-portrait { height: 72vw; min-height: 0; max-height: 420px; margin: 0 -5vw; }
   .about-portrait::after {
     background: linear-gradient(to top, #0d0a18 0%, transparent 48%);
   }
   .about-portrait span { left: 5vw; bottom: 6vw; }
-  .about-content > .eyebrow { margin-bottom: 6vw; }
-  .about h2 { font-size: 12vw; }
-  .about-copy { font-size: 15px; margin-top: 8vw; }
+  .about-content > .eyebrow { margin: 2vw 0 5vw; }
+  .about h2 { font-size: 10.5vw; }
+  .about h2 strong { max-width: 100%; }
+  .about-copy { font-size: 14px; margin-top: 6vw; }
+  .client-showcase { padding: 9vw 0 10vw; }
+  .client-showcase > h2 { margin-bottom: 6vw; font-size: 8.5vw; }
   .client-marquee { margin-left: -5vw; margin-right: -5vw; }
   .throughline { padding: 16vw 5vw 20vw; }
   .throughline-copy h2 { margin: 6vw 0; font-size: 12vw; }
