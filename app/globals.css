@@ -1088,14 +1088,32 @@ nav a:nth-child(even):hover { transform: translateY(-3px) rotate(1.4deg) scale(1
   position: relative;
   overflow: hidden;
   z-index: 2;
-  margin-top: -8vw;
-  padding-top: calc(8vw + 40px);
+  margin-top: -6vw;
+  padding-top: 10vw;
   padding-bottom: 6vw;
   background:
     radial-gradient(circle at 16% 40%, rgba(90,65,129,.15), transparent 24%),
     radial-gradient(circle at 83% 72%, rgba(55,105,113,.12), transparent 28%),
     radial-gradient(circle at 50% 28%, rgba(255,255,255,.76), transparent 34%),
     linear-gradient(180deg, #151623 0%, #202238 8%, #55586d 17%, #aaa8b4 28%, #e7e2df 39%, #f5f0e9 51%, #eee9e4);
+}
+.journal-reveal {
+  position: relative;
+  z-index: 2;
+  margin-top: -2.5vw;
+  opacity: 0;
+  filter: blur(7px);
+  transform: translateY(64px) scale(.975);
+  transform-origin: 50% 15%;
+  transition:
+    opacity .75s ease,
+    filter .9s ease,
+    transform 1s cubic-bezier(.2,.8,.2,1);
+}
+.journal-reveal.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1);
 }
 .journal-preview::before {
   content: "";
@@ -1613,8 +1631,9 @@ footer > div {
   .throughline-copy h2 { margin: 6vw 0; font-size: 12vw; }
   .throughline-copy > p:not(.eyebrow) { font-size: 15px; }
   .throughline-signals div { min-height: 120px; padding: 15px; }
-  .journal-preview { margin-top: -8vw; padding-top: calc(8vw + 36px); padding-bottom: 12vw; }
+  .journal-preview { margin-top: -5vw; padding-top: 15vw; padding-bottom: 12vw; }
   .journal-preview::before { height: 27vw; }
+  .journal-reveal { margin-top: -8vw; }
   .journal-heading { grid-template-columns: 1fr; padding: 10vw 0 8vw; }
   .journal-heading h2 { font-size: 12vw; }
   .journal-tarot { min-height: 300px; padding: 44px 22px 32px; }
@@ -1653,4 +1672,10 @@ footer > div {
   .hero, .hero::before, .hero::after,
   .about-objects span,
   .about h2 strong { animation: none; }
+  .journal-reveal {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
 }

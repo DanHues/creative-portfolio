@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CyclingWords } from "@/components/cycling-words";
 import { CyclingVisuals } from "@/components/cycling-visuals";
 import { ImpactCounters } from "@/components/impact-counters";
+import { JournalReveal } from "@/components/journal-reveal";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { getPosts, getProjects } from "@/lib/content";
 
@@ -190,32 +191,34 @@ export default function Home() {
       </section>
 
       <section className="journal-preview section-shell">
-        <div className="journal-heading">
-          <div className="journal-tarot">
-            <span className="tarot-index">XVII · The inner room</span>
-            <i aria-hidden="true">☾</i>
-            <h2>Peek into my mind.</h2>
-            <p>A journal of my perspective.</p>
-            <Link href="/journal">Open the journal ↗</Link>
+        <JournalReveal>
+          <div className="journal-heading">
+            <div className="journal-tarot">
+              <span className="tarot-index">XVII · The inner room</span>
+              <i aria-hidden="true">☾</i>
+              <h2>Peek into my mind.</h2>
+              <p>A journal of my perspective.</p>
+              <Link href="/journal">Open the journal ↗</Link>
+            </div>
           </div>
-        </div>
-        <div className="journal-pages">
-          {journalPages.map((post, index) => (
-            <Link
-              className={`journal-page journal-page-${index + 1}`}
-              href={`/journal/${post.slug}`}
-              key={post.slug}
-            >
-              <div className={`journal-snapshot snapshot-${index + 1}`}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-              </div>
-              <p className="project-meta">{post.readTime} read · a personal note</p>
-              <h3>{post.title}</h3>
-              <p>{post.summary}</p>
-              <span className="page-link">Turn the page ↗</span>
-            </Link>
-          ))}
-        </div>
+          <div className="journal-pages">
+            {journalPages.map((post, index) => (
+              <Link
+                className={`journal-page journal-page-${index + 1}`}
+                href={`/journal/${post.slug}`}
+                key={post.slug}
+              >
+                <div className={`journal-snapshot snapshot-${index + 1}`}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                </div>
+                <p className="project-meta">{post.readTime} read · a personal note</p>
+                <h3>{post.title}</h3>
+                <p>{post.summary}</p>
+                <span className="page-link">Turn the page ↗</span>
+              </Link>
+            ))}
+          </div>
+        </JournalReveal>
       </section>
 
       <SiteFooter />
