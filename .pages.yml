@@ -1,0 +1,56 @@
+media:
+  input: public/uploads
+  output: /uploads
+
+content:
+  - name: projects
+    label: Projects
+    type: collection
+    path: content/projects
+    format: json
+    filename: "{fields.slug}.json"
+    view:
+      fields: [title, category, year, featured]
+      primary: title
+      sort: [year, title]
+      default:
+        sort: year
+        order: desc
+    fields:
+      - { name: title, label: Project title, type: string, required: true }
+      - { name: slug, label: URL slug, type: string, required: true, description: "Lowercase words separated by hyphens" }
+      - { name: year, label: Year, type: string, required: true }
+      - { name: category, label: Disciplines, type: string, required: true }
+      - { name: summary, label: Short summary, type: text, required: true }
+      - { name: featured, label: Feature on home page, type: boolean, default: false }
+      - name: accent
+        label: Visual style
+        type: select
+        default: world
+        options:
+          values:
+            - { value: world, label: Digital world }
+            - { value: stage, label: Stage / photography }
+            - { value: object, label: Product / object }
+      - { name: body, label: Project story, type: rich-text, required: true }
+
+  - name: journal
+    label: Journal
+    type: collection
+    path: content/journal
+    format: json
+    filename: "{fields.slug}.json"
+    view:
+      fields: [title, date, readTime]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: title, label: Post title, type: string, required: true }
+      - { name: slug, label: URL slug, type: string, required: true, description: "Lowercase words separated by hyphens" }
+      - { name: date, label: Publish date, type: date, required: true }
+      - { name: readTime, label: Read time, type: string, default: "5 min" }
+      - { name: summary, label: Short summary, type: text, required: true }
+      - { name: body, label: Post, type: rich-text, required: true }
