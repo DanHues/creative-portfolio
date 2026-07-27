@@ -146,7 +146,7 @@ export default function Home() {
             </p>
           </div>
           <div className="collaborators">
-            <p>People, teams &amp; worlds I’ve worked with</p>
+            <h3>People, teams &amp; worlds I’ve worked with</h3>
             <div className="client-marquee">
               <div className="client-track">
                 {[...clients, ...clients].map((client, index) => (
@@ -162,30 +162,43 @@ export default function Home() {
 
       <section className="throughline">
         <div className="throughline-copy">
-          <p className="eyebrow">The thread through it all</p>
-          <h2>I became this way by following the work.</h2>
+          <p className="eyebrow">How I got here</p>
+          <h2>I started by building worlds. Then I kept going.</h2>
           <p>
-            Every project taught me a new language. A photograph led to a film,
-            a world led to a community, and an idea on a screen became something
-            I could hold. The medium changes. The curiosity doesn’t.
+            At 16, I built a Minecraft server that grew into one of the era’s
+            largest independent networks—more than 1,000 people online at once
+            and over a million unique joins. That first world became a company,
+            a community, and the foundation for how I create today.
+          </p>
+          <p>
+            From there I built servers for brands and creators, grew my own
+            TikTok audience, edited ads through one of TikTok’s earliest creator
+            programs, and kept making physical experiments—including a
+            record-setting printable whistle downloaded more than half a
+            million times.
+          </p>
+          <p className="throughline-lens">
+            I also photograph live culture for the love of it—more than 20 local
+            bands, Mei Semones, John Roseboro, Big Culture Arts Festival, and
+            Sunshine Pony Con so far, with Mare Faire next.
           </p>
         </div>
         <div className="throughline-signals" aria-label="A snapshot of DanHues' creative practice">
           <div>
-            <strong>8</strong>
-            <span>creative disciplines</span>
+            <strong>1M+</strong>
+            <span>unique Minecraft joins</span>
           </div>
           <div>
-            <strong>3</strong>
-            <span>spaces · digital, physical, live</span>
+            <strong>250K+</strong>
+            <span>TikTok followers</span>
           </div>
           <div>
-            <strong>8</strong>
-            <span>named collaborators</span>
+            <strong>8M+</strong>
+            <span>likes generated</span>
           </div>
           <div>
-            <strong>1</strong>
-            <span>point of view</span>
+            <strong>500K+</strong>
+            <span>product downloads</span>
           </div>
         </div>
       </section>
