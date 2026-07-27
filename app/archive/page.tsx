@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { Suspense } from "react";
+import { ArchiveBrowser } from "@/components/archive-browser";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { getProjects } from "@/lib/content";
 
@@ -16,25 +17,9 @@ export default function Archive() {
           obsessions, and things made simply because they needed to exist.
         </p>
       </section>
-      <section className="archive-grid">
-        <div className="filters">
-          {["All work", "Image", "Film", "Worlds", "Brands", "Objects", "Code"].map(
-            (filter) => <span key={filter}>{filter}</span>,
-          )}
-        </div>
-        {projects.map((project, index) => (
-          <Link
-            className="archive-row"
-            href={`/archive/${project.slug}`}
-            key={project.slug}
-          >
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <h2>{project.title}</h2>
-            <p>{project.category}</p>
-            <span>{project.year} ↗</span>
-          </Link>
-        ))}
-      </section>
+      <Suspense fallback={<section className="archive-grid" />}>
+        <ArchiveBrowser projects={projects} />
+      </Suspense>
       <SiteFooter />
     </main>
   );

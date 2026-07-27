@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { DM_Mono, Manrope } from "next/font/google";
+import { DM_Mono, Heebo } from "next/font/google";
 import "./globals.css";
 
-const sans = Manrope({ variable: "--font-sans", subsets: ["latin"] });
+const sans = Heebo({ variable: "--font-sans", subsets: ["latin"] });
 const mono = DM_Mono({
   variable: "--font-mono",
   weight: ["300", "400", "500"],

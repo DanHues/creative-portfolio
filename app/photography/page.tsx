@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import { PhotographyBrowser } from "@/components/photography-browser";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { getPhotography } from "@/lib/content";
 
@@ -16,28 +18,9 @@ export default function Photography() {
           made things I wanted to hold onto.
         </p>
       </section>
-      <section className="photo-grid" aria-label="Photography archive">
-        {photographs.map((photo) => (
-          <figure className="photo-card" key={photo.slug}>
-            <div className="photo-frame">
-              {photo.image ? (
-                <img
-                  src={photo.image.startsWith("/") ? `${basePath}${photo.image}` : photo.image}
-                  alt={photo.alt}
-                />
-              ) : null}
-            </div>
-            <figcaption>
-              <h2>{photo.title}</h2>
-              <p>
-                {photo.category}
-                <br />
-                {photo.location} · {photo.year}
-              </p>
-            </figcaption>
-          </figure>
-        ))}
-      </section>
+      <Suspense fallback={<section className="photo-grid" />}>
+        <PhotographyBrowser photographs={photographs} basePath={basePath} />
+      </Suspense>
       <SiteFooter />
     </main>
   );

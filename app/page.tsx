@@ -4,14 +4,14 @@ import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { getPosts, getProjects } from "@/lib/content";
 
 const disciplines = [
-  "Photography",
-  "Minecraft worlds",
-  "Video & social",
-  "Brand consulting",
-  "Videography",
-  "Development",
-  "3D design",
-  "3D printing",
+  { label: "Photography", href: "/photography?tag=All" },
+  { label: "Minecraft worlds", href: "/archive?tag=Minecraft" },
+  { label: "Video & social", href: "/archive?tag=Video" },
+  { label: "Brand consulting", href: "/archive?tag=Brand" },
+  { label: "Videography", href: "/archive?tag=Videography" },
+  { label: "Development", href: "/archive?tag=Development" },
+  { label: "3D design", href: "/archive?tag=3D" },
+  { label: "3D printing", href: "/archive?tag=3D" },
 ];
 
 export default function Home() {
@@ -27,11 +27,11 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">DanHues · Multidisciplinary creative</p>
           <h1>
-            I make <em>worlds,</em>
+            I make <em>things</em>
             <br />
-            images &amp; ideas
+            across <span>worlds</span>
             <br />
-            worth <span>remembering.</span>
+            worth <strong>remembering.</strong>
           </h1>
           <p className="hero-summary">
             I work across physical and digital space—bringing the same curiosity
@@ -59,9 +59,11 @@ export default function Home() {
       </section>
 
       <section className="ticker" aria-label="Creative disciplines">
-        <div>
+        <div className="ticker-track">
           {[...disciplines, ...disciplines].map((item, index) => (
-            <span key={`${item}-${index}`}>{item} ✦</span>
+            <Link href={item.href} key={`${item.label}-${index}`}>
+              {item.label} <span>✦</span>
+            </Link>
           ))}
         </div>
       </section>
@@ -73,16 +75,30 @@ export default function Home() {
         </div>
         {featured.map((project, index) => (
           <article className="project" key={project.slug}>
-            <div className={`project-visual ${project.accent}`}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <div className="visual-mark" />
+            <div className={`project-polaroid polaroid-${index + 1}`}>
+              <div className={`project-visual ${project.accent}`}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div className="visual-mark" />
+              </div>
+              <div className="polaroid-caption">
+                <span>DanHues archive</span>
+                <span>{project.year}</span>
+              </div>
             </div>
-            <div className="project-copy">
-              <p className="project-meta">{project.category}</p>
+            <div className={`project-copy project-box project-box-${index + 1}`}>
+              <div className="project-tags">
+                {project.category.split(" · ").map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
               <h2>{project.title}</h2>
               <p>{project.summary}</p>
-              <Link href={`/archive/${project.slug}`}>
-                View project <span>↗</span>
+              <Link className="explore-project" href={`/archive/${project.slug}`}>
+                <span>
+                  Explore this project
+                  <small>See the story, process &amp; details</small>
+                </span>
+                <i>↗</i>
               </Link>
             </div>
           </article>
