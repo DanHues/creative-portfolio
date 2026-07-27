@@ -124,25 +124,26 @@ export default function Home() {
           <span />
           <span />
         </div>
-        <p className="eyebrow">Creativity without limit</p>
-        <div>
+        <div className="about-portrait">
+          <img
+            src="https://avatars.githubusercontent.com/u/43981251?v=4"
+            alt="Portrait of DanHues"
+          />
+          <span>DanHues · behind the work</span>
+        </div>
+        <div className="about-content">
+          <p className="eyebrow">Creativity without limit</p>
           <h2>
             I don’t fit neatly into one box.
             <strong>That’s the point.</strong>
           </h2>
-          <div className="about-identity">
-            <img
-              src="https://avatars.githubusercontent.com/u/43981251?v=4"
-              alt="Portrait of DanHues"
-            />
-            <div className="about-copy">
-              <p>
-                I’m a multidisciplinary creative working in the overlap between
-                storytelling and systems, aesthetics and utility, internet
-                culture and the physical world—building the image, object,
-                experience, or space a story needs.
-              </p>
-            </div>
+          <div className="about-copy">
+            <p>
+              I’m a multidisciplinary creative working in the overlap between
+              storytelling and systems, aesthetics and utility, internet
+              culture and the physical world—building the image, object,
+              experience, or space a story needs.
+            </p>
           </div>
           <div className="collaborators">
             <p>People, teams &amp; worlds I’ve worked with</p>
@@ -159,16 +160,46 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="throughline">
+        <div className="throughline-copy">
+          <p className="eyebrow">The thread through it all</p>
+          <h2>I became this way by following the work.</h2>
+          <p>
+            Every project taught me a new language. A photograph led to a film,
+            a world led to a community, and an idea on a screen became something
+            I could hold. The medium changes. The curiosity doesn’t.
+          </p>
+        </div>
+        <div className="throughline-signals" aria-label="A snapshot of DanHues' creative practice">
+          <div>
+            <strong>8</strong>
+            <span>creative disciplines</span>
+          </div>
+          <div>
+            <strong>3</strong>
+            <span>spaces · digital, physical, live</span>
+          </div>
+          <div>
+            <strong>8</strong>
+            <span>named collaborators</span>
+          </div>
+          <div>
+            <strong>1</strong>
+            <span>point of view</span>
+          </div>
+        </div>
+      </section>
+
       <section className="journal-preview section-shell">
         <div className="section-heading">
-          <p>Pages from my journal</p>
+          <p>A more personal archive</p>
           <Link href="/journal">Read all thoughts ↗</Link>
         </div>
         <div className="journal-heading">
-          <h2>Loose pages from my head.</h2>
+          <h2>Peek into my mind.</h2>
           <p>
-            Small definitions for the things I’m noticing, questioning,
-            learning, and trying not to forget.
+            A quieter, one-on-one space for the things I’m noticing,
+            questioning, learning, and trying not to forget.
           </p>
         </div>
         <div className="journal-pages">
