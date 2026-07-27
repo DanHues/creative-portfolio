@@ -187,15 +187,13 @@ export default function Home() {
 
       <section className="journal-preview section-shell">
         <div className="journal-heading">
-          <div>
-            <p className="eyebrow">The journal</p>
-            <h2>Come sit with a thought.</h2>
+          <div className="journal-tarot">
+            <span className="tarot-index">XVII · The inner room</span>
+            <i aria-hidden="true">☾</i>
+            <h2>Peek into my mind.</h2>
+            <p>A journal of my perspective.</p>
+            <Link href="/journal">Open the journal ↗</Link>
           </div>
-          <p>
-            Unfinished ideas, observations, and questions—shared before they
-            become anything else.
-          </p>
-          <Link href="/journal">Open the journal ↗</Link>
         </div>
         <div className="journal-pages">
           {journalPages.map((post, index) => (
