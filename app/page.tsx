@@ -182,6 +182,21 @@ export default function Home() {
             bands, Mei Semones, John Roseboro, Big Culture Arts Festival, and
             Sunshine Pony Con so far, with Mare Faire next.
           </p>
+          <div className="now-building">
+            <span>What I’m building now</span>
+            <p>
+              <strong>Titan SMP</strong> · a continuation of the Dream SMP story,
+              built for 200 creators across the world.
+            </p>
+            <p>
+              <strong>Sticki Rolls × Minecraft</strong> · product, packaging,
+              sticker design, and marketing strategy for an official collaboration.
+            </p>
+            <p>
+              <strong>Under wraps</strong> · a concept I pitched that is now
+              moving into development.
+            </p>
+          </div>
         </div>
         <div className="throughline-signals" aria-label="A snapshot of DanHues' creative practice">
           <div>
