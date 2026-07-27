@@ -19,6 +19,10 @@ const disciplines = [
 const clients = [
   { name: "Adin Ross", href: "/archive?tag=Video" },
   { name: "Club Obsidian", href: "/archive?tag=Minecraft" },
+  { name: "GridCraft", href: "/archive?tag=Minecraft" },
+  { name: "High School Esports League", href: "/archive?tag=Minecraft" },
+  { name: "PlayVS", href: "/archive?tag=Development" },
+  { name: "Sueco", href: "/archive?tag=Minecraft" },
   { name: "TikTok", href: "/archive?tag=Video" },
   { name: "Jamie Levine Photography", href: "/photography" },
   { name: "SkyCastleToys", href: "/archive/object-no-four" },
