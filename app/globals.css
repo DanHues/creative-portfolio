@@ -1088,7 +1088,7 @@ nav a:nth-child(even):hover { transform: translateY(-3px) rotate(1.4deg) scale(1
   position: relative;
   z-index: 7;
   height: 14px;
-  margin: -7px -1vw;
+  margin: 0 -1vw;
   background: linear-gradient(90deg, #263650, #71689b 28%, #b06caa 52%, #5f8f96 76%, #263650);
   border-top: 1px solid rgba(230,229,241,.55);
   border-bottom: 1px solid rgba(12,12,22,.55);
@@ -1100,8 +1100,8 @@ nav a:nth-child(even):hover { transform: translateY(-3px) rotate(1.4deg) scale(1
   position: relative;
   overflow: hidden;
   z-index: 2;
-  margin-top: -6vw;
-  padding-top: 10vw;
+  margin-top: 0;
+  padding-top: 28px;
   padding-bottom: 6vw;
   background:
     radial-gradient(circle at 16% 40%, rgba(90,65,129,.15), transparent 24%),
@@ -1112,7 +1112,7 @@ nav a:nth-child(even):hover { transform: translateY(-3px) rotate(1.4deg) scale(1
 .journal-reveal {
   position: relative;
   z-index: 2;
-  margin-top: -3.25vw;
+  margin-top: 0;
   opacity: 0;
   filter: blur(7px);
   transform: translateY(64px) scale(.975);
@@ -1132,7 +1132,7 @@ nav a:nth-child(even):hover { transform: translateY(-3px) rotate(1.4deg) scale(1
   position: absolute;
   left: 0;
   right: 0;
-  top: 6vw;
+  top: 0;
   height: 31vw;
   background-image:
     radial-gradient(circle, rgba(31,24,48,.8) 1.3px, transparent 1.7px),
@@ -1660,9 +1660,9 @@ footer > div {
   .throughline-copy h2 { margin: 6vw 0; font-size: 12vw; }
   .throughline-copy > p:not(.eyebrow) { font-size: 15px; }
   .throughline-signals div { min-height: 120px; padding: 15px; }
-  .journal-preview { margin-top: -5vw; padding-top: 15vw; padding-bottom: 12vw; }
-  .journal-preview::before { top: 5vw; height: 27vw; }
-  .journal-reveal { margin-top: -9vw; }
+  .journal-preview { margin-top: 0; padding-top: 28px; padding-bottom: 12vw; }
+  .journal-preview::before { top: 0; height: 27vw; }
+  .journal-reveal { margin-top: 0; }
   .journal-heading { grid-template-columns: 1fr; padding: 10vw 0 8vw; }
   .journal-heading h2 { font-size: 12vw; }
   .journal-tarot { min-height: 300px; padding: 44px 22px 32px; }
