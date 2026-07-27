@@ -170,60 +170,15 @@ export default function Home() {
           <h2>I started by building worlds. Then I kept going.</h2>
           <p>
             At 16, I built a Minecraft server that grew into one of the era’s
-            largest independent networks—more than 1,000 people online at once
-            and over a million unique joins. That first world became a company,
-            a community, and the foundation for how I create today.
+            largest independent networks, with over a million unique joins. That
+            first world became a company, a community, and the foundation for
+            how I create today.
           </p>
           <p>
-            From there I built servers for brands and creators, grew my own
-            TikTok audience, edited ads through one of TikTok’s earliest creator
-            programs, and kept making physical experiments—including a
-            record-setting printable whistle downloaded more than half a
-            million times.
+            From that I built servers for companies and creators, grew my own
+            TikTok brand, and helped coordinate one of TikTok’s earliest creator
+            programs.
           </p>
-          <p className="throughline-lens">
-            I also photograph live culture for the love of it—more than 20 local
-            bands, Mei Semones, John Roseboro, Big Culture Arts Festival, and
-            Sunshine Pony Con so far, with Mare Faire next.
-          </p>
-          <div className="now-building">
-            <span>What I’m building now</span>
-            <p>
-              <strong>Titan SMP</strong> · a continuation of the Dream SMP story,
-              built for 200 creators across the world.
-            </p>
-            <p>
-              <strong>Sticki Rolls × Minecraft</strong> · product, packaging,
-              sticker design, and marketing strategy for an official collaboration.
-            </p>
-            <p>
-              <strong>Under wraps</strong> · a concept I pitched that is now
-              moving into development.
-            </p>
-          </div>
-          <div className="self-taught">
-            <span>Learned by making</span>
-            <div>
-              {[
-                "Editing suites",
-                "Music production",
-                "Agentic AI",
-                "3D modeling",
-                "Architecture",
-                "3D printing",
-                "Server development",
-                "Image + video diffusion",
-                "LLM + LoRA training",
-              ].map((skill) => (
-                <i key={skill}>{skill}</i>
-              ))}
-            </div>
-            <p>
-              One experiment tied it all together: an AI-assisted pipeline that
-              turns images into 3D models, then translates those models into
-              buildable Minecraft structures.
-            </p>
-          </div>
         </div>
         <div className="throughline-signals" aria-label="A snapshot of DanHues' creative practice">
           <div>
