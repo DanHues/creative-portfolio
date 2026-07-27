@@ -1132,7 +1132,7 @@ nav a:nth-child(even):hover { transform: translateY(-3px) rotate(1.4deg) scale(1
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
+  top: 6vw;
   height: 31vw;
   background-image:
     radial-gradient(circle, rgba(31,24,48,.8) 1.3px, transparent 1.7px),
@@ -1661,7 +1661,7 @@ footer > div {
   .throughline-copy > p:not(.eyebrow) { font-size: 15px; }
   .throughline-signals div { min-height: 120px; padding: 15px; }
   .journal-preview { margin-top: -5vw; padding-top: 15vw; padding-bottom: 12vw; }
-  .journal-preview::before { height: 27vw; }
+  .journal-preview::before { top: 5vw; height: 27vw; }
   .journal-reveal { margin-top: -9vw; }
   .journal-heading { grid-template-columns: 1fr; padding: 10vw 0 8vw; }
   .journal-heading h2 { font-size: 12vw; }
