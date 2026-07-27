@@ -2,10 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 
 export function SiteHeader() {
+  const basePath = process.env.PAGES_BASE_PATH || "";
+
   return (
     <header className="site-header">
       <Link className="wordmark" href="/" aria-label="DanHues home">
-        <Image src="/danhuestext.png" alt="DanHues" width={1280} height={360} priority />
+        <Image
+          src={`${basePath}/danhuestext.png`}
+          alt="DanHues"
+          width={1280}
+          height={360}
+          priority
+        />
       </Link>
       <nav aria-label="Main navigation">
         <Link href="/archive">Projects</Link>
