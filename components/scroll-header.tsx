@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { createPortal } from "react-dom";
 import { useEffect, useRef, useState } from "react";
 import { DiscordButton } from "@/components/discord-button";
 
@@ -9,7 +10,12 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
   const [compact, setCompact] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const closeContactRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const update = () => setCompact(window.scrollY > 70);
@@ -47,7 +53,70 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
   };
   const closeContact = () => setContactOpen(false);
 
+  const contactModal = (
+    <div className={`quick-contact-layer${contactOpen ? " is-open" : ""}`}>
+      <button
+        className="quick-contact-backdrop"
+        type="button"
+        aria-label="Close contact options"
+        tabIndex={contactOpen ? 0 : -1}
+        onClick={closeContact}
+      />
+      <section
+        className="quick-contact"
+        id="quick-contact"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden={!contactOpen}
+        aria-labelledby="quick-contact-title"
+      >
+        <button
+          className="quick-contact-close"
+          type="button"
+          aria-label="Close contact options"
+          ref={closeContactRef}
+          onClick={closeContact}
+        />
+        <Image
+          className="quick-contact-logo"
+          src={`${basePath}/danhuestext.png`}
+          alt="DanHues"
+          width={1280}
+          height={360}
+        />
+        <p>Have an idea?</p>
+        <h2 id="quick-contact-title">What’s the best way to reach me?</h2>
+        <div>
+          <a
+            className="quick-contact-option quick-contact-email"
+            href="mailto:danielhughesps@gmail.com?subject=Let%27s%20make%20something"
+            onClick={closeContact}
+          >
+            <span>
+              Email me
+              <small>Projects and collaborations</small>
+            </span>
+          </a>
+          <DiscordButton className="quick-contact-option" />
+          <a
+            className="quick-contact-option"
+            href="https://www.instagram.com/imdanhues/"
+            target="_blank"
+            rel="noreferrer"
+            onClick={closeContact}
+          >
+            <span>
+              Instagram DM
+              <small>Quick hellos and visual ideas</small>
+            </span>
+          </a>
+        </div>
+      </section>
+    </div>
+  );
+
   return (
+    <>
     <header className={`site-header${compact ? " compact" : ""}${menuOpen ? " menu-open" : ""}${contactOpen ? " contact-open" : ""}`}>
       <Link className="wordmark" href="/" aria-label="DanHues home">
         <Image
@@ -96,56 +165,8 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
         <i /> Available for select projects
       </button>
 
-      <button
-        className="quick-contact-backdrop"
-        type="button"
-        aria-label="Close contact options"
-        tabIndex={contactOpen ? 0 : -1}
-        onClick={closeContact}
-      />
-      <section
-        className="quick-contact"
-        id="quick-contact"
-        role="dialog"
-        aria-modal="true"
-        aria-hidden={!contactOpen}
-        aria-labelledby="quick-contact-title"
-      >
-        <button
-          className="quick-contact-close"
-          type="button"
-          aria-label="Close contact options"
-          ref={closeContactRef}
-          onClick={closeContact}
-        />
-        <p>Have an idea?</p>
-        <h2 id="quick-contact-title">What’s the best way to reach me?</h2>
-        <div>
-          <a
-            className="quick-contact-option quick-contact-email"
-            href="mailto:danielhughesps@gmail.com?subject=Let%27s%20make%20something"
-            onClick={closeContact}
-          >
-            <span>
-              Email me
-              <small>Projects and collaborations</small>
-            </span>
-          </a>
-          <DiscordButton className="quick-contact-option" />
-          <a
-            className="quick-contact-option"
-            href="https://www.instagram.com/imdanhues/"
-            target="_blank"
-            rel="noreferrer"
-            onClick={closeContact}
-          >
-            <span>
-              Instagram DM
-              <small>Quick hellos and visual ideas</small>
-            </span>
-          </a>
-        </div>
-      </section>
     </header>
+    {mounted ? createPortal(contactModal, document.body) : null}
+    </>
   );
 }
