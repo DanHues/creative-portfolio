@@ -3187,6 +3187,23 @@ body > main { padding-top: 76px; }
   transform: none !important;
   transition: none !important;
 }
+.is-firefox .project-parallax-art::after,
+.is-firefox .project-story-art::after,
+.is-firefox .project-intro::after,
+.is-firefox .project-story-hero::after {
+  display: none;
+}
+.is-firefox .project-parallax-art img,
+.is-firefox .project-story-art img {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+.is-firefox .project-story-title {
+  width: min(980px, 100%);
+  padding: 18px 22px;
+  background: #24112b;
+}
 .is-firefox.is-scrolling *,
 .is-firefox.is-scrolling *::before,
 .is-firefox.is-scrolling *::after {
