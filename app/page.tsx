@@ -52,7 +52,7 @@ export default function Home() {
           </p>
           <h1 className="cycling-headline">
             <span className="making-line">
-              Making <CyclingWords />
+              <CyclingWords />
             </span>
             <strong>
               worth <mark>remembering.</mark>
