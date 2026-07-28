@@ -22,6 +22,7 @@ content:
       - { name: year, label: Year, type: string, required: true }
       - { name: category, label: Disciplines, type: string, required: true }
       - { name: summary, label: Short summary, type: text, required: true }
+      - { name: image, label: Article image, type: image, required: false, description: "Used as the parallax cover image on the project article" }
       - { name: featured, label: Feature on home page, type: boolean, default: false }
       - name: accent
         label: Visual style
