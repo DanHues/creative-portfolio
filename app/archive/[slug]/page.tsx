@@ -3,6 +3,7 @@ import { ProjectStoryHero } from "@/components/project-story-hero";
 import { RichCopy } from "@/components/rich-copy";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { SubpageControls } from "@/components/subpage-controls";
+import { TagList } from "@/components/tag-list";
 import { getProject, getProjects } from "@/lib/content";
 import { formatProjectDate } from "@/lib/format-project-date";
 
@@ -39,6 +40,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               {formatProjectDate(project.date, project.year)}
             </time>
           </div>
+          <TagList tags={project.tags} className="story-tags" />
           <RichCopy body={project.body} />
         </div>
       </article>
