@@ -444,7 +444,8 @@ body > main { padding-top: 76px; }
   position: relative;
   top: .055em;
   display: inline-block;
-  width: 5.6em;
+  width: 7.8em;
+  max-width: 100%;
   height: .94em;
   overflow: hidden;
   color: var(--plum);
@@ -2632,7 +2633,7 @@ body > main { padding-top: 76px; }
   .hero { min-height: auto; padding: 16vw 5vw 22vw; gap: 16vw; }
   .hero h1 { width: 100%; font-size: clamp(42px, 11.2vw, 56px); line-height: .92; }
   .making-line { max-width: 100%; gap: .1em; }
-  .cycling-window { width: 5.35em; max-width: 62vw; }
+  .cycling-window { width: 100%; max-width: 100%; }
   .cycling-list > span { overflow: hidden; text-overflow: clip; }
   .hero-summary { font-size: 15px; }
   .brand-poster { width: calc(100% - 24px); margin-left: 0; box-shadow: 10px 10px 0 var(--orchid), 20px 20px 0 var(--deep-plum); }
