@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
+import { TagList } from "@/components/tag-list";
 import { formatDate, getPosts } from "@/lib/content";
 
 export default function Journal() {
@@ -23,6 +24,7 @@ export default function Journal() {
               Note {String(index + 1).padStart(3, "0")} · {formatDate(post.date)}
             </p>
             <h2>{post.title}</h2>
+            <TagList tags={post.tags} className="journal-list-tags" linked={false} />
             <span>{post.readTime}</span>
           </Link>
         ))}
