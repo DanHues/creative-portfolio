@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { PhotoStory } from "@/lib/content";
 
 function resolveImage(path: string, basePath: string) {
@@ -24,7 +25,9 @@ function PhotoAlbum({
       ? [{ image: album.image, alt: album.alt, caption: "" }]
       : [];
   const [active, setActive] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const touchStart = useRef<number | null>(null);
+  const lightboxTouchStart = useRef<number | null>(null);
   const current = photos[active];
 
   function move(direction: number) {
@@ -32,70 +35,167 @@ function PhotoAlbum({
     setActive((position) => (position + direction + photos.length) % photos.length);
   }
 
-  return (
-    <article className="photo-album">
-      <div
-        className="photo-album-gallery"
-        onTouchStart={(event) => {
-          touchStart.current = event.touches[0]?.clientX ?? null;
-        }}
-        onTouchEnd={(event) => {
-          if (touchStart.current === null) return;
-          const distance = (event.changedTouches[0]?.clientX ?? touchStart.current) - touchStart.current;
-          if (Math.abs(distance) > 45) move(distance < 0 ? 1 : -1);
-          touchStart.current = null;
-        }}
-      >
-        {current ? (
-          <img
-            src={resolveImage(current.image, basePath)}
-            alt={current.alt || album.alt}
-            key={`${album.slug}-${active}`}
-          />
-        ) : (
-          <div className="photo-album-placeholder">
-            <span>Album awaiting photographs</span>
-          </div>
-        )}
-        <div className="photo-album-number">
-          {String(index + 1).padStart(2, "0")}
-        </div>
-        {photos.length > 1 ? (
-          <div className="photo-album-controls">
-            <button type="button" onClick={() => move(-1)} aria-label={`Previous photo in ${album.title}`}>
-              <i aria-hidden="true" />
-            </button>
-            <span>{String(active + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}</span>
-            <button type="button" onClick={() => move(1)} aria-label={`Next photo in ${album.title}`}>
-              <i aria-hidden="true" />
-            </button>
-          </div>
-        ) : (
-          <span className="photo-album-count">{photos.length ? "01 / 01" : "00 / 00"}</span>
-        )}
-        {current?.caption ? <p className="photo-album-caption">{current.caption}</p> : null}
-      </div>
+  useEffect(() => {
+    if (!lightboxOpen) return;
 
-      <div className="photo-album-copy">
-        <p className="photo-album-meta">
-          {album.category} &middot; {album.location} &middot; {album.year}
-        </p>
-        <h2>{album.title}</h2>
-        <p>{album.description || "A photography album from the archive."}</p>
-        <div className="photo-album-footer">
-          <span>{photos.length} {photos.length === 1 ? "photograph" : "photographs"}</span>
-          {album.instagram ? (
-            <a href={album.instagram} target="_blank" rel="noreferrer">
-              View the photoset <i aria-hidden="true" />
-            </a>
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setLightboxOpen(false);
+      if (event.key === "ArrowLeft") move(-1);
+      if (event.key === "ArrowRight") move(1);
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [lightboxOpen, photos.length]);
+
+  const lightbox = lightboxOpen && current
+    ? createPortal(
+        <div
+          className="photo-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${album.title} slideshow`}
+          onClick={() => setLightboxOpen(false)}
+        >
+          <div
+            className="photo-lightbox-stage"
+            onClick={(event) => event.stopPropagation()}
+            onTouchStart={(event) => {
+              lightboxTouchStart.current = event.touches[0]?.clientX ?? null;
+            }}
+            onTouchEnd={(event) => {
+              if (lightboxTouchStart.current === null) return;
+              const distance = (event.changedTouches[0]?.clientX ?? lightboxTouchStart.current)
+                - lightboxTouchStart.current;
+              if (Math.abs(distance) > 45) move(distance < 0 ? 1 : -1);
+              lightboxTouchStart.current = null;
+            }}
+          >
+            <button
+              className="photo-lightbox-close"
+              type="button"
+              onClick={() => setLightboxOpen(false)}
+              aria-label="Close slideshow"
+              autoFocus
+            >
+              <i aria-hidden="true" />
+            </button>
+            <img
+              src={resolveImage(current.image, basePath)}
+              alt={current.alt || album.alt}
+              key={`lightbox-${album.slug}-${active}`}
+            />
+            {photos.length > 1 ? (
+              <>
+                <button
+                  className="photo-lightbox-arrow previous"
+                  type="button"
+                  onClick={() => move(-1)}
+                  aria-label={`Previous photo in ${album.title}`}
+                >
+                  <i aria-hidden="true" />
+                </button>
+                <button
+                  className="photo-lightbox-arrow next"
+                  type="button"
+                  onClick={() => move(1)}
+                  aria-label={`Next photo in ${album.title}`}
+                >
+                  <i aria-hidden="true" />
+                </button>
+              </>
+            ) : null}
+            <div className="photo-lightbox-footer">
+              <span>{String(active + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}</span>
+              <p>{current.caption || album.title}</p>
+            </div>
+          </div>
+        </div>,
+        document.body,
+      )
+    : null;
+
+  return (
+    <>
+      <article className="photo-album">
+        <div
+          className="photo-album-gallery"
+          onTouchStart={(event) => {
+            touchStart.current = event.touches[0]?.clientX ?? null;
+          }}
+          onTouchEnd={(event) => {
+            if (touchStart.current === null) return;
+            const distance = (event.changedTouches[0]?.clientX ?? touchStart.current) - touchStart.current;
+            if (Math.abs(distance) > 45) move(distance < 0 ? 1 : -1);
+            touchStart.current = null;
+          }}
+        >
+          {current ? (
+            <button
+              className="photo-album-open"
+              type="button"
+              onClick={() => setLightboxOpen(true)}
+              aria-label={`Open ${album.title} photo ${active + 1} in full-screen slideshow`}
+            >
+              <img
+                src={resolveImage(current.image, basePath)}
+                alt={current.alt || album.alt}
+                key={`${album.slug}-${active}`}
+              />
+              <span>View full photo</span>
+            </button>
           ) : (
-            <a href="https://www.instagram.com/hues.dan/" target="_blank" rel="noreferrer">
-              Photography Instagram <i aria-hidden="true" />
-            </a>
+            <div className="photo-album-placeholder">
+              <span>Album awaiting photographs</span>
+            </div>
           )}
+          <div className="photo-album-number">
+            {String(index + 1).padStart(2, "0")}
+          </div>
+          {photos.length > 1 ? (
+            <div className="photo-album-controls">
+              <button type="button" onClick={() => move(-1)} aria-label={`Previous photo in ${album.title}`}>
+                <i aria-hidden="true" />
+              </button>
+              <span>{String(active + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}</span>
+              <button type="button" onClick={() => move(1)} aria-label={`Next photo in ${album.title}`}>
+                <i aria-hidden="true" />
+              </button>
+            </div>
+          ) : (
+            <span className="photo-album-count">{photos.length ? "01 / 01" : "00 / 00"}</span>
+          )}
+          {current?.caption ? <p className="photo-album-caption">{current.caption}</p> : null}
         </div>
-      </div>
-    </article>
+
+        <div className="photo-album-copy">
+          <p className="photo-album-meta">
+            {album.category} &middot; {album.location} &middot; {album.year}
+          </p>
+          <h2>{album.title}</h2>
+          <p>{album.description || "A photography album from the archive."}</p>
+          <div className="photo-album-footer">
+            <span>{photos.length} {photos.length === 1 ? "photograph" : "photographs"}</span>
+            {album.instagram ? (
+              <a href={album.instagram} target="_blank" rel="noreferrer">
+                View the photoset <i aria-hidden="true" />
+              </a>
+            ) : (
+              <a href="https://www.instagram.com/hues.dan/" target="_blank" rel="noreferrer">
+                Photography Instagram <i aria-hidden="true" />
+              </a>
+            )}
+          </div>
+        </div>
+      </article>
+      {lightbox}
+    </>
   );
 }
 
