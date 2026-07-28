@@ -5,6 +5,10 @@
   "category": "Convention",
   "tags": ["Photography", "Videography", "Social Media Marketing"],
   "location": "Convention floor",
+  "description": "Portraits of people stepping fully into characters and worlds they care about.",
+  "instagram": "https://www.instagram.com/hues.dan/",
+  "featured": false,
   "image": "",
-  "alt": "A convention attendee in a carefully made costume"
+  "alt": "A convention attendee in a carefully made costume",
+  "images": []
 }
