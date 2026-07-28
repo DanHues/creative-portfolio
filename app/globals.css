@@ -361,7 +361,7 @@ body > main { padding-top: 76px; }
 
 .hero {
   min-height: 0;
-  padding: 2.6vw 3.2vw 1.35vw;
+  padding: 4vw 3.2vw 2.8vw;
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr);
@@ -661,7 +661,7 @@ body > main { padding-top: 76px; }
 .ticker-title {
   position: absolute;
   z-index: 5;
-  left: clamp(22px, 5vw, 76px);
+  left: 3.2vw;
   top: 0;
   width: fit-content;
   padding: 11px 24px 12px;
@@ -2974,7 +2974,7 @@ body > main { padding-top: 76px; }
 .is-firefox .ticker-track,
 .is-firefox .client-track {
   animation: none !important;
-  transform: translate3d(0, 0, 0);
+  transform: none !important;
   will-change: auto;
 }
 .is-firefox .site-header {
@@ -2989,8 +2989,8 @@ body > main { padding-top: 76px; }
 .is-firefox .throughline,
 .is-firefox .journal-preview,
 .is-firefox .contact-footer {
-  content-visibility: visible;
-  contain-intrinsic-size: none;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 760px;
   contain: paint;
 }
 .is-firefox .project-polaroid,
@@ -3001,9 +3001,16 @@ body > main { padding-top: 76px; }
   box-shadow: 7px 8px 0 rgba(75,20,87,.13);
 }
 .is-firefox .site-header {
-  will-change: transform;
-  transform: translateZ(0);
+  position: sticky;
+  will-change: auto;
+  transform: none;
   box-shadow: none;
+}
+.is-firefox body > main {
+  padding-top: 0;
+}
+.is-firefox .back-to-top {
+  display: none;
 }
 .is-firefox img,
 .is-firefox .archive-thumb {
@@ -3020,6 +3027,30 @@ body > main { padding-top: 76px; }
 }
 .is-firefox .cycling-headline mark::after {
   transform: rotate(-1deg) scaleX(1);
+}
+.is-firefox .hero {
+  background: #fae9ff;
+}
+.is-firefox .hero::before,
+.is-firefox .hero::after,
+.is-firefox .about-objects,
+.is-firefox .journal-preview::before,
+.is-firefox .journal-preview::after,
+.is-firefox .contact-orbit {
+  display: none;
+}
+.is-firefox .cycling-visual-card,
+.is-firefox .project-polaroid,
+.is-firefox .project-box,
+.is-firefox .journal-page,
+.is-firefox .contact-path,
+.is-firefox .about-portrait img {
+  transform: none !important;
+}
+.is-firefox .project-parallax-art,
+.is-firefox .project-story-art {
+  inset: 0;
+  transform: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
