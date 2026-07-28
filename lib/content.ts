@@ -5,6 +5,7 @@ export type Project = {
   slug: string;
   title: string;
   year: string;
+  date?: string;
   category: string;
   summary: string;
   featured: boolean;
