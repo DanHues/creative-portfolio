@@ -48,7 +48,7 @@ export default function Home() {
       <section className="hero">
         <div className="hero-copy">
           <p className="eyebrow">
-            Hi, I’m Daniel Hughes—a multidisciplinary creative.
+            Hi, I’m Daniel Hughes, a multidisciplinary creative, and I make
           </p>
           <h1 className="cycling-headline">
             <span className="making-line">
