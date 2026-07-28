@@ -75,13 +75,20 @@ export default function Journal() {
         </div>
         {notes.map((post, index) => (
           <Link href={`/journal/${post.slug}`} className="note" key={post.slug}>
-            <p>
-              Note {String(index + 1).padStart(3, "0")} &middot;{" "}
-              {formatDate(post.date)}
-            </p>
-            <h2>{post.title}</h2>
-            <p className="note-summary">{post.summary}</p>
-            <span>{post.readTime}</span>
+            <div className="note-index">
+              <strong>Note {String(index + 1).padStart(3, "0")}</strong>
+              <time dateTime={post.date}>{formatDate(post.date)}</time>
+            </div>
+            <div className="note-body">
+              <h2>{post.title}</h2>
+              <p className="note-summary">{post.summary}</p>
+              <div className="note-footer">
+                <span>{post.readTime}</span>
+                <span className="note-turn">
+                  Turn the page <i aria-hidden="true" />
+                </span>
+              </div>
+            </div>
           </Link>
         ))}
       </section>
