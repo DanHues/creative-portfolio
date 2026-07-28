@@ -66,7 +66,7 @@ export function AboutPortrait({ basePath }: { basePath: string }) {
     <div className="about-portrait" ref={frameRef}>
       <img
         ref={imageRef}
-        src={`${basePath}/dan-about.png`}
+        src={`${basePath}/dan-about.svg`}
         alt="Portrait of DanHues"
       />
       <span>DanHues · behind the work</span>
