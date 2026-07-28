@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { AboutPortrait } from "@/components/about-portrait";
-import { AboutStatement } from "@/components/about-statement";
 import { CyclingWords } from "@/components/cycling-words";
 import { CyclingVisuals } from "@/components/cycling-visuals";
 import { DiscordButton } from "@/components/discord-button";
@@ -136,19 +135,10 @@ export default function Home() {
         </div>
         <AboutPortrait basePath={basePath} />
         <div className="about-content">
-          <p className="eyebrow">Creativity without limit</p>
-          <AboutStatement />
-          <div className="about-copy">
-            <p>
-              I’m a multidisciplinary creative working between storytelling
-              and traditional systems, aesthetics and utility, internet
-              culture and the physical world. I bridge those disciplines to
-              find the right way to bring each image, object, experience, or
-              space to life.
-            </p>
-          </div>
+          <p className="eyebrow">Elsewhere online</p>
+          <h2 className="about-social-title">Find me around the internet.</h2>
           <div className="social-dock">
-            <p>Find me elsewhere.</p>
+            <p>Choose a platform.</p>
             <div className="social-links">
               <a
                 href="https://www.tiktok.com/@danhues"
