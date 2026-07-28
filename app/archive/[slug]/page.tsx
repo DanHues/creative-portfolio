@@ -28,6 +28,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <ProjectStoryHero
           basePath={basePath}
           category={project.category}
+          image={project.image}
           summary={project.summary}
           title={project.title}
         />
