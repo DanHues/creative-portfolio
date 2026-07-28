@@ -52,6 +52,9 @@ export function DraggableMarquee({
     if (!track) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const minimumFrameTime = navigator.userAgent.includes("Firefox")
+      ? 1000 / 30
+      : 0;
     const measure = () => {
       halfWidthRef.current = Math.max(track.scrollWidth / 2, 1);
       offsetRef.current = wrapOffset(offsetRef.current);
@@ -65,6 +68,14 @@ export function DraggableMarquee({
       if (!visibleRef.current || !documentVisibleRef.current) {
         frameRef.current = null;
         lastTimeRef.current = null;
+        return;
+      }
+
+      if (
+        lastTimeRef.current !== null &&
+        time - lastTimeRef.current < minimumFrameTime
+      ) {
+        frameRef.current = window.requestAnimationFrame(animate);
         return;
       }
 
