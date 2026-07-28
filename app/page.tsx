@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AboutPortrait } from "@/components/about-portrait";
+import { AboutStatement } from "@/components/about-statement";
 import { CyclingWords } from "@/components/cycling-words";
 import { CyclingVisuals } from "@/components/cycling-visuals";
 import { DiscordButton } from "@/components/discord-button";
@@ -135,10 +136,7 @@ export default function Home() {
         <AboutPortrait basePath={basePath} />
         <div className="about-content">
           <p className="eyebrow">Creativity without limit</p>
-          <h2>
-            <span>I don’t fit into one box</span>
-            <strong>That’s the point.</strong>
-          </h2>
+          <AboutStatement />
           <div className="about-copy">
             <p>
               I’m a multidisciplinary creative working between storytelling
