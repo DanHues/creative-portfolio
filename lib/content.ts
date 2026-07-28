@@ -6,6 +6,7 @@ export type Project = {
   title: string;
   year: string;
   date?: string;
+  image?: string;
   category: string;
   summary: string;
   featured: boolean;
