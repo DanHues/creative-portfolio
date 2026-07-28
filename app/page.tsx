@@ -54,9 +54,8 @@ export default function Home() {
             </strong>
           </h1>
           <p className="hero-summary">
-            Across physical and digital spaces, I bring ideas to life through
-            coordination, development, design, marketing, branding, stories,
-            and systems.
+            Whether it&apos;s physical or digital, I bring ideas to life
+            through creative action.
           </p>
         </div>
 
