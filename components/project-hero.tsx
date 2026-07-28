@@ -1,13 +1,9 @@
 "use client";
 
-import type { CSSProperties } from "react";
 import { useEffect, useRef } from "react";
 
 export function ProjectHero({ basePath }: { basePath: string }) {
   const heroRef = useRef<HTMLElement>(null);
-  const introStyle = {
-    "--archive-art": `url("${basePath}/projects-header.svg")`,
-  } as CSSProperties;
 
   useEffect(() => {
     const hero = heroRef.current;
@@ -67,10 +63,11 @@ export function ProjectHero({ basePath }: { basePath: string }) {
     <section
       className="page-intro project-intro"
       ref={heroRef}
-      style={introStyle}
     >
       <div className="project-hero-backdrop" aria-hidden="true">
-        <div className="project-parallax-art" />
+        <div className="project-parallax-art">
+          <img src={`${basePath}/projects-header.svg`} alt="" />
+        </div>
       </div>
       <div className="project-intro-copy">
         <h1>Projects</h1>
