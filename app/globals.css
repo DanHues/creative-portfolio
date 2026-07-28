@@ -2695,7 +2695,7 @@ body > main { padding-top: 76px; }
   stroke: none;
 }
 .photo-catalogue {
-  padding: clamp(52px, 6vw, 90px) 3.2vw 10vw;
+  padding: clamp(22px, 2.6vw, 38px) 3.2vw 10vw;
   color: #2a1b2d;
   background:
     radial-gradient(circle at 10% 18%, rgba(239,99,207,.1), transparent 24%),
@@ -3752,7 +3752,7 @@ body > main { padding-top: 76px; }
   }
   .photo-hero-copy > p:not(.eyebrow) { margin-top: 20px; font-size: 16px; }
   .photo-hero-actions { flex-wrap: wrap; }
-  .photo-catalogue { padding: 13vw 5vw 18vw; }
+  .photo-catalogue { padding: 6vw 5vw 18vw; }
   .photo-catalogue-heading {
     margin-bottom: 11vw;
     display: grid;
