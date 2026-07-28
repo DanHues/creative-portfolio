@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AboutPortrait } from "@/components/about-portrait";
 import { CyclingWords } from "@/components/cycling-words";
 import { CyclingVisuals } from "@/components/cycling-visuals";
 import { DraggableMarquee } from "@/components/draggable-marquee";
@@ -131,13 +132,7 @@ export default function Home() {
           <span />
           <span />
         </div>
-        <div className="about-portrait">
-          <img
-            src={`${basePath}/dan-about.svg`}
-            alt="Portrait of DanHues"
-          />
-          <span>DanHues · behind the work</span>
-        </div>
+        <AboutPortrait basePath={basePath} />
         <div className="about-content">
           <p className="eyebrow">Creativity without limit</p>
           <h2>
