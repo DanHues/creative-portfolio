@@ -132,7 +132,7 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
   return (
     <>
     <header className={`site-header${compact ? " compact" : ""}${menuOpen ? " menu-open" : ""}${contactOpen ? " contact-open" : ""}`}>
-      <Link className="wordmark" href="/" aria-label="DanHues home">
+      <Link className="mobile-header-logo" href="/" aria-label="DanHues home">
         <Image
           src={`${basePath}/danhuestext.png`}
           alt="DanHues"
@@ -163,6 +163,15 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
         <span className="mobile-nav-label">Explore the work</span>
         <Link href="/archive" onClick={closeMenu}>Projects</Link>
         <Link href="/journal" onClick={closeMenu}>Journal</Link>
+        <Link className="nav-wordmark" href="/" aria-label="DanHues home" onClick={closeMenu}>
+          <Image
+            src={`${basePath}/danhuestext.png`}
+            alt="DanHues"
+            width={1280}
+            height={360}
+            priority
+          />
+        </Link>
         <Link href="/photography" onClick={closeMenu}>Photography</Link>
         <Link href="/#about" onClick={closeMenu}>About</Link>
         <button className="mobile-nav-contact" type="button" onClick={openContact}>
