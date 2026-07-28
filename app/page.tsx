@@ -133,7 +133,7 @@ export default function Home() {
         </div>
         <div className="about-portrait">
           <img
-            src="https://avatars.githubusercontent.com/u/43981251?v=4"
+            src={`${basePath}/dan-about.svg`}
             alt="Portrait of DanHues"
           />
           <span>DanHues · behind the work</span>
@@ -151,6 +151,55 @@ export default function Home() {
               culture and the physical world—building the image, object,
               experience, or space a story needs.
             </p>
+          </div>
+          <div className="social-dock">
+            <p>Find me elsewhere.</p>
+            <div className="social-links">
+              <a
+                href="https://www.tiktok.com/@danhues"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="social-mark social-mark-tiktok" aria-hidden="true" />
+                <span>
+                  TikTok
+                  <small>@danhues</small>
+                </span>
+              </a>
+              <a
+                href="https://www.youtube.com/@imdanhues"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="social-mark social-mark-youtube" aria-hidden="true" />
+                <span>
+                  YouTube
+                  <small>@imdanhues</small>
+                </span>
+              </a>
+              <a
+                href="https://www.instagram.com/hues.dan/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="social-mark social-mark-instagram" aria-hidden="true" />
+                <span>
+                  Instagram
+                  <small>@hues.dan</small>
+                </span>
+              </a>
+              <a
+                href="https://www.instagram.com/imdanhues/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="social-mark social-mark-instagram social-mark-instagram-alt" aria-hidden="true" />
+                <span>
+                  Instagram
+                  <small>@imdanhues</small>
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
