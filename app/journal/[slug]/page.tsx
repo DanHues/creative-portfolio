@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { RichCopy } from "@/components/rich-copy";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
+import { SubpageControls } from "@/components/subpage-controls";
 import { formatDate, getPost, getPosts } from "@/lib/content";
 
 export const dynamicParams = false;
@@ -15,6 +16,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   return (
     <main>
       <SiteHeader />
+      <SubpageControls backHref="/journal" backLabel="Back to Journal" />
       <article className="story journal-story">
         <div className="story-head">
           <p className="eyebrow">{formatDate(post.date)} · {post.readTime} read</p>
