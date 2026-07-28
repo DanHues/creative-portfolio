@@ -12,12 +12,6 @@ export default function Archive() {
     <main>
       <SiteHeader />
       <ProjectHero basePath={basePath} />
-      <section className="archive-lead">
-        <p>
-          A growing record of experiments, commissions, collaborations,
-          obsessions, and things made simply because they needed to exist.
-        </p>
-      </section>
       <Suspense fallback={<section className="archive-grid" />}>
         <ArchiveBrowser basePath={basePath} projects={projects} />
       </Suspense>
