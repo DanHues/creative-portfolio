@@ -662,16 +662,16 @@ body > main { padding-top: 76px; }
   left: clamp(22px, 5vw, 76px);
   top: 0;
   width: fit-content;
-  padding: 8px 17px 9px;
+  padding: 11px 24px 12px;
   border: 0;
   border-radius: 0;
-  color: #171725;
-  background: #aeb8d9;
-  box-shadow: 6px 7px 0 rgba(54,119,128,.25);
-  font: 10px var(--font-mono);
+  color: #fffafd;
+  background: #32103b;
+  box-shadow: 7px 8px 0 rgba(179,105,226,.42);
+  font: 500 clamp(12px, 1.05vw, 15px) var(--font-mono);
   text-transform: uppercase;
   letter-spacing: .08em;
-  transform: rotate(-1.4deg);
+  transform: none;
 }
 .ticker-stack {
   position: relative;
@@ -2069,7 +2069,7 @@ body > main { padding-top: 76px; }
 }
 .project-intro {
   --project-parallax: 0px;
-  min-height: clamp(210px, 24vh, 290px);
+  min-height: clamp(190px, 21.5vh, 260px);
   padding: 4vw 3.2vw 0;
   position: relative;
   display: grid;
@@ -2105,6 +2105,7 @@ body > main { padding-top: 76px; }
   inset: 0;
   z-index: -1;
   background:
+    linear-gradient(to bottom, transparent 38%, rgba(255,245,251,.18) 67%, var(--paper) 100%),
     radial-gradient(circle at 20% 20%, rgba(239,99,207,.3), transparent 32%),
     linear-gradient(0deg, rgba(18,5,21,.45), transparent 58%);
 }
@@ -2138,18 +2139,8 @@ body > main { padding-top: 76px; }
   text-shadow: 0 2px 22px rgba(17,7,22,.34);
   transform: translateY(50%) rotate(-1.4deg);
 }
-.archive-lead {
-  padding: clamp(82px, 7vw, 116px) 3.2vw 0;
-  background: var(--paper);
-}
-.archive-lead p {
-  max-width: 760px;
-  color: rgba(22,13,24,.72);
-  font-size: clamp(15px, 1.35vw, 18px);
-  line-height: 1.55;
-}
 .journal-intro h1 { color: var(--hot-pink); }
-.archive-grid { padding: 2.5vw 3.2vw 10vw; }
+.archive-grid { padding: clamp(74px, 6vw, 98px) 3.2vw 10vw; }
 .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4vw; }
 .filters a {
   font: 10px var(--font-mono);
@@ -2842,10 +2833,8 @@ body > main { padding-top: 76px; }
   .contact-project small { text-align: center; }
   .contact-footnote { gap: 20px; flex-direction: column; }
   .page-intro { padding: 22vw 5vw 12vw; }
-  .project-intro { min-height: clamp(190px, 27vh, 240px); padding: 10vw 5vw 0; }
+  .project-intro { min-height: clamp(170px, 24vh, 215px); padding: 10vw 5vw 0; }
   .project-intro h1 { font-size: clamp(46px, 14vw, 68px); }
-  .archive-lead { padding: 76px 5vw 0; }
-  .archive-lead p { font-size: 14px; }
   .archive-grid, .journal-list { padding-left: 5vw; padding-right: 5vw; }
   .archive-row { grid-template-columns: 1fr; min-height: 0; padding: 24px 0 30px; }
   .archive-thumb {
@@ -2931,49 +2920,59 @@ body > main { padding-top: 76px; }
   }
 }
 
-@-moz-document url-prefix() {
-  .site-header,
-  .quick-contact-backdrop,
-  .quick-contact,
-  .back-to-top,
-  .contact-kicker,
-  .contact-path,
-  .subpage-back {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
-
-  .hero,
-  .hero::before,
-  .hero::after,
-  .about-objects span,
-  .contact-orbit i {
-    animation: none;
-  }
-
-  .hero-copy::before,
-  .cycling-list > span,
-  .journal-reveal,
-  .project-parallax-art,
-  .project-story-art {
-    filter: none;
-  }
-
-  .about-portrait img,
-  .project-parallax-art,
-  .project-story-art,
-  .ticker-track,
-  .client-track {
-    will-change: auto;
-  }
-
-  .site-header {
-    background: rgba(255,249,253,.97);
-  }
-
-  .quick-contact-backdrop {
-    background: rgba(12,8,19,.78);
-  }
+.is-firefox {
+  scroll-behavior: auto;
+}
+.is-firefox .site-header,
+.is-firefox .quick-contact-backdrop,
+.is-firefox .quick-contact,
+.is-firefox .back-to-top,
+.is-firefox .nav-backdrop,
+.is-firefox .contact-kicker,
+.is-firefox .contact-path,
+.is-firefox .project-box,
+.is-firefox .project-intro h1,
+.is-firefox .subpage-back {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.is-firefox .hero,
+.is-firefox .hero::before,
+.is-firefox .hero::after,
+.is-firefox .about-objects span,
+.is-firefox .contact-orbit i {
+  animation: none !important;
+}
+.is-firefox .hero-copy::before,
+.is-firefox .cycling-list > span,
+.is-firefox .journal-reveal,
+.is-firefox .project-parallax-art,
+.is-firefox .project-story-art {
+  filter: none !important;
+}
+.is-firefox .cycling-visual-card {
+  transition-duration: .35s;
+}
+.is-firefox .about-portrait img,
+.is-firefox .project-parallax-art,
+.is-firefox .project-story-art,
+.is-firefox .ticker-track,
+.is-firefox .client-track {
+  will-change: auto;
+}
+.is-firefox .site-header {
+  background: rgba(255,249,253,.98);
+}
+.is-firefox .quick-contact-backdrop {
+  background: rgba(12,8,19,.82);
+}
+.is-firefox .featured,
+.is-firefox .about,
+.is-firefox .client-showcase,
+.is-firefox .throughline,
+.is-firefox .journal-preview,
+.is-firefox .contact-footer {
+  contain: layout paint style;
 }
 
 @media (prefers-reduced-motion: reduce) {
