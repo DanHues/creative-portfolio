@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import type { Project } from "@/lib/content";
+import { formatProjectDate } from "@/lib/format-project-date";
 
 const filters = ["All", "Photography", "Minecraft", "Video", "Brand", "Videography", "Development", "3D"];
 
@@ -41,9 +42,12 @@ export function ArchiveBrowser({ projects }: { projects: Project[] }) {
           </div>
           <div className="archive-row-copy">
             <h2>{project.title}</h2>
+            <p className="archive-row-summary">{project.summary}</p>
             <div className="archive-row-meta">
               <p>{project.category}</p>
-              <span>{project.year}</span>
+              <time dateTime={project.date || project.year}>
+                {formatProjectDate(project.date, project.year)}
+              </time>
             </div>
           </div>
         </Link>
