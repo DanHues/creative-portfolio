@@ -28,20 +28,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <ProjectStoryHero
           basePath={basePath}
           category={project.category}
+          summary={project.summary}
           title={project.title}
         />
-        <div className="project-story-meta">
-          <div>
+        <div className="project-paper">
+          <div className="project-paper-meta">
             <span>Date</span>
             <time dateTime={project.date || project.year}>
               {formatProjectDate(project.date, project.year)}
             </time>
-          </div>
-          <p>{project.summary}</p>
-        </div>
-        <div className="project-paper">
-          <div className={`project-paper-image project-visual ${project.accent}`}>
-            <div className="visual-mark" />
           </div>
           <RichCopy body={project.body} />
         </div>
