@@ -65,7 +65,9 @@ export function ProjectHero({ basePath }: { basePath: string }) {
       ref={heroRef}
       style={introStyle}
     >
-      <div className="project-parallax-art" aria-hidden="true" />
+      <div className="project-hero-backdrop" aria-hidden="true">
+        <div className="project-parallax-art" />
+      </div>
       <div className="project-intro-copy">
         <p className="eyebrow">The work, collected</p>
         <h1>Projects</h1>
