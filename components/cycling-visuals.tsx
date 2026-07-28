@@ -5,13 +5,19 @@ import Link from "next/link";
 import { CSSProperties, useEffect, useState } from "react";
 
 const visuals = [
-  { label: "Worldbuilding", note: "Minecraft · Development", href: "/archive/minecraft-world", style: "world" },
-  { label: "Product design", note: "3D design · Printing", href: "/archive/object-no-four", style: "object" },
-  { label: "Moving image", note: "Video · Social content", href: "/archive?tag=Video", style: "video" },
-  { label: "Photography", note: "Concerts · Conventions", href: "/photography", style: "photo" },
-  { label: "Brand systems", note: "Identity · Consulting", href: "/archive?tag=Brand", style: "brand" },
+  { label: "Products", note: "3D design · Physical objects", href: "/archive/object-no-four", style: "object" },
+  { label: "Worlds", note: "Minecraft · Worldbuilding", href: "/archive/minecraft-world", style: "world" },
+  { label: "Marketing", note: "Strategy · Social campaigns", href: "/archive?tag=Brand", style: "brand" },
   { label: "Experiences", note: "Digital · Physical", href: "/archive", style: "experience" },
+  { label: "Videos", note: "Editing · Social content", href: "/archive?tag=Video", style: "video" },
+  { label: "Stories", note: "Ideas · Narrative", href: "/journal", style: "ideas" },
+  { label: "Games", note: "Play · Community", href: "/archive?tag=Minecraft", style: "world" },
+  { label: "Photography", note: "Concerts · Conventions", href: "/photography", style: "photo" },
   { label: "Strange ideas", note: "Experiments · Curiosity", href: "/archive", style: "ideas" },
+  { label: "Events", note: "Culture · Live moments", href: "/photography", style: "photo" },
+  { label: "Development", note: "Code · Systems", href: "/archive?tag=Development", style: "experience" },
+  { label: "Servers", note: "Networks · Communities", href: "/archive?tag=Minecraft", style: "world" },
+  { label: "Brands", note: "Identity · Consulting", href: "/archive?tag=Brand", style: "brand" },
 ];
 
 export function CyclingVisuals({ basePath }: { basePath: string }) {
