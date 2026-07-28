@@ -3152,6 +3152,40 @@ body > main { padding-top: 76px; }
 }
 .is-firefox .project-paper {
   box-shadow: 8px 10px 0 rgba(75,20,87,.12);
+  transform: none !important;
+}
+.is-firefox .project-story {
+  background: #faf6f9;
+}
+.is-firefox .project-story-hero {
+  contain: paint;
+}
+.is-firefox .subpage-back {
+  position: absolute;
+  box-shadow: none;
+}
+.is-firefox .archive-row {
+  content-visibility: auto;
+  contain: layout paint style;
+  contain-intrinsic-size: 190px;
+  transition: none !important;
+}
+.is-firefox .archive-row:hover {
+  color: inherit;
+  transform: none;
+}
+.is-firefox .archive-thumb,
+.is-firefox .archive-row:hover .archive-thumb {
+  transition: none !important;
+  transform: none !important;
+}
+.is-firefox .archive-row-copy,
+.is-firefox .archive-row:hover .archive-row-copy {
+  border-color: rgba(75,20,87,.18);
+  background: #fff9fd;
+  box-shadow: 5px 6px 0 rgba(75,20,87,.1);
+  transform: none !important;
+  transition: none !important;
 }
 .is-firefox.is-scrolling *,
 .is-firefox.is-scrolling *::before,
