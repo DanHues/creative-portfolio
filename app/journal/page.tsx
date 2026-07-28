@@ -1,10 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
-import { TagList } from "@/components/tag-list";
 import { formatDate, getPosts } from "@/lib/content";
 
 export default function Journal() {
   const notes = getPosts();
+  const basePath = process.env.PAGES_BASE_PATH || "";
 
   return (
     <main className="journal-home">
@@ -19,10 +20,47 @@ export default function Journal() {
             Thoughts on creativity, technology, attention, life, and whatever
             else keeps tapping me on the shoulder.
           </p>
-          <span className="journal-byline">Written by Daniel Hughes</span>
         </div>
       </section>
       <section className="journal-list">
+        <div className="journal-author-strip">
+          <Image
+            src={`${basePath}/dan-about.svg`}
+            alt="Daniel Hughes"
+            width={220}
+            height={240}
+          />
+          <div>
+            <strong>Daniel Hughes</strong>
+            <span>Personal notes on making, noticing, and being here.</span>
+          </div>
+          <nav aria-label="Find Daniel elsewhere">
+            <a
+              href="https://www.tiktok.com/@danhues"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="TikTok"
+            >
+              <i className="social-mark social-mark-tiktok" aria-hidden="true" />
+            </a>
+            <a
+              href="https://www.youtube.com/@imdanhues"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="YouTube"
+            >
+              <i className="social-mark social-mark-youtube" aria-hidden="true" />
+            </a>
+            <a
+              href="https://www.instagram.com/imdanhues/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              <i className="social-mark social-mark-instagram social-mark-instagram-alt" aria-hidden="true" />
+            </a>
+          </nav>
+        </div>
         <div className="journal-list-heading">
           <p>Latest entries</p>
           <span>A journal of my perspective</span>
@@ -34,7 +72,6 @@ export default function Journal() {
             </p>
             <h2>{post.title}</h2>
             <p className="note-summary">{post.summary}</p>
-            <TagList tags={post.tags} className="journal-list-tags" linked={false} />
             <span>{post.readTime}</span>
           </Link>
         ))}
