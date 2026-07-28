@@ -3,13 +3,19 @@
 import { useEffect, useState } from "react";
 
 const words = [
-  "worlds",
-  "products",
-  "videos",
-  "photos",
-  "brands",
-  "experiences",
-  "strange ideas",
+  "Products",
+  "Worlds",
+  "Marketing",
+  "Experiences",
+  "Videos",
+  "Stories",
+  "Games",
+  "Photography",
+  "Strange ideas",
+  "Events",
+  "Development",
+  "Servers",
+  "Brands",
 ];
 
 export function CyclingWords() {
