@@ -1840,18 +1840,18 @@ body > main { padding-top: 76px; }
   width: 100%;
   position: relative;
   z-index: 1;
-  padding-top: 18px;
+  padding-top: clamp(58px, 5.2vw, 76px);
 }
 .contact-kicker {
   position: absolute;
   z-index: 2;
-  top: calc(-1 * var(--contact-top-pad));
+  top: 0;
   left: 50%;
   width: max-content;
   margin: 0;
-  padding: 11px 34px 10px;
+  padding: 12px 52px 11px;
   border: 1px solid rgba(234,227,255,.62);
-  border-radius: 12px 20px 13px 18px;
+  border-radius: 28px 34px 30px 12px;
   color: #faf5ff;
   background:
     radial-gradient(circle at 18% 20%, rgba(255,255,255,.23), transparent 28%),
@@ -1865,7 +1865,18 @@ body > main { padding-top: 76px; }
   font: 750 clamp(17px, 1.55vw, 23px) var(--font-body);
   letter-spacing: -.025em;
   text-shadow: 0 0 16px rgba(255,255,255,.44);
-  transform: translate(-50%, -50%) rotate(-1.2deg);
+  transform: translate(-50%, 0) rotate(-1.2deg);
+}
+.contact-kicker::after {
+  content: "";
+  position: absolute;
+  left: 25%;
+  bottom: -18px;
+  width: 25px;
+  height: 22px;
+  background: linear-gradient(145deg, rgba(167,139,224,.52), rgba(93,180,193,.34));
+  clip-path: polygon(0 0, 100% 0, 18% 100%);
+  filter: drop-shadow(3px 5px 5px rgba(5,4,12,.16));
 }
 .contact-intro h2 {
   max-width: 920px;
@@ -2666,9 +2677,10 @@ body > main { padding-top: 76px; }
   }
   .contact-kicker {
     left: 50%;
-    padding: 9px 25px 8px;
+    top: 0;
+    padding: 10px 36px 9px;
     font-size: clamp(16px, 4.8vw, 20px);
-    transform: translate(-50%, -50%) rotate(-1.2deg);
+    transform: translate(-50%, 0) rotate(-1.2deg);
   }
   .contact-intro h2 {
     margin-top: 8px;
