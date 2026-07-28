@@ -6,12 +6,14 @@ import { useEffect, useRef } from "react";
 type ProjectStoryHeroProps = {
   basePath: string;
   category: string;
+  summary: string;
   title: string;
 };
 
 export function ProjectStoryHero({
   basePath,
   category,
+  summary,
   title,
 }: ProjectStoryHeroProps) {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -66,6 +68,7 @@ export function ProjectStoryHero({
       <div className="project-story-title">
         <p>{category}</p>
         <h1>{title}</h1>
+        <p className="project-story-summary">{summary}</p>
       </div>
     </div>
   );
