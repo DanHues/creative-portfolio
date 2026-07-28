@@ -303,6 +303,7 @@ body > main { padding-top: 76px; }
 }
 .cycling-window {
   position: relative;
+  top: .055em;
   display: inline-block;
   width: 5.6em;
   height: .94em;
@@ -929,7 +930,7 @@ body > main { padding-top: 76px; }
   object-position: center;
   filter: saturate(.72) contrast(1.06) brightness(.72);
   opacity: .9;
-  transform: translate3d(0, var(--portrait-shift), 0) scale(1.08);
+  transform: translate3d(0, var(--portrait-shift), 0) scale(1.16);
   will-change: transform;
 }
 .about-portrait span {
@@ -952,6 +953,7 @@ body > main { padding-top: 76px; }
   color: #aebbdc;
 }
 .about h2 {
+  position: relative;
   width: 100%;
   max-width: 790px;
   font-size: clamp(36px, 4.25vw, 64px);
@@ -959,14 +961,18 @@ body > main { padding-top: 76px; }
   letter-spacing: -.065em;
 }
 .about h2 > span {
+  position: relative;
+  z-index: 1;
   display: block;
   max-width: 100%;
 }
 .about h2 strong {
+  position: relative;
+  z-index: 2;
   display: block;
   width: fit-content;
   max-width: 96%;
-  margin: .16em 0 0;
+  margin: -.12em 0 0 clamp(14px, 4.2vw, 68px);
   padding: .03em .13em .08em;
   color: #10101c;
   background: #b8bde4;
@@ -1667,23 +1673,31 @@ body > main { padding-top: 76px; }
   width: min(1020px, 100%);
   position: relative;
   z-index: 1;
+  padding-top: 18px;
 }
-.contact-intro .eyebrow {
-  color: rgba(224,228,243,.64);
+.contact-kicker {
+  position: relative;
+  z-index: 2;
+  width: max-content;
+  margin: 0 0 -8px clamp(8px, 4.5vw, 72px);
+  padding: 10px 20px 9px;
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 8px 13px 9px 12px;
+  color: #211428;
+  background: linear-gradient(105deg, #f1a8df, #c5afe9 56%, #9bd0d3);
+  box-shadow: 0 12px 35px rgba(5,4,12,.24);
+  font: 700 clamp(16px, 1.7vw, 23px) var(--font-body);
+  letter-spacing: -.025em;
+  transform: rotate(-2.4deg);
 }
 .contact-intro h2 {
-  max-width: 980px;
-  margin: clamp(18px, 2.4vw, 34px) 0;
-  font-size: clamp(52px, 8vw, 124px);
-  line-height: .84;
+  max-width: 1100px;
+  margin: 0 0 clamp(22px, 2.8vw, 38px);
+  font-size: clamp(52px, 8.6vw, 132px);
+  line-height: .86;
   letter-spacing: -.075em;
-}
-.contact-intro h2 em {
-  display: inline-block;
-  color: #f2a5df;
-  font-style: normal;
-  transform: rotate(-1.2deg);
-  text-shadow: 0 0 32px rgba(239,99,207,.18);
+  color: #f4eff7;
+  text-shadow: 0 0 42px rgba(179,105,226,.12);
 }
 .contact-intro > p:last-child {
   max-width: 610px;
@@ -1695,7 +1709,7 @@ body > main { padding-top: 76px; }
   width: min(1120px, 100%);
   margin: clamp(38px, 5vw, 74px) 0 clamp(70px, 8vw, 120px) auto;
   display: grid;
-  grid-template-columns: 1.1fr 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 .contact-path {
@@ -1714,8 +1728,8 @@ body > main { padding-top: 76px; }
   cursor: pointer;
   transition: transform .24s ease, background .24s ease, border-color .24s ease;
 }
-.contact-path:nth-child(2) { transform: translateY(9px) rotate(.6deg); }
-.contact-path:nth-child(3) { transform: translateY(-4px) rotate(-.45deg); }
+.contact-path:nth-child(2) { transform: translateY(7px) rotate(.55deg); }
+.contact-path:nth-child(3) { transform: translateY(-3px) rotate(-.45deg); }
 .contact-path::after {
   content: "";
   position: absolute;
@@ -1732,6 +1746,25 @@ body > main { padding-top: 76px; }
   background: linear-gradient(115deg, #f0a8df, #b7a4e5 60%, #92cbd0);
   border-color: transparent;
 }
+.contact-project {
+  grid-column: 1 / -1;
+  min-height: 88px;
+  margin-top: 3px;
+  align-items: center;
+  color: #f5f1f8;
+  background:
+    linear-gradient(90deg, rgba(239,99,207,.13), rgba(179,105,226,.11), rgba(93,180,189,.13)),
+    rgba(255,255,255,.035);
+  border-color: rgba(218,205,235,.28);
+  transform: rotate(.25deg);
+}
+.contact-project > span {
+  width: 100%;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: 18px;
+}
+.contact-project small { text-align: right; }
 .contact-path:hover,
 .contact-path:focus-visible {
   z-index: 2;
@@ -2261,6 +2294,7 @@ body > main { padding-top: 76px; }
   .journal-page-2,
   .journal-page-3 { width: 100%; min-height: 330px; transform: none; }
   .contact-footer { padding: 18vw 5vw 7vw; }
+  .contact-kicker { margin-left: 4vw; }
   .contact-intro h2 { font-size: clamp(48px, 14vw, 68px); }
   .contact-paths { grid-template-columns: 1fr; gap: 10px; }
   .contact-path,
@@ -2269,6 +2303,8 @@ body > main { padding-top: 76px; }
     min-height: 108px;
     transform: none;
   }
+  .contact-project > span { grid-template-columns: 1fr; gap: 7px; }
+  .contact-project small { text-align: left; }
   .contact-footnote { gap: 20px; flex-direction: column; }
   .page-intro { padding: 22vw 5vw 12vw; }
   .project-intro { min-height: 54vh; padding: 16vw 5vw 9vw; }
