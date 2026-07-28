@@ -67,11 +67,11 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
         <Link href="/journal" onClick={closeMenu}>Journal</Link>
         <Link href="/photography" onClick={closeMenu}>Photography</Link>
         <Link href="/#about" onClick={closeMenu}>About</Link>
-        <a className="mobile-nav-contact" href="mailto:hello@example.com" onClick={closeMenu}>
+        <a className="mobile-nav-contact" href="mailto:danielhughesps@gmail.com" onClick={closeMenu}>
           Start a conversation
         </a>
       </nav>
-      <a className="availability" href="mailto:hello@example.com">
+      <a className="availability" href="mailto:danielhughesps@gmail.com">
         <i /> Available for select projects
       </a>
     </header>
