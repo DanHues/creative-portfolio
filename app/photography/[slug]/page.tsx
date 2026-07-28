@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PhotoSetViewer } from "@/components/photo-set-viewer";
-import { SiteFooter, SiteHeader } from "@/components/site-header";
+import { SiteHeader } from "@/components/site-header";
 import { SubpageControls } from "@/components/subpage-controls";
 import { formatDate, getPhotography, getPhotoStory } from "@/lib/content";
 
@@ -41,6 +41,7 @@ export default async function PhotographyStoryPage({
       ? [{ image: album.image, alt: album.alt, caption: "" }]
       : [];
   const displayedDate = album.date ? formatDate(album.date) : album.year;
+  const heroPhotos = photos.slice(0, 6);
 
   return (
     <main className="photography-story-page">
@@ -49,6 +50,20 @@ export default async function PhotographyStoryPage({
 
       <article className="photo-story">
         <header className="photo-story-head">
+          <div className="photo-story-hero-slideshow" aria-hidden="true">
+            {heroPhotos.map((photo, index) => (
+              <img
+                className="photo-story-hero-slide"
+                src={`${basePath}${photo.image}`}
+                alt=""
+                key={photo.image}
+                style={{
+                  animationDelay: `${index * 6}s`,
+                  animationDuration: `${Math.max(heroPhotos.length, 1) * 6}s`,
+                }}
+              />
+            ))}
+          </div>
           <p className="eyebrow">Photoshoot {String(photos.length).padStart(2, "0")}</p>
           <h1>{album.title}</h1>
           <p className="photo-story-context">{album.description}</p>
@@ -115,8 +130,6 @@ export default async function PhotographyStoryPage({
           </a>
         </section>
       </article>
-
-      <SiteFooter />
     </main>
   );
 }
