@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 export function ProjectHero({ basePath }: { basePath: string }) {
   const heroRef = useRef<HTMLElement>(null);
   const introStyle = {
-    "--archive-art": `url("${basePath}/danhues-banner.png")`,
+    "--archive-art": `url("${basePath}/projects-header.svg")`,
   } as CSSProperties;
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export function ProjectHero({ basePath }: { basePath: string }) {
         (window.innerHeight - bounds.top) /
           (window.innerHeight + bounds.height) -
         0.5;
-      const shift = Math.max(-42, Math.min(42, progress * 84));
+      const shift = Math.max(-120, Math.min(120, progress * 240));
       hero.style.setProperty("--project-parallax", `${shift.toFixed(2)}px`);
     };
 
