@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { RichCopy } from "@/components/rich-copy";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { SubpageControls } from "@/components/subpage-controls";
+import { TagList } from "@/components/tag-list";
 import { formatDate, getPost, getPosts } from "@/lib/content";
 
 export const dynamicParams = false;
@@ -22,6 +23,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <p className="eyebrow">{formatDate(post.date)} · {post.readTime} read</p>
           <h1>{post.title}</h1>
           <p>{post.summary}</p>
+          <TagList tags={post.tags} className="story-tags journal-story-tags" />
         </div>
         <RichCopy body={post.body} />
       </article>
