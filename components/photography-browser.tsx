@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import type { PhotoStory } from "@/lib/content";
+import { CREATIVE_TAGS } from "@/lib/tags";
+import { TagList } from "@/components/tag-list";
 
-const filters = ["All", "Concert", "Convention", "Portrait", "Editorial", "Documentary", "Product"];
+const filters = ["All", ...CREATIVE_TAGS];
 
 export function PhotographyBrowser({
   photographs,
@@ -17,7 +19,9 @@ export function PhotographyBrowser({
   const active = searchParams.get("tag") || "All";
   const filtered = active === "All"
     ? photographs
-    : photographs.filter((photo) => photo.category.toLowerCase() === active.toLowerCase());
+    : photographs.filter((photo) =>
+        photo.tags.some((tag) => tag.toLowerCase() === active.toLowerCase()),
+      );
 
   return (
     <>
@@ -44,12 +48,11 @@ export function PhotographyBrowser({
               ) : null}
             </div>
             <figcaption>
-              <h2>{photo.title}</h2>
-              <p>
-                {photo.category}
-                <br />
-                {photo.location} · {photo.year}
-              </p>
+              <div>
+                <h2>{photo.title}</h2>
+                <TagList tags={photo.tags} className="photo-card-tags" />
+              </div>
+              <p>{photo.location} · {photo.year}</p>
             </figcaption>
           </figure>
         ))}
