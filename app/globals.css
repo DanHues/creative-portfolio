@@ -13,12 +13,12 @@
 }
 
 * { box-sizing: border-box; }
-html { max-width: 100%; scroll-behavior: smooth; overflow-x: hidden; }
+html { max-width: 100%; scroll-behavior: smooth; overflow-x: clip; }
 body {
   width: 100%;
   max-width: 100%;
   margin: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans), Arial, sans-serif;
@@ -2933,12 +2933,6 @@ body > main { padding-top: 76px; }
 .is-firefox {
   scroll-behavior: auto;
 }
-.is-firefox *,
-.is-firefox *::before,
-.is-firefox *::after {
-  animation: none !important;
-  transition: none !important;
-}
 .is-firefox .site-header,
 .is-firefox .quick-contact-backdrop,
 .is-firefox .quick-contact,
@@ -2951,13 +2945,6 @@ body > main { padding-top: 76px; }
 .is-firefox .subpage-back {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-}
-.is-firefox .hero,
-.is-firefox .hero::before,
-.is-firefox .hero::after,
-.is-firefox .about-objects span,
-.is-firefox .contact-orbit i {
-  animation: none !important;
 }
 .is-firefox .hero-copy::before,
 .is-firefox .cycling-list > span,
@@ -2973,9 +2960,7 @@ body > main { padding-top: 76px; }
 }
 .is-firefox .ticker-track,
 .is-firefox .client-track {
-  animation: none !important;
-  transform: none !important;
-  will-change: auto;
+  will-change: transform;
 }
 .is-firefox .site-header {
   background: rgba(255,249,253,.98);
@@ -3021,16 +3006,6 @@ body > main { padding-top: 76px; }
   mask-image: none !important;
   -webkit-mask-image: none !important;
 }
-.is-firefox .journal-reveal {
-  opacity: 1;
-  transform: none;
-}
-.is-firefox .cycling-headline mark::after {
-  transform: rotate(-1deg) scaleX(1);
-}
-.is-firefox .hero {
-  background: #fae9ff;
-}
 .is-firefox .hero::before,
 .is-firefox .hero::after,
 .is-firefox .about-objects,
@@ -3039,7 +3014,6 @@ body > main { padding-top: 76px; }
 .is-firefox .contact-orbit {
   display: none;
 }
-.is-firefox .cycling-visual-card,
 .is-firefox .project-polaroid,
 .is-firefox .project-box,
 .is-firefox .journal-page,
@@ -3051,6 +3025,16 @@ body > main { padding-top: 76px; }
 .is-firefox .project-story-art {
   inset: 0;
   transform: none !important;
+}
+.is-firefox.is-scrolling *,
+.is-firefox.is-scrolling *::before,
+.is-firefox.is-scrolling *::after {
+  animation-play-state: paused !important;
+}
+.is-firefox.is-scrolling .cycling-list > span,
+.is-firefox.is-scrolling .cycling-visual-card,
+.is-firefox.is-scrolling .journal-reveal {
+  transition: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
