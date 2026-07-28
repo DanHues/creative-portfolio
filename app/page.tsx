@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CyclingWords } from "@/components/cycling-words";
 import { CyclingVisuals } from "@/components/cycling-visuals";
+import { DraggableMarquee } from "@/components/draggable-marquee";
 import { ImpactCounters } from "@/components/impact-counters";
 import { JournalReveal } from "@/components/journal-reveal";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
@@ -61,7 +62,7 @@ export default function Home() {
         <CyclingVisuals basePath={basePath} />
 
         <a className="round-link" href="#featured" aria-label="See selected work">
-          ↓
+          <span>Scroll</span>
         </a>
       </section>
 
@@ -69,13 +70,13 @@ export default function Home() {
         <i className="ticker-block ticker-block-one" />
         <i className="ticker-block ticker-block-two" />
         <section className="ticker" aria-label="Creative disciplines">
-          <div className="ticker-track">
+          <DraggableMarquee speed={43} trackClassName="ticker-track">
             {[...disciplines, ...disciplines].map((item, index) => (
               <Link href={item.href} key={`${item.label}-${index}`}>
                 {item.label} <span>✦</span>
               </Link>
             ))}
-          </div>
+          </DraggableMarquee>
         </section>
       </div>
 
@@ -109,7 +110,7 @@ export default function Home() {
                   Explore this project
                   <small>See the story, process &amp; details</small>
                 </span>
-                <i>↗</i>
+                <i aria-hidden="true" />
               </Link>
             </div>
           </article>
@@ -117,7 +118,7 @@ export default function Home() {
         <div className="archive-callout">
           <p>Every experiment deserves a place to live.</p>
           <Link href="/archive">
-            Explore the full archive <span>↗</span>
+            Explore the full archive <span aria-hidden="true" />
           </Link>
         </div>
       </section>
@@ -157,14 +158,14 @@ export default function Home() {
       <section className="client-showcase" aria-labelledby="client-showcase-title">
         <h2 id="client-showcase-title">Teams I’ve worked with</h2>
         <div className="client-marquee">
-          <div className="client-track">
+          <DraggableMarquee speed={62} trackClassName="client-track">
             {[...clients, ...clients].map((client, index) => (
               <span className="client-item" key={`${client.name}-${index}`}>
                 <Link href={client.href}>{client.name}</Link>
                 <i aria-hidden="true">✦</i>
               </span>
             ))}
-          </div>
+          </DraggableMarquee>
         </div>
       </section>
 
@@ -198,7 +199,7 @@ export default function Home() {
               <i aria-hidden="true">☾</i>
               <h2>Peek into my mind.</h2>
               <p>A journal of my perspective.</p>
-              <Link href="/journal">Open the journal ↗</Link>
+              <Link href="/journal">Open the journal</Link>
             </div>
           </div>
           <div className="journal-pages">
@@ -214,7 +215,7 @@ export default function Home() {
                 <p className="project-meta">{post.readTime} read · a personal note</p>
                 <h3>{post.title}</h3>
                 <p>{post.summary}</p>
-                <span className="page-link">Turn the page ↗</span>
+                <span className="page-link">Turn the page</span>
               </Link>
             ))}
           </div>

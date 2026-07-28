@@ -56,7 +56,7 @@ export function PhotographyBrowser({
         {filtered.length === 0 ? (
           <div className="empty-filter photo-empty">
             <p>This photography shelf is ready for its first frame.</p>
-            <Link href="/photography">See all photography ↗</Link>
+            <Link href="/photography">See all photography</Link>
           </div>
         ) : null}
       </section>

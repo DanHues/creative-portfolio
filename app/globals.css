@@ -154,6 +154,55 @@ body > main { padding-top: 76px; }
   box-shadow: 0 0 0 4px rgba(255, 31, 154, .12);
   margin-right: 9px;
 }
+.back-to-top {
+  position: fixed;
+  z-index: 46;
+  left: clamp(14px, 2vw, 28px);
+  bottom: 22px;
+  width: 52px;
+  height: 58px;
+  padding: 8px 5px 7px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 5px;
+  border: 1px solid rgba(255,255,255,.42);
+  border-radius: 19px 24px 18px 22px;
+  color: white;
+  background: rgba(31,18,36,.92);
+  box-shadow: 5px 6px 0 rgba(239,99,207,.28);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(14px) rotate(-2deg);
+  transition: opacity .25s ease, visibility .25s, transform .3s ease, background .2s;
+  cursor: pointer;
+}
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) rotate(-2deg);
+}
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  background: var(--hot-pink);
+  transform: translateY(-3px) rotate(1deg);
+  outline: none;
+}
+.back-to-top i {
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+  transform: rotate(45deg) translate(2px, 2px);
+}
+.back-to-top span {
+  font: 8px var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
 
 .hero {
   min-height: calc(88vh - 78px);
@@ -312,7 +361,13 @@ body > main { padding-top: 76px; }
   bottom: .06em;
   height: .17em;
   background: linear-gradient(90deg, var(--hot-pink), var(--pink));
-  transform: rotate(-1deg);
+  transform: rotate(-1deg) scaleX(0);
+  transform-origin: left center;
+  animation: remembering-underline 1.15s cubic-bezier(.2,.78,.2,1) .55s both;
+}
+@keyframes remembering-underline {
+  from { transform: rotate(-1deg) scaleX(0); }
+  to { transform: rotate(-1deg) scaleX(1); }
 }
 .hero-summary {
   max-width: 550px;
@@ -427,6 +482,11 @@ body > main { padding-top: 76px; }
   font-size: 22px;
   transition: .2s;
 }
+.round-link span {
+  font: 8px var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
 .round-link:hover { background: var(--hot-pink); color: var(--white); border-color: var(--hot-pink); }
 
 .ticker-stack {
@@ -475,6 +535,19 @@ body > main { padding-top: 76px; }
   transform: translate3d(0, 0, 0);
   animation: crawl 34s linear infinite;
 }
+.drag-marquee {
+  width: 100%;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.drag-marquee.is-dragging { cursor: grabbing; }
+.drag-marquee.is-drag-ready .ticker-track,
+.drag-marquee.is-drag-ready .client-track { animation: none; }
+.drag-marquee img,
+.drag-marquee a { -webkit-user-drag: none; }
 .ticker a {
   display: inline-flex;
   align-items: center;
@@ -711,6 +784,15 @@ body > main { padding-top: 76px; }
   color: white;
   font-style: normal;
   transition: transform .2s, background .2s;
+}
+.explore-project i::before,
+.archive-callout a span::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg) translate(-1px, 1px);
 }
 .explore-project:hover i { transform: rotate(12deg) scale(1.08); background: var(--hot-pink); }
 .archive-callout a span { color: var(--hot-pink); }
@@ -1808,7 +1890,7 @@ footer > div {
     text-transform: none;
   }
   .site-header nav > a:not(.mobile-nav-contact)::after {
-    content: "\2197";
+    content: "+";
     color: var(--pink);
     font-size: .5em;
   }
@@ -1831,6 +1913,12 @@ footer > div {
     background: linear-gradient(100deg, #f2d4ff, var(--pink));
     font: 10px var(--font-mono);
     text-transform: uppercase;
+  }
+  .back-to-top {
+    left: 12px;
+    bottom: 14px;
+    width: 45px;
+    height: 50px;
   }
 }
 
@@ -1932,6 +2020,10 @@ footer > div {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .cycling-headline mark::after {
+    animation: none;
+    transform: rotate(-1deg) scaleX(1);
+  }
   .ticker-track { animation: none; }
   .cycling-list > span,
   .cycling-visual-card { transition: none; }

@@ -23,7 +23,7 @@ export default function Journal() {
               Note {String(index + 1).padStart(3, "0")} · {formatDate(post.date)}
             </p>
             <h2>{post.title}</h2>
-            <span>{post.readTime} ↗</span>
+            <span>{post.readTime}</span>
           </Link>
         ))}
       </section>

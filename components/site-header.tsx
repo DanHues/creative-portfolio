@@ -1,10 +1,14 @@
+import { BackToTop } from "@/components/back-to-top";
 import { ScrollHeader } from "@/components/scroll-header";
 
 export function SiteHeader() {
   const basePath = process.env.PAGES_BASE_PATH || "";
 
   return (
-    <ScrollHeader basePath={basePath} />
+    <>
+      <ScrollHeader basePath={basePath} />
+      <BackToTop />
+    </>
   );
 }
 
@@ -13,7 +17,7 @@ export function SiteFooter({ journal = false }: { journal?: boolean }) {
     <footer>
       <p>{journal ? "Want to keep in touch?" : "Have a strange idea?"}</p>
       <a href="mailto:hello@example.com">
-        {journal ? "Say hello." : "Let’s make it real."} ↗
+        {journal ? "Say hello." : "Let’s make it real."}
       </a>
       <div>
         <span>© 2026 DanHues</span>

@@ -73,7 +73,7 @@ export function CyclingVisuals({ basePath }: { basePath: string }) {
               </div>
               <div className="cycling-visual-caption">
                 <strong>{visual.label}</strong>
-                <span>{visual.note} ↗</span>
+                <span>{visual.note}</span>
               </div>
             </Link>
           );

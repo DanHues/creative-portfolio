@@ -43,7 +43,7 @@ export function ArchiveBrowser({ projects }: { projects: Project[] }) {
             <h2>{project.title}</h2>
             <div className="archive-row-meta">
               <p>{project.category}</p>
-              <span>{project.year} ↗</span>
+              <span>{project.year}</span>
             </div>
           </div>
         </Link>
@@ -51,7 +51,7 @@ export function ArchiveBrowser({ projects }: { projects: Project[] }) {
       {filtered.length === 0 ? (
         <div className="empty-filter">
           <p>That corner of the archive is waiting for its first story.</p>
-          <Link href="/archive">See everything instead ↗</Link>
+          <Link href="/archive">See everything instead</Link>
         </div>
       ) : null}
     </section>
