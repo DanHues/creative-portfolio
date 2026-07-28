@@ -17,7 +17,10 @@ export function ImpactCounters() {
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      navigator.userAgent.includes("Firefox") ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       hasPlayed.current = true;
       setProgress(1);
       return;
