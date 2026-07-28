@@ -216,10 +216,6 @@ export function PhotographyBrowser({
   return (
     <section className="photo-catalogue" aria-label="Photography portfolio">
       <header className="photo-catalogue-heading">
-        <div>
-          <p className="eyebrow">Selected albums</p>
-          <h2>A catalogue of moments.</h2>
-        </div>
         <div className="photo-category-filters" aria-label="Filter photography albums">
           {categories.map((category) => (
             <Link
