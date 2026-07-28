@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import type { CreativeTag } from "@/lib/tags";
 
 export type Project = {
   slug: string;
@@ -8,6 +9,7 @@ export type Project = {
   date?: string;
   image?: string;
   category: string;
+  tags: CreativeTag[];
   summary: string;
   featured: boolean;
   accent: "world" | "stage" | "object";
@@ -20,6 +22,7 @@ export type JournalPost = {
   date: string;
   readTime: string;
   summary: string;
+  tags: CreativeTag[];
   body: string;
 };
 
@@ -28,6 +31,7 @@ export type PhotoStory = {
   title: string;
   year: string;
   category: string;
+  tags: CreativeTag[];
   location: string;
   image?: string;
   alt: string;
