@@ -2579,7 +2579,7 @@ body > main { padding-top: 76px; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 51%;
+  object-position: center 42%;
 }
 .photo-portfolio-hero::after {
   content: "";
@@ -2775,12 +2775,47 @@ body > main { padding-top: 76px; }
   box-shadow: 16px 18px 0 rgba(75,20,87,.17), 0 30px 70px rgba(45,24,49,.14);
   touch-action: pan-y;
 }
-.photo-album-gallery > img {
+.photo-album-open {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border: 0;
+  color: #fff;
+  background: rgba(23, 10, 29, .78);
+  cursor: zoom-in;
+}
+.photo-album-open > img {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   animation: photo-arrive .45s cubic-bezier(.2,.75,.2,1) both;
+}
+.photo-album-open > span {
+  padding: 7px 10px;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  opacity: 0;
+  border: 1px solid rgba(255,255,255,.45);
+  background: rgba(20,10,26,.7);
+  font: 8px var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  transform: translateY(-4px);
+  transition: opacity .2s ease, transform .2s ease;
+}
+.photo-album-open:hover > span,
+.photo-album-open:focus-visible > span {
+  opacity: 1;
+  transform: translateY(0);
+}
+.photo-album-open:focus-visible {
+  outline: 2px solid #ef63cf;
+  outline-offset: -4px;
 }
 @keyframes photo-arrive {
   from { opacity: .35; transform: scale(1.025); }
@@ -2917,6 +2952,113 @@ body > main { padding-top: 76px; }
   color: var(--plum);
   transform: translateX(3px);
   outline: none;
+}
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: clamp(14px, 3vw, 42px);
+  background: rgba(14, 8, 18, .94);
+  backdrop-filter: blur(10px);
+  animation: lightbox-arrive .22s ease both;
+}
+@keyframes lightbox-arrive {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.photo-lightbox-stage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: grid;
+  place-items: center;
+  touch-action: pan-y;
+}
+.photo-lightbox-stage > img {
+  width: 100%;
+  height: calc(100% - 54px);
+  display: block;
+  object-fit: contain;
+  animation: photo-arrive .3s ease both;
+}
+.photo-lightbox-close,
+.photo-lightbox-arrow {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.36);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(35,17,42,.78);
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+.photo-lightbox-close:hover,
+.photo-lightbox-close:focus-visible,
+.photo-lightbox-arrow:hover,
+.photo-lightbox-arrow:focus-visible {
+  background: #864592;
+  outline: none;
+  transform: scale(1.06);
+}
+.photo-lightbox-close {
+  width: 42px;
+  height: 42px;
+  top: 0;
+  right: 0;
+}
+.photo-lightbox-close i,
+.photo-lightbox-close i::after {
+  width: 15px;
+  height: 1px;
+  position: absolute;
+  display: block;
+  background: currentColor;
+  content: "";
+  transform: rotate(45deg);
+}
+.photo-lightbox-close i::after { transform: rotate(90deg); }
+.photo-lightbox-arrow {
+  width: 46px;
+  height: 46px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.photo-lightbox-arrow:hover,
+.photo-lightbox-arrow:focus-visible { transform: translateY(-50%) scale(1.06); }
+.photo-lightbox-arrow.previous { left: 0; }
+.photo-lightbox-arrow.next { right: 0; }
+.photo-lightbox-arrow i {
+  width: 12px;
+  height: 12px;
+  border-left: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+.photo-lightbox-arrow.next i { transform: rotate(225deg); }
+.photo-lightbox-footer {
+  height: 44px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  color: rgba(255,255,255,.78);
+}
+.photo-lightbox-footer span {
+  font: 9px var(--font-mono);
+  letter-spacing: .08em;
+}
+.photo-lightbox-footer p {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
 }
 .photo-empty { min-height: 260px; }
 
@@ -3630,6 +3772,31 @@ body > main { padding-top: 76px; }
   .photo-album-footer { align-items: flex-end; }
   .photo-album-footer > span { max-width: 72px; }
   .photo-album-caption { max-width: calc(100% - 130px); }
+  .photo-album-open > span {
+    opacity: 1;
+    transform: none;
+  }
+  .photo-lightbox {
+    padding: 12px;
+    backdrop-filter: none;
+  }
+  .photo-lightbox-stage > img { height: calc(100% - 68px); }
+  .photo-lightbox-arrow {
+    width: 42px;
+    height: 42px;
+    top: auto;
+    bottom: 8px;
+  }
+  .photo-lightbox-footer {
+    height: 58px;
+    padding: 0 54px;
+  }
+  .photo-lightbox-footer p {
+    overflow: hidden;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
   .story-head { padding: 16vw 5vw 12vw; }
   .story-visual { width: 90vw; margin-left: 5vw; }
   .subpage-back {
