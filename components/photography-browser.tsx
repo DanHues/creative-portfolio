@@ -182,15 +182,18 @@ function PhotoAlbum({
           <p>{album.description || "A photography album from the archive."}</p>
           <div className="photo-album-footer">
             <span>{photos.length} {photos.length === 1 ? "photograph" : "photographs"}</span>
-            {album.instagram ? (
-              <a href={album.instagram} target="_blank" rel="noreferrer">
-                View the photoset <i aria-hidden="true" />
+            <div className="photo-album-actions">
+              <Link href={`/photography/${album.slug}`}>
+                Open the photoshoot <i aria-hidden="true" />
+              </Link>
+              <a
+                href={album.instagram || "https://www.instagram.com/hues.dan/"}
+                target="_blank"
+                rel="noreferrer"
+              >
+                View on Instagram
               </a>
-            ) : (
-              <a href="https://www.instagram.com/hues.dan/" target="_blank" rel="noreferrer">
-                Photography Instagram <i aria-hidden="true" />
-              </a>
-            )}
+            </div>
           </div>
         </div>
       </article>
