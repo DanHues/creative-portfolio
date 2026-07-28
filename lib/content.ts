@@ -30,10 +30,12 @@ export type PhotoStory = {
   slug: string;
   title: string;
   year: string;
+  date?: string;
   category: string;
   tags: CreativeTag[];
   location: string;
   description: string;
+  story?: string;
   instagram?: string;
   featured?: boolean;
   image?: string;
@@ -73,6 +75,10 @@ export function getPhotography() {
   return readCollection<PhotoStory>("photography").sort(
     (a, b) => Number(b.year) - Number(a.year),
   );
+}
+
+export function getPhotoStory(slug: string) {
+  return getPhotography().find((photo) => photo.slug === slug);
 }
 
 export function formatDate(date: string) {
