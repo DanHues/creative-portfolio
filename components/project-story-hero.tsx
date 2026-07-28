@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 type ProjectStoryHeroProps = {
   basePath: string;
   category: string;
+  image?: string;
   summary: string;
   title: string;
 };
@@ -13,12 +14,18 @@ type ProjectStoryHeroProps = {
 export function ProjectStoryHero({
   basePath,
   category,
+  image,
   summary,
   title,
 }: ProjectStoryHeroProps) {
   const heroRef = useRef<HTMLDivElement>(null);
+  const articleImage = image
+    ? image.startsWith("http")
+      ? image
+      : `${basePath}${image.startsWith("/") ? image : `/${image}`}`
+    : `${basePath}/danhues-banner.png`;
   const style = {
-    "--story-art": `url("${basePath}/danhues-banner.png")`,
+    "--story-art": `url("${articleImage}")`,
   } as CSSProperties;
 
   useEffect(() => {
@@ -42,7 +49,7 @@ export function ProjectStoryHero({
         -1,
         Math.min(1, -bounds.top / Math.max(bounds.height, 1)),
       );
-      hero.style.setProperty("--story-shift", `${(progress * 110).toFixed(2)}px`);
+      hero.style.setProperty("--story-shift", `${(progress * 165).toFixed(2)}px`);
     };
 
     const requestUpdate = () => {
