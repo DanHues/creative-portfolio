@@ -2009,21 +2009,26 @@ body > main { padding-top: 76px; }
 .project-intro {
   --project-parallax: 0px;
   min-height: 43vh;
-  padding: 4vw 3.2vw 3.5vw;
+  padding: 4vw 3.2vw 0;
   position: relative;
   display: grid;
   grid-template-rows: 1fr;
   align-items: end;
-  overflow: hidden;
+  overflow: visible;
   isolation: isolate;
   color: white;
   border-bottom: 0;
   background: var(--deep-plum);
 }
+.project-hero-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
 .project-parallax-art {
   position: absolute;
   inset: -70px;
-  z-index: -2;
   background-image:
     linear-gradient(110deg, rgba(27,7,34,.8), rgba(75,20,87,.43), rgba(255,31,154,.15)),
     var(--archive-art);
@@ -2052,7 +2057,8 @@ body > main { padding-top: 76px; }
 .project-intro h1 {
   width: fit-content;
   margin-top: 1.8vw;
-  padding: .14em .32em .18em;
+  max-width: calc(100vw - 36px);
+  padding: .14em .58em .18em;
   color: #fffafd;
   background:
     linear-gradient(125deg, rgba(77,29,91,.72), rgba(87,72,133,.58) 55%, rgba(39,102,111,.56)) padding-box,
@@ -2069,10 +2075,10 @@ body > main { padding-top: 76px; }
   letter-spacing: -.065em;
   text-align: center;
   text-shadow: 0 2px 22px rgba(17,7,22,.34);
-  transform: rotate(-1.4deg);
+  transform: translateY(50%) rotate(-1.4deg);
 }
 .archive-lead {
-  padding: clamp(30px, 3.2vw, 52px) 3.2vw 0;
+  padding: clamp(82px, 7vw, 116px) 3.2vw 0;
   background: var(--paper);
 }
 .archive-lead p {
@@ -2713,9 +2719,9 @@ body > main { padding-top: 76px; }
   .contact-project small { text-align: center; }
   .contact-footnote { gap: 20px; flex-direction: column; }
   .page-intro { padding: 22vw 5vw 12vw; }
-  .project-intro { min-height: 42vh; padding: 12vw 5vw 10vw; }
+  .project-intro { min-height: 42vh; padding: 12vw 5vw 0; }
   .project-intro h1 { font-size: clamp(46px, 14vw, 68px); }
-  .archive-lead { padding: 28px 5vw 0; }
+  .archive-lead { padding: 76px 5vw 0; }
   .archive-lead p { font-size: 14px; }
   .archive-grid, .journal-list { padding-left: 5vw; padding-right: 5vw; }
   .archive-row { grid-template-columns: 1fr; min-height: 0; padding: 24px 0 30px; }
