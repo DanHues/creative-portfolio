@@ -23,7 +23,6 @@ export default function Journal() {
               priority
             />
             <div className="journal-masthead-copy">
-              <p className="eyebrow">Notes on being here</p>
               <h1>Journal</h1>
               <p>
                 Thoughts on creativity, technology, attention, life, and
@@ -37,7 +36,10 @@ export default function Journal() {
                 rel="noreferrer"
                 aria-label="TikTok"
               >
-                <i className="social-mark social-mark-tiktok" aria-hidden="true" />
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M13.2 3v11.1a3.8 3.8 0 1 1-3.3-3.8" />
+                  <path d="M13.2 3c.5 3.1 2.4 4.8 5.3 5" />
+                </svg>
               </a>
               <a
                 href="https://www.youtube.com/@imdanhues"
@@ -45,7 +47,10 @@ export default function Journal() {
                 rel="noreferrer"
                 aria-label="YouTube"
               >
-                <i className="social-mark social-mark-youtube" aria-hidden="true" />
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="6" width="18" height="12" rx="4" />
+                  <path d="m10 9 5 3-5 3Z" className="social-icon-fill" />
+                </svg>
               </a>
               <a
                 href="https://www.instagram.com/imdanhues/"
@@ -53,10 +58,11 @@ export default function Journal() {
                 rel="noreferrer"
                 aria-label="Instagram"
               >
-                <i
-                  className="social-mark social-mark-instagram social-mark-instagram-alt"
-                  aria-hidden="true"
-                />
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="4" y="4" width="16" height="16" rx="5" />
+                  <circle cx="12" cy="12" r="3.5" />
+                  <circle cx="17.2" cy="6.9" r=".8" className="social-icon-fill" />
+                </svg>
               </a>
             </nav>
           </div>
