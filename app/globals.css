@@ -1619,7 +1619,7 @@ body > main { padding-top: 76px; }
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: clamp(72px, 8vw, 126px) 3.2vw 3vw;
+  padding: clamp(46px, 4.5vw, 68px) 3.2vw clamp(22px, 2.4vw, 36px);
   color: var(--paper);
   background:
     radial-gradient(circle at 74% 22%, rgba(179,105,226,.25), transparent 24%),
@@ -1670,31 +1670,33 @@ body > main { padding-top: 76px; }
   animation: about-object-float 6s ease-in-out -1s infinite alternate;
 }
 .contact-intro {
-  width: min(1020px, 100%);
+  width: min(900px, 100%);
   position: relative;
   z-index: 1;
-  padding-top: 18px;
+  padding-top: 14px;
 }
 .contact-kicker {
-  position: relative;
+  position: absolute;
   z-index: 2;
+  top: 0;
+  left: clamp(10px, 3vw, 44px);
   width: max-content;
-  margin: 0 0 -8px clamp(8px, 4.5vw, 72px);
-  padding: 10px 20px 9px;
+  margin: 0;
+  padding: 7px 15px 6px;
   border: 1px solid rgba(255,255,255,.55);
   border-radius: 8px 13px 9px 12px;
   color: #211428;
   background: linear-gradient(105deg, #f1a8df, #c5afe9 56%, #9bd0d3);
   box-shadow: 0 12px 35px rgba(5,4,12,.24);
-  font: 700 clamp(16px, 1.7vw, 23px) var(--font-body);
+  font: 700 clamp(14px, 1.25vw, 18px) var(--font-body);
   letter-spacing: -.025em;
-  transform: rotate(-2.4deg);
+  transform: translateY(-26%) rotate(-2.1deg);
 }
 .contact-intro h2 {
-  max-width: 1100px;
-  margin: 0 0 clamp(22px, 2.8vw, 38px);
-  font-size: clamp(52px, 8.6vw, 132px);
-  line-height: .86;
+  max-width: 920px;
+  margin: 12px 0 clamp(12px, 1.5vw, 22px);
+  font-size: clamp(46px, 6.3vw, 94px);
+  line-height: .88;
   letter-spacing: -.075em;
   color: #f4eff7;
   text-shadow: 0 0 42px rgba(179,105,226,.12);
@@ -1702,20 +1704,20 @@ body > main { padding-top: 76px; }
 .contact-intro > p:last-child {
   max-width: 610px;
   color: rgba(244,240,249,.7);
-  font-size: clamp(15px, 1.5vw, 19px);
-  line-height: 1.55;
+  font-size: clamp(14px, 1.25vw, 17px);
+  line-height: 1.45;
 }
 .contact-paths {
   width: min(1120px, 100%);
-  margin: clamp(38px, 5vw, 74px) 0 clamp(70px, 8vw, 120px) auto;
+  margin: clamp(22px, 2.6vw, 38px) 0 clamp(34px, 4vw, 56px) auto;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  gap: 8px;
 }
 .contact-path {
   position: relative;
-  min-height: 128px;
-  padding: 22px 48px 22px 22px;
+  min-height: 88px;
+  padding: 15px 42px 15px 17px;
   display: flex;
   align-items: flex-end;
   border: 1px solid rgba(255,255,255,.19);
@@ -1735,8 +1737,8 @@ body > main { padding-top: 76px; }
   position: absolute;
   width: 16px;
   height: 8px;
-  right: 22px;
-  top: 24px;
+  right: 18px;
+  top: 18px;
   border-top: 1px solid currentColor;
   border-right: 1px solid currentColor;
   transform: skewX(35deg);
@@ -1748,8 +1750,8 @@ body > main { padding-top: 76px; }
 }
 .contact-project {
   grid-column: 1 / -1;
-  min-height: 88px;
-  margin-top: 3px;
+  min-height: 60px;
+  margin-top: 0;
   align-items: center;
   color: #f5f1f8;
   background:
@@ -1775,8 +1777,8 @@ body > main { padding-top: 76px; }
 }
 .contact-path > span {
   display: grid;
-  gap: 7px;
-  font-size: clamp(16px, 1.65vw, 22px);
+  gap: 5px;
+  font-size: clamp(15px, 1.35vw, 19px);
   font-weight: 760;
   line-height: 1.05;
 }
@@ -1790,7 +1792,7 @@ body > main { padding-top: 76px; }
 }
 .contact-footnote {
   border-top: 1px solid rgba(255,255,255,.28);
-  padding-top: 18px;
+  padding-top: 12px;
   display: flex;
   justify-content: space-between;
   font: 10px var(--font-mono);
@@ -2293,16 +2295,29 @@ body > main { padding-top: 76px; }
   .journal-page-1,
   .journal-page-2,
   .journal-page-3 { width: 100%; min-height: 330px; transform: none; }
-  .contact-footer { padding: 18vw 5vw 7vw; }
-  .contact-kicker { margin-left: 4vw; }
-  .contact-intro h2 { font-size: clamp(48px, 14vw, 68px); }
-  .contact-paths { grid-template-columns: 1fr; gap: 10px; }
+  .contact-footer { padding: 12vw 5vw 5vw; }
+  .contact-kicker {
+    left: 12px;
+    padding: 6px 12px 5px;
+    transform: translateY(-30%) rotate(-2deg);
+  }
+  .contact-intro h2 {
+    margin-top: 8px;
+    font-size: clamp(42px, 11.8vw, 56px);
+  }
+  .contact-paths {
+    margin-top: 24px;
+    margin-bottom: 38px;
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
   .contact-path,
   .contact-path:nth-child(2),
   .contact-path:nth-child(3) {
-    min-height: 108px;
+    min-height: 74px;
     transform: none;
   }
+  .contact-project { min-height: 60px; }
   .contact-project > span { grid-template-columns: 1fr; gap: 7px; }
   .contact-project small { text-align: left; }
   .contact-footnote { gap: 20px; flex-direction: column; }
