@@ -180,7 +180,7 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
       </button>
 
     </header>
-    {mounted ? createPortal(contactModal, document.body) : null}
+    {mounted && contactOpen ? createPortal(contactModal, document.body) : null}
     </>
   );
 }
