@@ -12,16 +12,30 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
   const [contactOpen, setContactOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const closeContactRef = useRef<HTMLButtonElement>(null);
+  const compactRef = useRef(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    const update = () => setCompact(window.scrollY > 70);
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const nextCompact = window.scrollY > 70;
+      if (nextCompact === compactRef.current) return;
+      compactRef.current = nextCompact;
+      setCompact(nextCompact);
+    };
+    const requestUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
     update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", requestUpdate);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   useEffect(() => {
