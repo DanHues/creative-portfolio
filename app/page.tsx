@@ -46,26 +46,25 @@ export default function Home() {
 
       <section className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">DanHues · Multidisciplinary creative</p>
+          <p className="eyebrow">
+            Hi, I’m Daniel Hughes—a multidisciplinary creative.
+          </p>
           <h1 className="cycling-headline">
             <span className="making-line">
-              I make <CyclingWords />
+              Making <CyclingWords />
             </span>
             <strong>
               worth <mark>remembering.</mark>
             </strong>
           </h1>
           <p className="hero-summary">
-            I work across physical and digital space—bringing the same curiosity
-            to a photograph, a server, a brand, a film, or an object.
+            Across physical and digital spaces, I bring ideas to life through
+            images, worlds, products, stories, and systems.
           </p>
         </div>
 
         <CyclingVisuals basePath={basePath} />
 
-        <a className="round-link" href="#featured" aria-label="See selected work">
-          <span>Scroll</span>
-        </a>
       </section>
 
       <div className="ticker-stack">
@@ -137,15 +136,16 @@ export default function Home() {
         <div className="about-content">
           <p className="eyebrow">Creativity without limit</p>
           <h2>
-            <span>I don’t fit neatly into one box.</span>
+            <span>I don’t fit into one box</span>
             <strong>That’s the point.</strong>
           </h2>
           <div className="about-copy">
             <p>
-              I’m a multidisciplinary creative working in the overlap between
-              storytelling and systems, aesthetics and utility, internet
-              culture and the physical world—building the image, object,
-              experience, or space a story needs.
+              I’m a multidisciplinary creative working between storytelling
+              and traditional systems, aesthetics and utility, internet
+              culture and the physical world. I bridge those disciplines to
+              find the right way to bring each image, object, experience, or
+              space to life.
             </p>
           </div>
           <div className="social-dock">
@@ -209,15 +209,14 @@ export default function Home() {
           <p className="eyebrow">How I got here</p>
           <h2>I started by building worlds.</h2>
           <p>
-            At 16, I built a Minecraft server that grew into one of the era’s
-            largest independent networks, with over a million unique joins. That
-            first world became a company, a community, and the foundation for
-            how I create today.
+            At 16, I started a Minecraft server that grew into one of the era’s
+            largest independent networks, reaching over a million unique joins.
+            It created the foundation for how I work and create today.
           </p>
           <p>
-            From that I built servers for companies and creators, grew my own
-            TikTok brand, and helped coordinate one of TikTok’s earliest creator
-            programs.
+            From there, I built worlds, systems, and products for companies and
+            creators, grew my own social media brand, and helped coordinate one
+            of TikTok’s earliest creator programs.
           </p>
         </div>
         <div className="numbers-panel">
