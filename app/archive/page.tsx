@@ -19,7 +19,7 @@ export default function Archive() {
         </p>
       </section>
       <Suspense fallback={<section className="archive-grid" />}>
-        <ArchiveBrowser projects={projects} />
+        <ArchiveBrowser basePath={basePath} projects={projects} />
       </Suspense>
       <SiteFooter />
     </main>
