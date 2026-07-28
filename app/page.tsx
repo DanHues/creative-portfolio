@@ -7,32 +7,28 @@ import { DraggableMarquee } from "@/components/draggable-marquee";
 import { ImpactCounters } from "@/components/impact-counters";
 import { JournalReveal } from "@/components/journal-reveal";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
+import { TagList } from "@/components/tag-list";
 import { getPosts, getProjects } from "@/lib/content";
+import { CREATIVE_TAGS } from "@/lib/tags";
 
-const disciplines = [
-  { label: "Photography", href: "/photography?tag=All" },
-  { label: "Minecraft worlds", href: "/archive?tag=Minecraft" },
-  { label: "Video & social", href: "/archive?tag=Video" },
-  { label: "Brand consulting", href: "/archive?tag=Brand" },
-  { label: "Videography", href: "/archive?tag=Videography" },
-  { label: "Development", href: "/archive?tag=Development" },
-  { label: "3D design", href: "/archive?tag=3D" },
-  { label: "3D printing", href: "/archive?tag=3D" },
-];
+const disciplines = CREATIVE_TAGS.map((label) => ({
+  label,
+  href: `/archive?tag=${encodeURIComponent(label)}`,
+}));
 
 const clients = [
-  { name: "Adin Ross", href: "/archive?tag=Video" },
-  { name: "Club Obsidian", href: "/archive?tag=Minecraft" },
-  { name: "GridCraft", href: "/archive?tag=Minecraft" },
-  { name: "High School Esports League", href: "/archive?tag=Minecraft" },
-  { name: "PlayVS", href: "/archive?tag=Development" },
-  { name: "Sueco", href: "/archive?tag=Minecraft" },
-  { name: "TikTok", href: "/archive?tag=Video" },
+  { name: "Adin Ross", href: "/archive?tag=Video%20Editing" },
+  { name: "Club Obsidian", href: "/archive?tag=Minecraft%20Servers" },
+  { name: "GridCraft", href: "/archive?tag=Minecraft%20Servers" },
+  { name: "High School Esports League", href: "/archive?tag=Game%20Development" },
+  { name: "PlayVS", href: "/archive?tag=Game%20Development" },
+  { name: "Sueco", href: "/archive?tag=Minecraft%20Servers" },
+  { name: "TikTok", href: "/archive?tag=Social%20Media%20Marketing" },
   { name: "Jamie Levine Photography", href: "/photography" },
   { name: "SkyCastleToys", href: "/archive/object-no-four" },
   { name: "Dream", href: "/archive/minecraft-world" },
   { name: "EmpoweredProsthetics", href: "/archive/object-no-four" },
-  { name: "Rising Phoenix Forums", href: "/archive?tag=Development" },
+  { name: "Rising Phoenix Forums", href: "/archive?tag=Server%20Infrastructure" },
 ];
 
 export default function Home() {
@@ -105,11 +101,7 @@ export default function Home() {
             <div className={`project-copy project-box project-box-${index + 1}`}>
               <h2>{project.title}</h2>
               <p>{project.summary}</p>
-              <div className="project-tags">
-                {project.category.split(" · ").map((tag) => (
-                  <span key={tag}>{tag}</span>
-                ))}
-              </div>
+              <TagList tags={project.tags} />
               <Link className="explore-project" href={`/archive/${project.slug}`}>
                 <span>
                   Explore this project
@@ -241,6 +233,7 @@ export default function Home() {
                 <p className="project-meta">{post.readTime} read · a personal note</p>
                 <h3>{post.title}</h3>
                 <p>{post.summary}</p>
+                <TagList tags={post.tags} className="journal-card-tags" linked={false} />
                 <span className="page-link">Turn the page</span>
               </Link>
             ))}
