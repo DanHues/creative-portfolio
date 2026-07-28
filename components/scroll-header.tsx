@@ -2,11 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { DiscordButton } from "@/components/discord-button";
 
 export function ScrollHeader({ basePath }: { basePath: string }) {
   const [compact, setCompact] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
+  const closeContactRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const update = () => setCompact(window.scrollY > 70);
@@ -17,23 +20,35 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
 
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMenuOpen(false);
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        setContactOpen(false);
+      }
     };
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
+    document.body.style.overflow = menuOpen || contactOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [menuOpen]);
+  }, [menuOpen, contactOpen]);
+
+  useEffect(() => {
+    if (contactOpen) closeContactRef.current?.focus();
+  }, [contactOpen]);
 
   const closeMenu = () => setMenuOpen(false);
+  const openContact = () => {
+    setMenuOpen(false);
+    setContactOpen(true);
+  };
+  const closeContact = () => setContactOpen(false);
 
   return (
-    <header className={`site-header${compact ? " compact" : ""}${menuOpen ? " menu-open" : ""}`}>
+    <header className={`site-header${compact ? " compact" : ""}${menuOpen ? " menu-open" : ""}${contactOpen ? " contact-open" : ""}`}>
       <Link className="wordmark" href="/" aria-label="DanHues home">
         <Image
           src={`${basePath}/danhuestext.png`}
@@ -67,13 +82,70 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
         <Link href="/journal" onClick={closeMenu}>Journal</Link>
         <Link href="/photography" onClick={closeMenu}>Photography</Link>
         <Link href="/#about" onClick={closeMenu}>About</Link>
-        <a className="mobile-nav-contact" href="mailto:danielhughesps@gmail.com" onClick={closeMenu}>
+        <button className="mobile-nav-contact" type="button" onClick={openContact}>
           Start a conversation
-        </a>
+        </button>
       </nav>
-      <a className="availability" href="mailto:danielhughesps@gmail.com">
+      <button
+        className="availability"
+        type="button"
+        aria-controls="quick-contact"
+        aria-expanded={contactOpen}
+        onClick={openContact}
+      >
         <i /> Available for select projects
-      </a>
+      </button>
+
+      <button
+        className="quick-contact-backdrop"
+        type="button"
+        aria-label="Close contact options"
+        tabIndex={contactOpen ? 0 : -1}
+        onClick={closeContact}
+      />
+      <section
+        className="quick-contact"
+        id="quick-contact"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden={!contactOpen}
+        aria-labelledby="quick-contact-title"
+      >
+        <button
+          className="quick-contact-close"
+          type="button"
+          aria-label="Close contact options"
+          ref={closeContactRef}
+          onClick={closeContact}
+        />
+        <p>Have an idea?</p>
+        <h2 id="quick-contact-title">What’s the best way to reach me?</h2>
+        <div>
+          <a
+            className="quick-contact-option quick-contact-email"
+            href="mailto:danielhughesps@gmail.com?subject=Let%27s%20make%20something"
+            onClick={closeContact}
+          >
+            <span>
+              Email me
+              <small>Projects and collaborations</small>
+            </span>
+          </a>
+          <DiscordButton className="quick-contact-option" />
+          <a
+            className="quick-contact-option"
+            href="https://www.instagram.com/imdanhues/"
+            target="_blank"
+            rel="noreferrer"
+            onClick={closeContact}
+          >
+            <span>
+              Instagram DM
+              <small>Quick hellos and visual ideas</small>
+            </span>
+          </a>
+        </div>
+      </section>
     </header>
   );
 }
