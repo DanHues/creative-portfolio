@@ -19,7 +19,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   return (
     <main>
       <SiteHeader />
-      <SubpageControls backHref="/archive" backLabel="Back to Projects" />
+      <SubpageControls
+        backHref="/archive"
+        backLabel="Back to Projects"
+        showBackToTop={false}
+      />
       <article className="story project-story">
         <ProjectStoryHero
           basePath={basePath}
