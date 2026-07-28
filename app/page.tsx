@@ -47,7 +47,7 @@ export default function Home() {
       <section className="hero">
         <div className="hero-copy">
           <p className="eyebrow">
-            Hi, I’m Daniel Hughes, a multidisciplinary creative, and I make
+            Hi, I’m Daniel Hughes and I make
           </p>
           <h1 className="cycling-headline">
             <span className="making-line">
@@ -103,13 +103,13 @@ export default function Home() {
               </div>
             </div>
             <div className={`project-copy project-box project-box-${index + 1}`}>
+              <h2>{project.title}</h2>
+              <p>{project.summary}</p>
               <div className="project-tags">
                 {project.category.split(" · ").map((tag) => (
                   <span key={tag}>{tag}</span>
                 ))}
               </div>
-              <h2>{project.title}</h2>
-              <p>{project.summary}</p>
               <Link className="explore-project" href={`/archive/${project.slug}`}>
                 <span>
                   Explore this project
