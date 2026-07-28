@@ -1,14 +1,8 @@
 {
-  "title": "After the Encore",
-  "slug": "after-the-encore",
+  "title": "Sunshine Ponycon",
+  "slug": "sunshine-pony-con",
   "year": "2026",
   "category": "Concert",
-  "tags": ["Photography", "Videography", "Video Editing"],
-  "location": "On the road",
-  "description": "The energy before, during, and just after the room erupts.",
-  "instagram": "https://www.instagram.com/hues.dan/",
-  "featured": true,
-  "image": "",
-  "alt": "A concert performance photographed from the crowd",
-  "images": []
+  "location": "Atlantic City, New Jersey",
+  "alt": "A concert performance photographed from the crowd"
 }
