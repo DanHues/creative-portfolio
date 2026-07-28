@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
+import { ProjectStoryHero } from "@/components/project-story-hero";
 import { RichCopy } from "@/components/rich-copy";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
+import { SubpageControls } from "@/components/subpage-controls";
 import { getProject, getProjects } from "@/lib/content";
+import { formatProjectDate } from "@/lib/format-project-date";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -12,17 +15,32 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
+  const basePath = process.env.PAGES_BASE_PATH || "";
   return (
     <main>
       <SiteHeader />
-      <article className="story">
-        <div className="story-head">
-          <p className="eyebrow">{project.category} · {project.year}</p>
-          <h1>{project.title}</h1>
+      <SubpageControls backHref="/archive" backLabel="Back to Projects" />
+      <article className="story project-story">
+        <ProjectStoryHero
+          basePath={basePath}
+          category={project.category}
+          title={project.title}
+        />
+        <div className="project-story-meta">
+          <div>
+            <span>Date</span>
+            <time dateTime={project.date || project.year}>
+              {formatProjectDate(project.date, project.year)}
+            </time>
+          </div>
           <p>{project.summary}</p>
         </div>
-        <div className={`story-visual project-visual ${project.accent}`}><div className="visual-mark" /></div>
-        <RichCopy body={project.body} />
+        <div className="project-paper">
+          <div className={`project-paper-image project-visual ${project.accent}`}>
+            <div className="visual-mark" />
+          </div>
+          <RichCopy body={project.body} />
+        </div>
       </article>
       <SiteFooter />
     </main>
