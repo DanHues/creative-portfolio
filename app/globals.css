@@ -2375,6 +2375,14 @@ body > main { padding-top: 76px; }
   letter-spacing: -.07em;
   white-space: nowrap;
 }
+.project-story-summary {
+  max-width: 640px;
+  margin-top: 18px;
+  color: rgba(255,250,253,.78);
+  font-size: clamp(13px, 1.15vw, 16px);
+  line-height: 1.5;
+  text-shadow: 0 2px 18px rgba(14,4,18,.5);
+}
 .project-story-meta {
   padding: clamp(28px, 3.6vw, 54px) 3.2vw clamp(40px, 5vw, 76px);
   display: grid;
@@ -2403,8 +2411,10 @@ body > main { padding-top: 76px; }
   line-height: 1.45;
 }
 .project-paper {
+  position: relative;
+  z-index: 3;
   width: min(920px, calc(100% - 12vw));
-  margin: 0 auto;
+  margin: clamp(-82px, -6vw, -48px) auto 0;
   padding: clamp(38px, 5vw, 76px);
   border: 1px solid rgba(75,20,87,.16);
   background: #fffdf8;
@@ -2412,6 +2422,26 @@ body > main { padding-top: 76px; }
     18px 24px 0 rgba(75,20,87,.1),
     0 28px 80px rgba(44,18,48,.14);
   transform: rotate(-.15deg);
+}
+.project-paper-meta {
+  margin-bottom: clamp(38px, 4.5vw, 62px);
+  padding-bottom: 16px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid rgba(75,20,87,.16);
+}
+.project-paper-meta span {
+  color: var(--plum);
+  font: 9px var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+.project-paper-meta time {
+  font: 10px var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: .06em;
 }
 .project-paper-image {
   width: calc(100% + clamp(52px, 8vw, 112px));
@@ -2772,6 +2802,12 @@ body > main { padding-top: 76px; }
     font-size: clamp(19px, 5.5vw, 34px);
     letter-spacing: -.06em;
   }
+  .project-story-summary {
+    max-width: 88%;
+    margin-top: 11px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
   .project-story-meta {
     padding: 28px 5vw 45px;
     grid-template-columns: 1fr;
@@ -2780,9 +2816,14 @@ body > main { padding-top: 76px; }
   .project-story-meta > p { justify-self: start; font-size: 16px; }
   .project-paper {
     width: calc(100% - 24px);
+    margin-top: -42px;
     padding: 30px 22px;
     box-shadow: 9px 12px 0 rgba(75,20,87,.1), 0 20px 50px rgba(44,18,48,.12);
     transform: none;
+  }
+  .project-paper-meta {
+    margin-bottom: 34px;
+    padding-bottom: 12px;
   }
   .project-paper-image {
     width: calc(100% + 44px);
