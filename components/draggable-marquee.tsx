@@ -35,6 +35,8 @@ export function DraggableMarquee({
     startX: 0,
   });
   const hoveredRef = useRef(false);
+  const visibleRef = useRef(false);
+  const documentVisibleRef = useRef(true);
   const suppressClickRef = useRef(false);
   const [dragging, setDragging] = useState(false);
   const [ready, setReady] = useState(false);
@@ -60,6 +62,12 @@ export function DraggableMarquee({
     setReady(true);
 
     const animate = (time: number) => {
+      if (!visibleRef.current || !documentVisibleRef.current) {
+        frameRef.current = null;
+        lastTimeRef.current = null;
+        return;
+      }
+
       const previous = lastTimeRef.current ?? time;
       const elapsed = Math.min((time - previous) / 1000, 0.05);
       lastTimeRef.current = time;
@@ -76,10 +84,48 @@ export function DraggableMarquee({
       frameRef.current = window.requestAnimationFrame(animate);
     };
 
-    frameRef.current = window.requestAnimationFrame(animate);
+    const startAnimation = () => {
+      if (
+        visibleRef.current &&
+        documentVisibleRef.current &&
+        frameRef.current === null
+      ) {
+        frameRef.current = window.requestAnimationFrame(animate);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visibleRef.current = entry.isIntersecting;
+        if (!entry.isIntersecting && frameRef.current !== null) {
+          window.cancelAnimationFrame(frameRef.current);
+          frameRef.current = null;
+          lastTimeRef.current = null;
+          return;
+        }
+        startAnimation();
+      },
+      { rootMargin: "120px 0px" },
+    );
+
+    const handleVisibility = () => {
+      documentVisibleRef.current = !document.hidden;
+      if (!documentVisibleRef.current && frameRef.current !== null) {
+        window.cancelAnimationFrame(frameRef.current);
+        frameRef.current = null;
+        lastTimeRef.current = null;
+        return;
+      }
+      startAnimation();
+    };
+
+    observer.observe(track);
+    document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
+      observer.disconnect();
       resizeObserver.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibility);
       if (frameRef.current !== null) {
         window.cancelAnimationFrame(frameRef.current);
       }
