@@ -33,8 +33,16 @@ export type PhotoStory = {
   category: string;
   tags: CreativeTag[];
   location: string;
+  description: string;
+  instagram?: string;
+  featured?: boolean;
   image?: string;
   alt: string;
+  images?: {
+    image: string;
+    alt: string;
+    caption?: string;
+  }[];
 };
 
 function readCollection<T>(directory: string): T[] {
