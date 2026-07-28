@@ -53,10 +53,10 @@ export default function Home() {
           <h1 className="cycling-headline">
             <span className="making-line">
               <CyclingWords />
-              <strong>
-                worth <mark>remembering.</mark>
-              </strong>
             </span>
+            <strong>
+              worth <mark>remembering.</mark>
+            </strong>
           </h1>
           <p className="hero-summary">
             Across physical and digital spaces, I bring ideas to life through
