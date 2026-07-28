@@ -2325,7 +2325,7 @@ body > main { padding-top: 76px; }
 .project-story-hero {
   --story-shift: 0px;
   position: relative;
-  min-height: 68vh;
+  min-height: 54vh;
   padding: 0 3.2vw 5vw;
   display: flex;
   align-items: flex-end;
@@ -2336,7 +2336,7 @@ body > main { padding-top: 76px; }
 }
 .project-story-art {
   position: absolute;
-  inset: -110px;
+  inset: -175px;
   z-index: -2;
   background-image:
     linear-gradient(110deg, rgba(19,5,25,.62), rgba(63,19,72,.2), rgba(255,31,154,.08)),
@@ -2344,7 +2344,7 @@ body > main { padding-top: 76px; }
   background-size: cover;
   background-position: center;
   filter: saturate(1.18) contrast(1.04);
-  transform: translate3d(0, var(--story-shift), 0) scale(1.22);
+  transform: translate3d(0, var(--story-shift), 0) scale(1.28);
   will-change: transform;
 }
 .project-story-hero::after {
@@ -2793,10 +2793,10 @@ body > main { padding-top: 76px; }
     font-size: 8px;
   }
   .project-story-hero {
-    min-height: 56vh;
+    min-height: 45vh;
     padding: 0 5vw 11vw;
   }
-  .project-story-art { inset: -80px; }
+  .project-story-art { inset: -145px; }
   .project-story-title p { margin-bottom: 10px; font-size: 8px; }
   .project-story-title h1 {
     font-size: clamp(19px, 5.5vw, 34px);
