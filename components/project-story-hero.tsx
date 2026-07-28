@@ -31,6 +31,10 @@ export function ProjectStoryHero({
   useEffect(() => {
     const hero = heroRef.current;
     if (!hero) return;
+    if (navigator.userAgent.includes("Firefox")) {
+      hero.style.setProperty("--story-shift", "0px");
+      return;
+    }
 
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
