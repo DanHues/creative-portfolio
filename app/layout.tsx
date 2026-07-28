@@ -42,7 +42,15 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'if(navigator.userAgent.includes("Firefox"))document.documentElement.classList.add("is-firefox")',
+          }}
+        />
+      </head>
       <body className={`${sans.variable} ${mono.variable}`}>{children}</body>
     </html>
   );
