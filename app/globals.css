@@ -1697,7 +1697,7 @@ body > main { padding-top: 76px; }
   animation: about-object-float 6s ease-in-out -1s infinite alternate;
 }
 .contact-intro {
-  width: min(900px, 100%);
+  width: 100%;
   position: relative;
   z-index: 1;
   padding-top: 14px;
