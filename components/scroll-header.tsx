@@ -161,8 +161,10 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
       />
       <nav id="site-navigation" aria-label="Main navigation">
         <span className="mobile-nav-label">Explore the work</span>
-        <Link href="/archive" onClick={closeMenu}>Projects</Link>
-        <Link href="/journal" onClick={closeMenu}>Journal</Link>
+        <div className="nav-group nav-group-left">
+          <Link href="/archive" onClick={closeMenu}>Projects</Link>
+          <Link href="/journal" onClick={closeMenu}>Journal</Link>
+        </div>
         <Link className="nav-wordmark" href="/" aria-label="DanHues home" onClick={closeMenu}>
           <Image
             src={`${basePath}/danhuestext.png`}
@@ -172,8 +174,10 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
             priority
           />
         </Link>
-        <Link href="/photography" onClick={closeMenu}>Photography</Link>
-        <Link href="/#about" onClick={closeMenu}>About</Link>
+        <div className="nav-group nav-group-right">
+          <Link href="/photography" onClick={closeMenu}>Photography</Link>
+          <Link href="/#about" onClick={closeMenu}>About</Link>
+        </div>
         <button className="mobile-nav-contact" type="button" onClick={openContact}>
           Start a conversation
         </button>
