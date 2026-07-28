@@ -2177,7 +2177,7 @@ body > main { padding-top: 76px; }
   display: grid;
   place-items: end center;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   border-bottom: 1px solid rgba(62,45,61,.22);
   color: #302735;
   background:
@@ -2509,28 +2509,46 @@ body > main { padding-top: 76px; }
   letter-spacing: .06em;
 }
 .note-turn {
-  min-height: 30px;
-  padding: 6px 10px 6px 12px;
+  min-height: 34px;
+  padding: 8px 20px 8px 12px;
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
   border: 1px solid rgba(74,56,77,.24);
-  border-radius: 999px;
+  border-radius: 2px 2px 8px 2px;
   color: #4e4052;
-  background: #f2ebe5;
-  transition: color .2s ease, background .2s ease, transform .2s ease;
+  background:
+    linear-gradient(105deg, rgba(255,255,255,.8), transparent 36%),
+    #f3ece5;
+  box-shadow: 3px 3px 0 rgba(76,57,80,.1);
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  clip-path: polygon(0 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 0 100%);
+  transition: color .2s ease, background .2s ease, box-shadow .3s ease, transform .35s cubic-bezier(.2,.78,.2,1);
 }
 .note-turn i {
-  width: 7px;
-  height: 7px;
-  border-top: 1px solid currentColor;
-  border-right: 1px solid currentColor;
-  transform: rotate(45deg);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 11px;
+  height: 11px;
+  border: 0;
+  background: linear-gradient(225deg, transparent 48%, rgba(92,72,96,.25) 51%, #ded3d8 54%);
+  transform: none;
+  transform-origin: top right;
+  transition: transform .35s cubic-bezier(.2,.78,.2,1), filter .3s ease;
 }
 .note:hover .note-turn {
-  color: #fff;
-  background: #66516c;
-  transform: translateX(3px);
+  color: #433547;
+  background:
+    linear-gradient(105deg, rgba(255,255,255,.9), transparent 42%),
+    #fffaf4;
+  box-shadow: 8px 5px 8px rgba(76,57,80,.14);
+  transform: perspective(260px) rotateY(-11deg) rotate(.5deg) translateX(3px);
+}
+.note:hover .note-turn i {
+  filter: contrast(1.08);
+  transform: scale(1.18) rotate(-3deg);
 }
 .journal-list-tags {
   grid-column: 2;
