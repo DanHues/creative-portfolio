@@ -83,7 +83,7 @@ body > main { padding-top: 76px; }
   transition: opacity .2s, transform .2s;
 }
 .nav-wordmark:hover { transform: translateY(-2px) scale(1.04); opacity: .82; }
-.nav-wordmark img { width: 82px; height: auto; filter: invert(1); }
+.nav-wordmark img { width: 82px; height: auto; }
 .nav-wordmark,
 .nav-wordmark img { transition: width .28s ease, opacity .2s, transform .2s; }
 .site-header nav {
