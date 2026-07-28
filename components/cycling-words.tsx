@@ -23,7 +23,8 @@ export function CyclingWords() {
   const [leaving, setLeaving] = useState<number | null>(null);
 
   useEffect(() => {
-    const delay = navigator.userAgent.includes("Firefox") ? 3000 : 2000;
+    if (navigator.userAgent.includes("Firefox")) return;
+    const delay = 2000;
     const interval = window.setInterval(() => {
       if (document.hidden) return;
       setActive((current) => {
