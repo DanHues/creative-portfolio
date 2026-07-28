@@ -6,9 +6,11 @@ import { BackToTop } from "@/components/back-to-top";
 export function SubpageControls({
   backHref,
   backLabel,
+  showBackToTop = true,
 }: {
   backHref: string;
   backLabel: string;
+  showBackToTop?: boolean;
 }) {
   return (
     <>
@@ -16,7 +18,7 @@ export function SubpageControls({
         <i aria-hidden="true" />
         {backLabel}
       </Link>
-      <BackToTop />
+      {showBackToTop ? <BackToTop /> : null}
     </>
   );
 }
