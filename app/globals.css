@@ -360,8 +360,8 @@ body > main { padding-top: 76px; }
 }
 
 .hero {
-  min-height: calc(88vh - 78px);
-  padding: 6vw 3.2vw 4vw;
+  min-height: clamp(580px, calc(74svh - 76px), 720px);
+  padding: 3.5vw 3.2vw 2.5vw;
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr);
@@ -558,6 +558,8 @@ body > main { padding-top: 76px; }
 .cycling-visuals {
   position: relative;
   z-index: 2;
+  width: 92%;
+  justify-self: center;
   aspect-ratio: 1.56;
   overflow: visible;
   transform: rotate(1deg);
@@ -653,7 +655,7 @@ body > main { padding-top: 76px; }
 .ticker-region {
   position: relative;
   z-index: 4;
-  margin: -1vw 0 2vw;
+  margin: -1.4vw 0 1.5vw;
   padding-top: clamp(27px, 2.6vw, 38px);
 }
 .ticker-title {
@@ -677,7 +679,7 @@ body > main { padding-top: 76px; }
   position: relative;
   z-index: 4;
   margin: 0;
-  padding: 10px 0;
+  padding: 8px 0;
   transform: rotate(-1.15deg);
 }
 .ticker-block {
@@ -703,7 +705,7 @@ body > main { padding-top: 76px; }
   background: var(--deep-plum);
   color: var(--white);
   overflow: hidden;
-  padding: 15px 0;
+  padding: 12px 0;
   font: 11px var(--font-mono);
   text-transform: uppercase;
   white-space: nowrap;
@@ -2955,10 +2957,12 @@ body > main { padding-top: 76px; }
 }
 .is-firefox .about-portrait img,
 .is-firefox .project-parallax-art,
-.is-firefox .project-story-art,
+.is-firefox .project-story-art {
+  will-change: auto;
+}
 .is-firefox .ticker-track,
 .is-firefox .client-track {
-  will-change: auto;
+  will-change: transform;
 }
 .is-firefox .site-header {
   background: rgba(255,249,253,.98);
@@ -2972,7 +2976,19 @@ body > main { padding-top: 76px; }
 .is-firefox .throughline,
 .is-firefox .journal-preview,
 .is-firefox .contact-footer {
-  contain: layout paint style;
+  content-visibility: visible;
+  contain-intrinsic-size: none;
+}
+.is-firefox .project-polaroid,
+.is-firefox .project-box,
+.is-firefox .journal-page,
+.is-firefox .project-paper,
+.is-firefox .archive-row-copy {
+  box-shadow: 7px 8px 0 rgba(75,20,87,.13);
+}
+.is-firefox .site-header {
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
