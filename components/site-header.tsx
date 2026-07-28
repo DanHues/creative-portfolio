@@ -1,4 +1,5 @@
 import { BackToTop } from "@/components/back-to-top";
+import { ContactFooter } from "@/components/contact-footer";
 import { ScrollHeader } from "@/components/scroll-header";
 
 export function SiteHeader() {
@@ -13,16 +14,5 @@ export function SiteHeader() {
 }
 
 export function SiteFooter({ journal = false }: { journal?: boolean }) {
-  return (
-    <footer>
-      <p>{journal ? "Want to keep in touch?" : "Have a strange idea?"}</p>
-      <a href="mailto:hello@example.com">
-        {journal ? "Say hello." : "Let’s make it real."}
-      </a>
-      <div>
-        <span>© 2026 DanHues</span>
-        <span>Photography · Worlds · Film · Design · Code</span>
-      </div>
-    </footer>
-  );
+  return <ContactFooter journal={journal} />;
 }
