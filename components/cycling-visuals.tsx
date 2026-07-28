@@ -7,17 +7,17 @@ import { CSSProperties, useEffect, useState } from "react";
 const visuals = [
   { label: "Products", note: "3D design · Physical objects", href: "/archive/object-no-four", style: "object" },
   { label: "Worlds", note: "Minecraft · Worldbuilding", href: "/archive/minecraft-world", style: "world" },
-  { label: "Marketing", note: "Strategy · Social campaigns", href: "/archive?tag=Brand", style: "brand" },
+  { label: "Marketing", note: "Marketing · Social Media Marketing", href: "/archive?tag=Marketing", style: "brand" },
   { label: "Experiences", note: "Digital · Physical", href: "/archive", style: "experience" },
-  { label: "Videos", note: "Editing · Social content", href: "/archive?tag=Video", style: "video" },
+  { label: "Videos", note: "Video Editing · Social Media Marketing", href: "/archive?tag=Video%20Editing", style: "video" },
   { label: "Stories", note: "Ideas · Narrative", href: "/journal", style: "ideas" },
-  { label: "Games", note: "Play · Community", href: "/archive?tag=Minecraft", style: "world" },
+  { label: "Games", note: "Game Development · Community", href: "/archive?tag=Game%20Development", style: "world" },
   { label: "Photography", note: "Concerts · Conventions", href: "/photography", style: "photo" },
   { label: "Strange ideas", note: "Experiments · Curiosity", href: "/archive", style: "ideas" },
   { label: "Events", note: "Culture · Live moments", href: "/photography", style: "photo" },
-  { label: "Development", note: "Code · Systems", href: "/archive?tag=Development", style: "experience" },
-  { label: "Servers", note: "Networks · Communities", href: "/archive?tag=Minecraft", style: "world" },
-  { label: "Brands", note: "Identity · Consulting", href: "/archive?tag=Brand", style: "brand" },
+  { label: "Development", note: "Game Development · Systems", href: "/archive?tag=Game%20Development", style: "experience" },
+  { label: "Servers", note: "Server Infrastructure · Communities", href: "/archive?tag=Server%20Infrastructure", style: "world" },
+  { label: "Brands", note: "Brand Consulting · Identity", href: "/archive?tag=Brand%20Consulting", style: "brand" },
 ];
 
 export function CyclingVisuals({ basePath }: { basePath: string }) {
