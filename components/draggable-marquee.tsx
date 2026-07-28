@@ -37,6 +37,7 @@ export function DraggableMarquee({
   const hoveredRef = useRef(false);
   const visibleRef = useRef(false);
   const documentVisibleRef = useRef(true);
+  const cssDrivenRef = useRef(false);
   const suppressClickRef = useRef(false);
   const [dragging, setDragging] = useState(false);
   const [ready, setReady] = useState(false);
@@ -52,9 +53,8 @@ export function DraggableMarquee({
     if (!track) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const minimumFrameTime = navigator.userAgent.includes("Firefox")
-      ? 1000 / 30
-      : 0;
+    const isFirefox = navigator.userAgent.includes("Firefox");
+    cssDrivenRef.current = isFirefox;
     const measure = () => {
       halfWidthRef.current = Math.max(track.scrollWidth / 2, 1);
       offsetRef.current = wrapOffset(offsetRef.current);
@@ -62,20 +62,17 @@ export function DraggableMarquee({
     const resizeObserver = new ResizeObserver(measure);
     resizeObserver.observe(track);
     measure();
+
+    if (isFirefox) {
+      return () => resizeObserver.disconnect();
+    }
+
     setReady(true);
 
     const animate = (time: number) => {
       if (!visibleRef.current || !documentVisibleRef.current) {
         frameRef.current = null;
         lastTimeRef.current = null;
-        return;
-      }
-
-      if (
-        lastTimeRef.current !== null &&
-        time - lastTimeRef.current < minimumFrameTime
-      ) {
-        frameRef.current = window.requestAnimationFrame(animate);
         return;
       }
 
@@ -144,7 +141,7 @@ export function DraggableMarquee({
   }, [speed]);
 
   const startDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (event.button !== 0) return;
+    if (event.button !== 0 || cssDrivenRef.current) return;
     dragRef.current = {
       active: true,
       baseOffset: offsetRef.current,
@@ -158,6 +155,7 @@ export function DraggableMarquee({
   };
 
   const moveDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (cssDrivenRef.current) return;
     if (
       !dragRef.current.active ||
       dragRef.current.pointerId !== event.pointerId
@@ -173,6 +171,7 @@ export function DraggableMarquee({
   };
 
   const endDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (cssDrivenRef.current) return;
     if (
       !dragRef.current.active ||
       dragRef.current.pointerId !== event.pointerId
