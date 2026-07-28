@@ -1,90 +1,125 @@
 media:
   input: public/uploads
   output: /uploads
+  rename: true
+  categories: [image]
 
 content:
-  - name: projects
-    label: Projects
-    type: collection
-    path: content/projects
-    format: json
-    filename: "{fields.slug}.json"
-    view:
-      fields: [title, category, year, featured]
-      primary: title
-      sort: [year, title]
-      default:
-        sort: year
-        order: desc
-    fields:
-      - { name: title, label: Project title, type: string, required: true }
-      - { name: slug, label: URL slug, type: string, required: true, description: "Lowercase words separated by hyphens" }
-      - { name: year, label: Year, type: string, required: true }
-      - { name: category, label: Disciplines, type: string, required: true }
-      - { name: summary, label: Short summary, type: text, required: true }
-      - { name: image, label: Article image, type: image, required: false, description: "Used as the parallax cover image on the project article" }
-      - { name: featured, label: Feature on home page, type: boolean, default: false }
-      - name: accent
-        label: Visual style
-        type: select
-        default: world
-        options:
-          values:
-            - { value: world, label: Digital world }
-            - { value: stage, label: Stage / photography }
-            - { value: object, label: Product / object }
-      - { name: body, label: Project story, type: rich-text, required: true }
-
-  - name: journal
-    label: Journal
-    type: collection
-    path: content/journal
-    format: json
-    filename: "{fields.slug}.json"
-    view:
-      fields: [title, date, readTime]
-      primary: title
-      sort: [date, title]
-      default:
-        sort: date
-        order: desc
-    fields:
-      - { name: title, label: Post title, type: string, required: true }
-      - { name: slug, label: URL slug, type: string, required: true, description: "Lowercase words separated by hyphens" }
-      - { name: date, label: Publish date, type: date, required: true }
-      - { name: readTime, label: Read time, type: string, default: "5 min" }
-      - { name: summary, label: Short summary, type: text, required: true }
-      - { name: body, label: Post, type: rich-text, required: true }
-
   - name: photography
-    label: Photography
+    label: Photography albums
     type: collection
     path: content/photography
     format: json
     filename: "{fields.slug}.json"
     view:
-      fields: [title, category, location, year]
       primary: title
-      sort: [year, title]
-      default:
-        sort: year
-        order: desc
+      fields: [title, category, year, featured]
+      sort: year
+      order: desc
     fields:
-      - { name: title, label: Series or story title, type: string, required: true }
-      - { name: slug, label: URL slug, type: string, required: true, description: "Lowercase words separated by hyphens" }
-      - { name: year, label: Year, type: string, required: true }
+      - name: title
+        label: Album title
+        type: string
+        required: true
+      - name: slug
+        label: URL slug
+        type: string
+        required: true
+        pattern: "^[a-z0-9-]+$"
+        description: Lowercase words separated by hyphens.
+      - name: year
+        label: Year
+        type: string
+        required: true
+      - name: date
+        label: Photoshoot date
+        type: date
+        required: false
       - name: category
-        label: Photography type
+        label: Category
         type: select
         required: true
         options:
+          values: [Concert, Convention, Portrait, Product, Event, Personal]
+      - name: location
+        label: Location
+        type: string
+        required: true
+      - name: description
+        label: Short description
+        type: text
+        required: true
+        options:
+          maxlength: 280
+      - name: story
+        label: Short story
+        type: text
+        required: false
+        description: A few sentences about the atmosphere, assignment, or intention behind the set.
+      - name: instagram
+        label: Instagram photoset URL
+        type: string
+        required: false
+      - name: featured
+        label: Featured album
+        type: boolean
+      - name: tags
+        label: Tags
+        type: select
+        list: true
+        options:
           values:
-            - { value: Concert, label: Concert }
-            - { value: Convention, label: Convention }
-            - { value: Portrait, label: Portrait }
-            - { value: Editorial, label: Editorial }
-            - { value: Documentary, label: Documentary }
-            - { value: Product, label: Product }
-      - { name: location, label: Location, type: string, required: true }
-      - { name: image, label: Photograph, type: image, required: false }
-      - { name: alt, label: Image description, type: string, required: true, description: "Describe the photograph for accessibility" }
+            - Photography
+            - Videography
+            - Video Editing
+            - Marketing
+            - Brand Consulting
+            - Product Design
+            - Game Development
+            - Server Infrastructure
+            - Social Media Marketing
+            - 3D Design
+            - Minecraft Servers
+            - Graphic Design
+            - Project Management
+      - name: image
+        label: Legacy cover image
+        type: image
+        required: false
+        description: Optional fallback used by older albums.
+      - name: alt
+        label: Album cover alt text
+        type: string
+        required: true
+      - name: images
+        label: Album photographs
+        type: object
+        required: true
+        list:
+          min: 5
+          max: 20
+          collapsible:
+            collapsed: true
+            summary: "Photo {index}: {caption}"
+        fields:
+          - name: image
+            label: Photograph
+            type: image
+            required: true
+            options:
+              extensions: [jpg, jpeg, png, webp]
+              rename: true
+          - name: alt
+            label: Alt text
+            type: string
+            required: true
+          - name: caption
+            label: Optional caption
+            type: string
+            required: false
+
+settings:
+  content:
+    merge: true
+  commit:
+    message: "Update {content} in Pages CMS"
