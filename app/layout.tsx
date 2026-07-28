@@ -47,7 +47,7 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              'if(navigator.userAgent.includes("Firefox"))document.documentElement.classList.add("is-firefox")',
+              'if(navigator.userAgent.includes("Firefox")){const e=document.documentElement;e.classList.add("is-firefox");let t=0;addEventListener("scroll",()=>{e.classList.add("is-scrolling");clearTimeout(t);t=setTimeout(()=>e.classList.remove("is-scrolling"),140)},{passive:true})}',
           }}
         />
       </head>
