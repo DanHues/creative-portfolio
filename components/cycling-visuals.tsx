@@ -25,12 +25,14 @@ export function CyclingVisuals({ basePath }: { basePath: string }) {
   const [leaving, setLeaving] = useState<number | null>(null);
 
   useEffect(() => {
+    const delay = navigator.userAgent.includes("Firefox") ? 3000 : 2000;
     const interval = window.setInterval(() => {
+      if (document.hidden) return;
       setActive((current) => {
         setLeaving(current);
         return (current + 1) % visuals.length;
       });
-    }, 2000);
+    }, delay);
 
     return () => window.clearInterval(interval);
   }, []);
@@ -46,6 +48,7 @@ export function CyclingVisuals({ basePath }: { basePath: string }) {
       <div className="cycling-visual-deck">
         {visuals.map((visual, index) => {
           const offset = (index - active + visuals.length) % visuals.length;
+          if (offset > 4 && index !== leaving) return null;
           const style = {
             "--deck-offset": Math.min(offset, 4),
             "--deck-z": visuals.length - offset,
