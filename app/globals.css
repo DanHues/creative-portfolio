@@ -3028,13 +3028,18 @@ body > main { padding-top: 76px; }
   transform: none !important;
 }
 .is-firefox .hero {
+  animation: none !important;
   background: linear-gradient(135deg, #fff8fd 0%, #fae9ff 48%, #ffe8f5 100%);
 }
+.is-firefox .hero-copy::before {
+  display: none;
+}
 .is-firefox .project-polaroid {
-  box-shadow: 7px 8px 0 rgba(141,55,159,.22);
+  box-shadow: none;
 }
 .is-firefox .project-box {
   background: #fffafd;
+  box-shadow: 5px 5px 0 var(--pink);
 }
 .is-firefox .project-visual {
   isolation: auto;
@@ -3050,6 +3055,10 @@ body > main { padding-top: 76px; }
 }
 .is-firefox .project-visual .visual-mark {
   box-shadow: none;
+}
+.is-firefox .archive-callout {
+  background: #32183d;
+  box-shadow: 6px 6px 0 var(--orchid);
 }
 .is-firefox .journal-preview {
   background: linear-gradient(180deg, #181927 0%, #55586d 25%, #d5d0d4 48%, #f2ede7 70%, #eee9e4);
@@ -3070,14 +3079,14 @@ body > main { padding-top: 76px; }
 .is-firefox .contact-footer {
   isolation: auto;
   overflow: hidden;
-  background: linear-gradient(145deg, #130d1b 0%, #21152e 52%, #101b27 100%);
+  background: #191121;
 }
 .is-firefox .contact-footer::before {
   display: none;
 }
 .is-firefox .contact-kicker {
-  background: linear-gradient(110deg, #8d477f, #61568b 52%, #3d777f);
-  box-shadow: 6px 7px 0 rgba(5,4,12,.22);
+  background: #69517f;
+  box-shadow: 5px 5px 0 rgba(5,4,12,.22);
   text-shadow: none;
 }
 .is-firefox .contact-kicker::after {
@@ -3092,6 +3101,46 @@ body > main { padding-top: 76px; }
 .is-firefox .contact-project {
   box-shadow: none;
   background: #2b2038;
+}
+.is-firefox .contact-footer *,
+.is-firefox .project-story-title,
+.is-firefox .project-story-summary,
+.is-firefox .archive-row h2 {
+  text-shadow: none !important;
+}
+.is-firefox .quick-contact {
+  background: #1e1729;
+  box-shadow: none;
+}
+.is-firefox .quick-contact-logo {
+  filter: invert(1) !important;
+}
+.is-firefox .quick-contact-option {
+  background: #2b2137;
+  box-shadow: none;
+}
+.is-firefox .quick-contact-email {
+  color: #1d1324;
+  background: #d8a5d2;
+}
+.is-firefox .project-parallax-art {
+  background-image: var(--archive-art);
+}
+.is-firefox .project-intro::after {
+  background: linear-gradient(to bottom, rgba(27,7,34,.22), var(--paper));
+}
+.is-firefox .project-intro h1 {
+  background: #4e315d;
+  box-shadow: 6px 7px 0 rgba(27,11,34,.34);
+}
+.is-firefox .project-story-art {
+  background-image: var(--story-art);
+}
+.is-firefox .project-story-hero::after {
+  background: linear-gradient(to bottom, rgba(17,5,22,.08), rgba(26,8,32,.22) 56%, #f7f2f7 100%);
+}
+.is-firefox .project-paper {
+  box-shadow: 8px 10px 0 rgba(75,20,87,.12);
 }
 .is-firefox.is-scrolling *,
 .is-firefox.is-scrolling *::before,
