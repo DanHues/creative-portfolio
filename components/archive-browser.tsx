@@ -4,8 +4,10 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import type { Project } from "@/lib/content";
 import { formatProjectDate } from "@/lib/format-project-date";
+import { CREATIVE_TAGS } from "@/lib/tags";
+import { TagList } from "@/components/tag-list";
 
-const filters = ["All", "Photography", "Minecraft", "Video", "Brand", "Videography", "Development", "3D"];
+const filters = ["All", ...CREATIVE_TAGS];
 
 export function ArchiveBrowser({
   basePath,
@@ -19,7 +21,7 @@ export function ArchiveBrowser({
   const filtered = active === "All"
     ? projects
     : projects.filter((project) =>
-        `${project.category} ${project.title} ${project.summary}`
+        `${project.tags.join(" ")} ${project.category} ${project.title} ${project.summary}`
           .toLowerCase()
           .includes(active.toLowerCase()),
       );
@@ -60,7 +62,7 @@ export function ArchiveBrowser({
             <h2>{project.title}</h2>
             <p className="archive-row-summary">{project.summary}</p>
             <div className="archive-row-meta">
-              <p>{project.category}</p>
+              <TagList tags={project.tags} className="archive-row-tags" linked={false} />
               <time dateTime={project.date || project.year}>
                 {formatProjectDate(project.date, project.year)}
               </time>
