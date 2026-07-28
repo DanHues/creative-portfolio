@@ -3026,6 +3026,72 @@ body > main { padding-top: 76px; }
   inset: 0;
   transform: none !important;
 }
+.is-firefox .hero {
+  background: linear-gradient(135deg, #fff8fd 0%, #fae9ff 48%, #ffe8f5 100%);
+}
+.is-firefox .project-polaroid {
+  box-shadow: 7px 8px 0 rgba(141,55,159,.22);
+}
+.is-firefox .project-box {
+  background: #fffafd;
+}
+.is-firefox .project-visual {
+  isolation: auto;
+}
+.is-firefox .world {
+  background: linear-gradient(135deg, var(--pink), var(--plum) 48%, var(--deep-plum));
+}
+.is-firefox .stage {
+  background: linear-gradient(145deg, var(--orchid), var(--deep-plum) 58%, var(--pink));
+}
+.is-firefox .object {
+  background: linear-gradient(145deg, var(--white), #e7bce4);
+}
+.is-firefox .project-visual .visual-mark {
+  box-shadow: none;
+}
+.is-firefox .journal-preview {
+  background: linear-gradient(180deg, #181927 0%, #55586d 25%, #d5d0d4 48%, #f2ede7 70%, #eee9e4);
+}
+.is-firefox .journal-tarot {
+  clip-path: none;
+  background: linear-gradient(150deg, #171624, #28283d);
+  box-shadow: 8px 9px 0 rgba(46,54,79,.24);
+}
+.is-firefox .journal-page {
+  clip-path: none;
+  outline: 0;
+}
+.is-firefox .journal-snapshot,
+.is-firefox .journal-snapshot::after {
+  box-shadow: none;
+}
+.is-firefox .contact-footer {
+  isolation: auto;
+  overflow: hidden;
+  background: linear-gradient(145deg, #130d1b 0%, #21152e 52%, #101b27 100%);
+}
+.is-firefox .contact-footer::before {
+  display: none;
+}
+.is-firefox .contact-kicker {
+  background: linear-gradient(110deg, #8d477f, #61568b 52%, #3d777f);
+  box-shadow: 6px 7px 0 rgba(5,4,12,.22);
+  text-shadow: none;
+}
+.is-firefox .contact-kicker::after {
+  filter: none;
+}
+.is-firefox .contact-path {
+  background: #261c31;
+}
+.is-firefox .contact-path-primary {
+  background: linear-gradient(115deg, #f0a8df, #b7a4e5 60%, #92cbd0);
+}
+.is-firefox .contact-project {
+  box-shadow: none;
+  background: #2b2038;
+}
 .is-firefox.is-scrolling *,
 .is-firefox.is-scrolling *::before,
 .is-firefox.is-scrolling *::after {
