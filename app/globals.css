@@ -2460,7 +2460,7 @@ body > main { padding-top: 76px; }
 .note p, .note span { font: 10px var(--font-mono); text-transform: uppercase; }
 .note > p:first-child {
   grid-column: 1;
-  grid-row: 1 / span 4;
+  grid-row: 1 / span 2;
   color: rgba(48,39,53,.56);
   line-height: 1.6;
 }
@@ -2475,7 +2475,7 @@ body > main { padding-top: 76px; }
 }
 .note > span:last-child {
   grid-column: 3;
-  grid-row: 1 / span 4;
+  grid-row: 1 / span 2;
   font-size: 14px;
   justify-self: end;
   color: #8a728d;
