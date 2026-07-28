@@ -370,11 +370,10 @@ body > main { padding-top: 76px; }
 
 .hero {
   min-height: 0;
-  padding: 4.6vw 3.2vw 3.2vw;
+  padding: clamp(54px, 6vw, 96px) 5vw clamp(58px, 6.5vw, 104px);
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr);
-  gap: 5vw;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
   overflow: hidden;
   background:
@@ -430,7 +429,12 @@ body > main { padding-top: 76px; }
   text-transform: uppercase;
   letter-spacing: .07em;
 }
-.hero-copy { position: relative; z-index: 2; }
+.hero-copy {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
 .hero-copy::before {
   content: "";
   position: absolute;
@@ -445,9 +449,9 @@ body > main { padding-top: 76px; }
 }
 .hero h1 {
   width: 100%;
-  max-width: 900px;
+  max-width: 1080px;
   padding: 4vh 0;
-  font-size: clamp(52px, 6.55vw, 104px);
+  font-size: clamp(52px, 7.25vw, 116px);
   line-height: .9;
   letter-spacing: -.072em;
   font-weight: 720;
@@ -540,7 +544,7 @@ body > main { padding-top: 76px; }
   to { transform: rotate(-1deg) scaleX(1); }
 }
 .hero-summary {
-  max-width: 550px;
+  max-width: 650px;
   font-size: clamp(16px, 1.55vw, 22px);
   line-height: 1.45;
   letter-spacing: -.02em;
@@ -3631,10 +3635,9 @@ body > main { padding-top: 76px; }
   .site-header { grid-template-columns: 1fr auto; }
   .site-header nav { grid-column: 1 / -1; justify-self: center; }
   .availability { display: none; }
-  .hero { grid-template-columns: 1fr; padding-top: 10vw; padding-bottom: 14vw; }
+  .hero { grid-template-columns: 1fr; padding-top: 10vw; padding-bottom: 12vw; }
   .hero h1 { font-size: 11.5vw; }
   .brand-poster { width: 88%; margin-left: 4%; }
-  .cycling-visuals { width: 88%; margin-left: 4%; }
   .round-link { display: none; }
   .about {
     min-height: 410px;
@@ -3848,15 +3851,13 @@ body > main { padding-top: 76px; }
 }
 
 @media (max-width: 660px) {
-  .hero { min-height: auto; padding: 10vw 5vw 12vw; gap: 12vw; }
+  .hero { min-height: auto; padding: 12vw 5vw 14vw; }
   .hero h1 { width: 100%; max-width: 100%; font-size: clamp(42px, 11.2vw, 56px); line-height: .92; }
   .making-line { max-width: 100%; gap: .1em; }
   .cycling-window { width: 7.8em; max-width: 100%; flex-basis: auto; }
   .cycling-list > span { overflow: hidden; text-overflow: clip; }
   .hero-summary { font-size: 15px; }
   .brand-poster { width: calc(100% - 24px); margin-left: 0; box-shadow: 10px 10px 0 var(--orchid), 20px 20px 0 var(--deep-plum); }
-  .cycling-visuals { width: calc(100% - 42px); margin-left: 0; }
-  .cycling-visual-card.is-active { box-shadow: 9px 10px 0 var(--orchid), 18px 20px 0 var(--deep-plum); }
   .brand-poster figcaption { display: none; }
   .ticker-region { padding-top: 58px; }
   .ticker-title {
