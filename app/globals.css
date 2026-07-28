@@ -2093,14 +2093,23 @@ body > main { padding-top: 76px; }
 .project-parallax-art {
   position: absolute;
   inset: -155px;
-  background-image:
-    linear-gradient(110deg, rgba(27,7,34,.8), rgba(75,20,87,.43), rgba(255,31,154,.15)),
-    var(--archive-art);
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
   filter: blur(1px) saturate(.92) contrast(1.08);
   transform: translate3d(0, var(--project-parallax), 0) scale(1.28);
   will-change: transform;
+}
+.project-parallax-art img,
+.project-story-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.project-parallax-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, rgba(27,7,34,.8), rgba(75,20,87,.43), rgba(255,31,154,.15));
 }
 .project-intro::after {
   content: "";
@@ -2388,14 +2397,16 @@ body > main { padding-top: 76px; }
   position: absolute;
   inset: -175px;
   z-index: -2;
-  background-image:
-    linear-gradient(110deg, rgba(19,5,25,.62), rgba(63,19,72,.2), rgba(255,31,154,.08)),
-    var(--story-art);
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
   filter: saturate(1.18) contrast(1.04);
   transform: translate3d(0, var(--story-shift), 0) scale(1.28);
   will-change: transform;
+}
+.project-story-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, rgba(19,5,25,.62), rgba(63,19,72,.2), rgba(255,31,154,.08));
 }
 .project-story-hero::after {
   content: "";
@@ -3123,8 +3134,8 @@ body > main { padding-top: 76px; }
   color: #1d1324;
   background: #d8a5d2;
 }
-.is-firefox .project-parallax-art {
-  background-image: var(--archive-art);
+.is-firefox .project-parallax-art::after {
+  background: rgba(27,7,34,.34);
 }
 .is-firefox .project-intro::after {
   background: linear-gradient(to bottom, rgba(27,7,34,.22), var(--paper));
@@ -3133,8 +3144,8 @@ body > main { padding-top: 76px; }
   background: #4e315d;
   box-shadow: 6px 7px 0 rgba(27,11,34,.34);
 }
-.is-firefox .project-story-art {
-  background-image: var(--story-art);
+.is-firefox .project-story-art::after {
+  background: rgba(19,5,25,.22);
 }
 .is-firefox .project-story-hero::after {
   background: linear-gradient(to bottom, rgba(17,5,22,.08), rgba(26,8,32,.22) 56%, #f7f2f7 100%);
