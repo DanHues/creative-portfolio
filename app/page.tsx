@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { AboutPortrait } from "@/components/about-portrait";
 import { CyclingWords } from "@/components/cycling-words";
-import { CyclingVisuals } from "@/components/cycling-visuals";
 import { DiscordButton } from "@/components/discord-button";
 import { DraggableMarquee } from "@/components/draggable-marquee";
 import { ImpactCounters } from "@/components/impact-counters";
@@ -58,8 +57,6 @@ export default function Home() {
             through creative action.
           </p>
         </div>
-
-        <CyclingVisuals basePath={basePath} />
 
       </section>
 
