@@ -2,6 +2,7 @@ import Link from "next/link";
 import { AboutPortrait } from "@/components/about-portrait";
 import { CyclingWords } from "@/components/cycling-words";
 import { CyclingVisuals } from "@/components/cycling-visuals";
+import { DiscordButton } from "@/components/discord-button";
 import { DraggableMarquee } from "@/components/draggable-marquee";
 import { ImpactCounters } from "@/components/impact-counters";
 import { JournalReveal } from "@/components/journal-reveal";
@@ -173,17 +174,6 @@ export default function Home() {
                 </span>
               </a>
               <a
-                href="https://www.instagram.com/hues.dan/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className="social-mark social-mark-instagram" aria-hidden="true" />
-                <span>
-                  Instagram
-                  <small>@hues.dan</small>
-                </span>
-              </a>
-              <a
                 href="https://www.instagram.com/imdanhues/"
                 target="_blank"
                 rel="noreferrer"
@@ -194,6 +184,7 @@ export default function Home() {
                   <small>@imdanhues</small>
                 </span>
               </a>
+              <DiscordButton className="social-discord" compact />
             </div>
           </div>
         </div>
