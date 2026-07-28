@@ -1,0 +1,70 @@
+{
+  "title": "Sunshine PonyCon",
+  "slug": "sunshine-ponycon",
+  "year": "2026",
+  "category": "Convention",
+  "tags": ["Photography", "Videography"],
+  "location": "Sunshine PonyCon",
+  "description": "Live music, costumes, movement, and the people who made Sunshine PonyCon feel electric.",
+  "instagram": "https://www.instagram.com/hues.dan/",
+  "featured": true,
+  "image": "/uploads/sunshine-ponycon/dsc03872.webp",
+  "alt": "A performer working at a table during Sunshine PonyCon",
+  "images": [
+    {
+      "image": "/uploads/sunshine-ponycon/dsc01919.webp",
+      "alt": "A seated acoustic guitarist performing at Sunshine PonyCon",
+      "caption": "An acoustic set inside the convention."
+    },
+    {
+      "image": "/uploads/sunshine-ponycon/dsc02011.webp",
+      "alt": "Close-up of a musician playing a red bass guitar",
+      "caption": "A close look at the performance."
+    },
+    {
+      "image": "/uploads/sunshine-ponycon/dsc02231.webp",
+      "alt": "A vocalist performing under red stage lighting",
+      "caption": "The stage under a wash of red light."
+    },
+    {
+      "image": "/uploads/sunshine-ponycon/dsc02445.webp",
+      "alt": "A musician performing at electronic equipment under purple and blue lights",
+      "caption": "Color, equipment, and live sound."
+    },
+    {
+      "image": "/uploads/sunshine-ponycon/dsc02913.webp",
+      "alt": "A costumed performer kneeling among attendees at Sunshine PonyCon",
+      "caption": "Characters moving through the crowd."
+    },
+    {
+      "image": "/uploads/sunshine-ponycon/dsc03280.webp",
+      "alt": "A musician in a suit singing into a microphone",
+      "caption": "A quiet moment at the microphone."
+    },
+    {
+      "image": "/uploads/sunshine-ponycon/dsc03452.webp",
+      "alt": "A bearded musician playing a red bass guitar on stage",
+      "caption": "Bass, stage light, and concentration."
+    },
+    {
+      "image": "/uploads/sunshine-ponycon/dsc03498.webp",
+      "alt": "Two colorful performers leaning playfully into the frame",
+      "caption": "A playful portrait between performances."
+    },
+    {
+      "image": "/uploads/sunshine-ponycon/dsc03645.webp",
+      "alt": "An attendee dancing with one arm raised at Sunshine PonyCon",
+      "caption": "Movement from the convention floor."
+    },
+    {
+      "image": "/uploads/sunshine-ponycon/dsc03872.webp",
+      "alt": "A performer leaning over electronic equipment during a live set",
+      "caption": "Working inside the light."
+    },
+    {
+      "image": "/uploads/sunshine-ponycon/dsc03880.webp",
+      "alt": "An audience member filming a purple-lit stage on a phone",
+      "caption": "The final view from inside the crowd."
+    }
+  ]
+}
