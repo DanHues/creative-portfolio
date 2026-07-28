@@ -361,7 +361,7 @@ body > main { padding-top: 76px; }
 
 .hero {
   min-height: 0;
-  padding: 4vw 3.2vw 2.8vw;
+  padding: 4.6vw 3.2vw 3.2vw;
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr);
@@ -657,6 +657,7 @@ body > main { padding-top: 76px; }
   z-index: 4;
   margin: -1.4vw 0 1.5vw;
   padding-top: clamp(27px, 2.6vw, 38px);
+  background: linear-gradient(180deg, #ffe8f5 0%, #efaddd 100%);
 }
 .ticker-title {
   position: absolute;
