@@ -68,18 +68,21 @@ export default function Home() {
 
       </section>
 
-      <div className="ticker-stack">
-        <i className="ticker-block ticker-block-one" />
-        <i className="ticker-block ticker-block-two" />
-        <section className="ticker" aria-label="Creative disciplines">
-          <DraggableMarquee speed={43} trackClassName="ticker-track">
-            {[...disciplines, ...disciplines].map((item, index) => (
-              <Link href={item.href} key={`${item.label}-${index}`}>
-                {item.label} <span>✦</span>
-              </Link>
-            ))}
-          </DraggableMarquee>
-        </section>
+      <div className="ticker-region">
+        <p className="ticker-title">Things I do</p>
+        <div className="ticker-stack">
+          <i className="ticker-block ticker-block-one" />
+          <i className="ticker-block ticker-block-two" />
+          <section className="ticker" aria-label="Creative disciplines">
+            <DraggableMarquee speed={43} trackClassName="ticker-track">
+              {[...disciplines, ...disciplines].map((item, index) => (
+                <Link href={item.href} key={`${item.label}-${index}`}>
+                  {item.label} <span>✦</span>
+                </Link>
+              ))}
+            </DraggableMarquee>
+          </section>
+        </div>
       </div>
 
       <section className="featured section-shell" id="featured">
