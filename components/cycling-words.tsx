@@ -23,12 +23,14 @@ export function CyclingWords() {
   const [leaving, setLeaving] = useState<number | null>(null);
 
   useEffect(() => {
+    const delay = navigator.userAgent.includes("Firefox") ? 3000 : 2000;
     const interval = window.setInterval(() => {
+      if (document.hidden) return;
       setActive((current) => {
         setLeaving(current);
         return (current + 1) % words.length;
       });
-    }, 2000);
+    }, delay);
 
     return () => window.clearInterval(interval);
   }, []);
