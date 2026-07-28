@@ -12,6 +12,10 @@ export function ProjectHero({ basePath }: { basePath: string }) {
   useEffect(() => {
     const hero = heroRef.current;
     if (!hero) return;
+    if (navigator.userAgent.includes("Firefox")) {
+      hero.style.setProperty("--project-parallax", "0px");
+      return;
+    }
 
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
@@ -69,7 +73,6 @@ export function ProjectHero({ basePath }: { basePath: string }) {
         <div className="project-parallax-art" />
       </div>
       <div className="project-intro-copy">
-        <p className="eyebrow">The work, collected</p>
         <h1>Projects</h1>
       </div>
     </section>
