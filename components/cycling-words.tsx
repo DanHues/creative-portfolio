@@ -23,10 +23,14 @@ export function CyclingWords() {
   const [leaving, setLeaving] = useState<number | null>(null);
 
   useEffect(() => {
-    if (navigator.userAgent.includes("Firefox")) return;
-    const delay = 2000;
+    const delay = navigator.userAgent.includes("Firefox") ? 2400 : 2000;
     const interval = window.setInterval(() => {
-      if (document.hidden) return;
+      if (
+        document.hidden ||
+        document.documentElement.classList.contains("is-scrolling")
+      ) {
+        return;
+      }
       setActive((current) => {
         setLeaving(current);
         return (current + 1) % words.length;
