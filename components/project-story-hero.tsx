@@ -1,6 +1,5 @@
 "use client";
 
-import type { CSSProperties } from "react";
 import { useEffect, useRef } from "react";
 
 type ProjectStoryHeroProps = {
@@ -24,10 +23,6 @@ export function ProjectStoryHero({
       ? image
       : `${basePath}${image.startsWith("/") ? image : `/${image}`}`
     : `${basePath}/danhues-banner.png`;
-  const style = {
-    "--story-art": `url("${articleImage}")`,
-  } as CSSProperties;
-
   useEffect(() => {
     const hero = heroRef.current;
     if (!hero) return;
@@ -74,8 +69,10 @@ export function ProjectStoryHero({
   }, []);
 
   return (
-    <div className="project-story-hero" ref={heroRef} style={style}>
-      <div className="project-story-art" aria-hidden="true" />
+    <div className="project-story-hero" ref={heroRef}>
+      <div className="project-story-art" aria-hidden="true">
+        <img src={articleImage} alt="" />
+      </div>
       <div className="project-story-title">
         <p>{category}</p>
         <h1>{title}</h1>
