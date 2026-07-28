@@ -7,7 +7,13 @@ import { formatProjectDate } from "@/lib/format-project-date";
 
 const filters = ["All", "Photography", "Minecraft", "Video", "Brand", "Videography", "Development", "3D"];
 
-export function ArchiveBrowser({ projects }: { projects: Project[] }) {
+export function ArchiveBrowser({
+  basePath,
+  projects,
+}: {
+  basePath: string;
+  projects: Project[];
+}) {
   const searchParams = useSearchParams();
   const active = searchParams.get("tag") || "All";
   const filtered = active === "All"
@@ -21,15 +27,25 @@ export function ArchiveBrowser({ projects }: { projects: Project[] }) {
   return (
     <section className="archive-grid">
       <div className="filters" aria-label="Filter projects">
-        {filters.map((filter) => (
-          <Link
-            className={active === filter ? "active" : ""}
-            href={filter === "All" ? "/archive" : `/archive?tag=${encodeURIComponent(filter)}`}
-            key={filter}
-          >
-            {filter === "All" ? "All work" : filter}
-          </Link>
-        ))}
+        {filters.map((filter) =>
+          filter === "All" ? (
+            <a
+              className={active === filter ? "active" : ""}
+              href={`${basePath}/archive/`}
+              key={filter}
+            >
+              All work
+            </a>
+          ) : (
+            <Link
+              className={active === filter ? "active" : ""}
+              href={`/archive?tag=${encodeURIComponent(filter)}`}
+              key={filter}
+            >
+              {filter}
+            </Link>
+          ),
+        )}
       </div>
       <p className="filter-status">
         Showing <strong>{active === "All" ? "everything" : active}</strong>
