@@ -2046,19 +2046,29 @@ body > main { padding-top: 76px; }
   position: relative;
   z-index: 1;
   display: grid;
-  justify-items: start;
+  justify-items: center;
+  text-align: center;
 }
 .project-intro h1 {
   width: fit-content;
   margin-top: 1.8vw;
   padding: .14em .32em .18em;
-  color: #24122a;
-  background: rgba(255,250,253,.94);
-  border: 1px solid rgba(255,255,255,.76);
-  box-shadow: 10px 12px 0 rgba(48,16,56,.42), 0 20px 55px rgba(7,3,12,.28);
+  color: #fffafd;
+  background:
+    linear-gradient(125deg, rgba(77,29,91,.72), rgba(87,72,133,.58) 55%, rgba(39,102,111,.56)) padding-box,
+    linear-gradient(110deg, rgba(255,139,214,.95), rgba(190,161,236,.9) 52%, rgba(126,213,216,.9)) border-box;
+  border: 2px solid transparent;
+  box-shadow:
+    0 0 38px rgba(188,147,236,.25),
+    10px 12px 0 rgba(27,11,34,.34),
+    inset 0 1px 0 rgba(255,255,255,.18);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
   font-size: clamp(46px, 6.2vw, 92px);
   line-height: .88;
   letter-spacing: -.065em;
+  text-align: center;
+  text-shadow: 0 2px 22px rgba(17,7,22,.34);
   transform: rotate(-1.4deg);
 }
 .archive-lead {
