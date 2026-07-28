@@ -2574,6 +2574,14 @@ body > main { padding-top: 76px; }
   font-size: clamp(17px, 1.3vw, 19px);
 }
 
+@media (max-width: 1180px) {
+  .availability { display: none; }
+  .site-header nav {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
+
 @media (max-width: 900px) {
   .site-header { grid-template-columns: 1fr auto; }
   .site-header nav { grid-column: 1 / -1; justify-self: center; }
