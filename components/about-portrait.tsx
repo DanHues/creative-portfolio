@@ -10,6 +10,10 @@ export function AboutPortrait({ basePath }: { basePath: string }) {
     const frame = frameRef.current;
     const image = imageRef.current;
     if (!frame || !image) return;
+    if (navigator.userAgent.includes("Firefox")) {
+      image.style.setProperty("--portrait-shift", "0px");
+      return;
+    }
 
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
