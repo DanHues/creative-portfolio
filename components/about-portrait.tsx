@@ -28,8 +28,8 @@ export function AboutPortrait({ basePath }: { basePath: string }) {
       const viewportCenter = window.innerHeight / 2;
       const portraitCenter = bounds.top + bounds.height / 2;
       const shift = Math.max(
-        -16,
-        Math.min(16, (viewportCenter - portraitCenter) * 0.035),
+        -34,
+        Math.min(34, (viewportCenter - portraitCenter) * 0.075),
       );
 
       image.style.setProperty("--portrait-shift", `${shift.toFixed(2)}px`);
