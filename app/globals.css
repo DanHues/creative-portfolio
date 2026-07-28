@@ -2925,6 +2925,12 @@ body > main { padding-top: 76px; }
 .is-firefox {
   scroll-behavior: auto;
 }
+.is-firefox *,
+.is-firefox *::before,
+.is-firefox *::after {
+  animation: none !important;
+  transition: none !important;
+}
 .is-firefox .site-header,
 .is-firefox .quick-contact-backdrop,
 .is-firefox .quick-contact,
@@ -2952,9 +2958,6 @@ body > main { padding-top: 76px; }
 .is-firefox .project-story-art {
   filter: none !important;
 }
-.is-firefox .cycling-visual-card {
-  transition-duration: .35s;
-}
 .is-firefox .about-portrait img,
 .is-firefox .project-parallax-art,
 .is-firefox .project-story-art {
@@ -2962,7 +2965,9 @@ body > main { padding-top: 76px; }
 }
 .is-firefox .ticker-track,
 .is-firefox .client-track {
-  will-change: transform;
+  animation: none !important;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
 }
 .is-firefox .site-header {
   background: rgba(255,249,253,.98);
@@ -2978,6 +2983,7 @@ body > main { padding-top: 76px; }
 .is-firefox .contact-footer {
   content-visibility: visible;
   contain-intrinsic-size: none;
+  contain: paint;
 }
 .is-firefox .project-polaroid,
 .is-firefox .project-box,
@@ -2989,6 +2995,23 @@ body > main { padding-top: 76px; }
 .is-firefox .site-header {
   will-change: transform;
   transform: translateZ(0);
+  box-shadow: none;
+}
+.is-firefox img,
+.is-firefox .archive-thumb {
+  filter: none !important;
+}
+.is-firefox .journal-preview::before,
+.is-firefox .archive-thumb {
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+}
+.is-firefox .journal-reveal {
+  opacity: 1;
+  transform: none;
+}
+.is-firefox .cycling-headline mark::after {
+  transform: rotate(-1deg) scaleX(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
