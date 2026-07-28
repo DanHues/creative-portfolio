@@ -60,7 +60,8 @@ export default function Home() {
           </h1>
           <p className="hero-summary">
             Across physical and digital spaces, I bring ideas to life through
-            images, worlds, products, stories, and systems.
+            coordination, development, design, marketing, branding, stories,
+            and systems.
           </p>
         </div>
 
