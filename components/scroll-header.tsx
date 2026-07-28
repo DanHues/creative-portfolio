@@ -68,7 +68,7 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
         <Link href="/photography" onClick={closeMenu}>Photography</Link>
         <Link href="/#about" onClick={closeMenu}>About</Link>
         <a className="mobile-nav-contact" href="mailto:hello@example.com" onClick={closeMenu}>
-          Start a conversation &nearr;
+          Start a conversation {"\u2197"}
         </a>
       </nav>
       <a className="availability" href="mailto:hello@example.com">
