@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { createPortal } from "react-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { DiscordButton } from "@/components/discord-button";
 
 export function ScrollHeader({
@@ -91,6 +91,22 @@ export function ScrollHeader({
   }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
+  const openAbout = (event: MouseEvent<HTMLAnchorElement>) => {
+    closeMenu();
+
+    const homePath = `${basePath}/`;
+    if (window.location.pathname !== homePath && window.location.pathname !== basePath) return;
+
+    const about = document.getElementById("about");
+    if (!about) return;
+
+    event.preventDefault();
+    window.history.pushState(null, "", `${homePath}#about`);
+    about.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.setTimeout(() => {
+      about.scrollIntoView({ behavior: "auto", block: "start" });
+    }, 500);
+  };
   const openContact = () => {
     setMenuOpen(false);
     setContactOpen(true);
@@ -207,7 +223,7 @@ export function ScrollHeader({
         </Link>
         <div className="nav-group nav-group-right">
           <Link href="/photography" onClick={closeMenu}>Photography</Link>
-          <Link href="/#about" onClick={closeMenu}>About</Link>
+          <Link href="/#about" onClick={openAbout}>About</Link>
         </div>
         <button className="mobile-nav-contact" type="button" onClick={openContact}>
           Start a conversation
