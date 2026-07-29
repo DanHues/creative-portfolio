@@ -18,7 +18,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   if (!project) notFound();
   const basePath = process.env.PAGES_BASE_PATH || "";
   return (
-    <main>
+    <main className="project-entry-page">
       <SiteHeader />
       <SubpageControls
         backHref="/archive"
