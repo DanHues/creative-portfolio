@@ -3113,7 +3113,7 @@ body > main { padding-top: 76px; }
 .photo-story-facts {
   margin-top: clamp(38px, 5vw, 68px);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   border-top: 1px solid rgba(255,255,255,.2);
   border-bottom: 1px solid rgba(255,255,255,.2);
 }
@@ -3284,6 +3284,30 @@ body > main { padding-top: 76px; }
   padding: 11px 4px 0;
   color: rgba(43,27,47,.62);
   font: 8px/1.4 var(--font-mono);
+}
+.photo-set-more {
+  min-width: min(310px, 100%);
+  margin: clamp(28px, 4vw, 52px) auto 0;
+  padding: 15px 26px;
+  display: block;
+  border: 1px solid rgba(52,31,57,.34);
+  border-radius: 999px;
+  color: #fff;
+  background: #28152f;
+  box-shadow: 5px 6px 0 rgba(179,105,226,.22);
+  font: 10px var(--font-mono);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.photo-set-more:hover,
+.photo-set-more:focus-visible {
+  color: #241229;
+  background: linear-gradient(105deg, #f0d5ff, #ef63cf);
+  box-shadow: 3px 4px 0 rgba(75,20,87,.2);
+  transform: translateY(-2px);
+  outline: none;
 }
 .photo-story-contact {
   padding: clamp(68px, 9vw, 132px) 5vw;
