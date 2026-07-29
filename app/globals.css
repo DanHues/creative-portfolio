@@ -3016,6 +3016,26 @@ body > main { padding-top: 76px; }
   font-family: Georgia, "Times New Roman", serif;
   font-size: 14px;
 }
+.photo-lightbox-inquiry {
+  padding: 7px 11px;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 999px;
+  color: rgba(255,255,255,.88);
+  background: rgba(44,24,51,.66);
+  font: 8px var(--font-mono);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.photo-lightbox-inquiry:hover,
+.photo-lightbox-inquiry:focus-visible {
+  color: #27142e;
+  background: #f1d7ff;
+  border-color: #f1d7ff;
+  transform: translateY(-2px);
+  outline: none;
+}
 .photo-empty { min-height: 260px; }
 
 .photography-story-page {
@@ -4111,10 +4131,11 @@ body > main { padding-top: 76px; }
     padding: 0 54px;
   }
   .photo-lightbox-footer p {
-    overflow: hidden;
-    font-size: 12px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    display: none;
+  }
+  .photo-lightbox-inquiry {
+    padding: 7px 9px;
+    font-size: 7px;
   }
   .story-head { padding: 16vw 5vw 12vw; }
   .story-visual { width: 90vw; margin-left: 5vw; }
