@@ -24,6 +24,11 @@ export function PhotoSetViewer({
   const touchStart = useRef<number | null>(null);
   const current = active === null ? null : photos[active];
   const visiblePhotos = photos.slice(0, visibleCount);
+  const inquiryHref = `mailto:danielhughesps@gmail.com?subject=${encodeURIComponent(
+    `Photography inquiry — ${albumTitle}`,
+  )}&body=${encodeURIComponent(
+    `Hi Daniel,\n\nI was viewing your ${albumTitle} photos and would like to discuss photography coverage for `,
+  )}`;
 
   function move(direction: number) {
     if (active === null || photos.length < 2) return;
@@ -109,6 +114,9 @@ export function PhotoSetViewer({
             <div className="photo-lightbox-footer">
               <span>{String(active + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}</span>
               <p>{current.caption || albumTitle}</p>
+              <a className="photo-lightbox-inquiry" href={inquiryHref}>
+                Interested in coverage?
+              </a>
             </div>
           </div>
         </div>,
