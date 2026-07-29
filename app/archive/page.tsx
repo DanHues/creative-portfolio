@@ -9,7 +9,7 @@ export default function Archive() {
   const basePath = process.env.PAGES_BASE_PATH || "";
 
   return (
-    <main>
+    <main className="archive-home">
       <SiteHeader />
       <ProjectHero basePath={basePath} />
       <Suspense fallback={<section className="archive-grid" />}>
