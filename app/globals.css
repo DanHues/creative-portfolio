@@ -51,14 +51,6 @@ body > main { padding-top: 76px; }
   transition: height .28s ease, padding .28s ease, background .28s ease, box-shadow .28s ease;
 }
 .site-header.page-static { position: absolute; }
-.archive-home,
-.project-entry-page,
-.journal-home,
-.journal-entry-page,
-.photography-home,
-.photography-story-page {
-  padding-top: 94px;
-}
 .site-header.compact {
   height: 54px;
   padding-top: 5px;
@@ -4362,11 +4354,22 @@ body > main { padding-top: 76px; }
 .is-firefox .journal-entry-page,
 .is-firefox .photography-home,
 .is-firefox .photography-story-page {
-  padding-top: 94px;
+  padding-top: 76px;
 }
 .is-firefox .site-header.menu-open {
   position: fixed;
   top: 0;
+}
+
+@media (max-width: 760px) {
+  .is-firefox .archive-home,
+  .is-firefox .project-entry-page,
+  .is-firefox .journal-home,
+  .is-firefox .journal-entry-page,
+  .is-firefox .photography-home,
+  .is-firefox .photography-story-page {
+    padding-top: 66px;
+  }
 }
 .is-firefox .back-to-top {
   display: none;
