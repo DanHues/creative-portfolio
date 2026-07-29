@@ -91,6 +91,16 @@ export function ScrollHeader({
   }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
+  const openHome = (event: MouseEvent<HTMLAnchorElement>) => {
+    closeMenu();
+
+    const homePath = `${basePath}/`;
+    if (window.location.pathname !== homePath && window.location.pathname !== basePath) return;
+
+    event.preventDefault();
+    window.history.replaceState(null, "", homePath);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   const openAbout = (event: MouseEvent<HTMLAnchorElement>) => {
     closeMenu();
 
@@ -178,7 +188,7 @@ export function ScrollHeader({
   return (
     <>
     <header className={`site-header${floating ? "" : " page-static"}${compact ? " compact" : ""}${menuOpen ? " menu-open" : ""}${contactOpen ? " contact-open" : ""}`}>
-      <Link className="mobile-header-logo" href="/" aria-label="DanHues home">
+      <Link className="mobile-header-logo" href="/" aria-label="DanHues home" onClick={openHome}>
         <Image
           src={`${basePath}/danhuestext.png`}
           alt="DanHues"
@@ -212,7 +222,7 @@ export function ScrollHeader({
           <Link href="/archive" onClick={closeMenu}>Projects</Link>
           <Link href="/journal" onClick={closeMenu}>Journal</Link>
         </div>
-        <Link className="nav-wordmark" href="/" aria-label="DanHues home" onClick={closeMenu}>
+        <Link className="nav-wordmark" href="/" aria-label="DanHues home" onClick={openHome}>
           <Image
             src={`${basePath}/danhuestext.png`}
             alt="DanHues"
