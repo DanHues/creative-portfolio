@@ -20,8 +20,10 @@ export function PhotoSetViewer({
   basePath: string;
 }) {
   const [active, setActive] = useState<number | null>(null);
+  const [visibleCount, setVisibleCount] = useState(8);
   const touchStart = useRef<number | null>(null);
   const current = active === null ? null : photos[active];
+  const visiblePhotos = photos.slice(0, visibleCount);
 
   function move(direction: number) {
     if (active === null || photos.length < 2) return;
@@ -117,7 +119,7 @@ export function PhotoSetViewer({
   return (
     <>
       <div className="photo-set-grid">
-        {photos.map((photo, index) => (
+        {visiblePhotos.map((photo, index) => (
           <figure className="photo-set-item" key={`${photo.image}-${index}`}>
             <button
               type="button"
@@ -135,6 +137,15 @@ export function PhotoSetViewer({
           </figure>
         ))}
       </div>
+      {visibleCount < photos.length ? (
+        <button
+          className="photo-set-more"
+          type="button"
+          onClick={() => setVisibleCount((count) => Math.min(count + 8, photos.length))}
+        >
+          View more photographs
+        </button>
+      ) : null}
       {lightbox}
     </>
   );
