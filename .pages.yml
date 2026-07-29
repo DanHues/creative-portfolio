@@ -118,6 +118,70 @@ content:
             type: string
             required: false
 
+  - name: journal
+    label: Journal entries
+    type: collection
+    path: content/journal
+    format: json
+    filename: "{fields.slug}.json"
+    view:
+      primary: title
+      fields: [title, date, readTime]
+      sort: date
+      order: desc
+    fields:
+      - name: title
+        label: Entry title
+        type: string
+        required: true
+      - name: slug
+        label: URL slug
+        type: string
+        required: true
+        pattern: "^[a-z0-9-]+$"
+        description: Lowercase words separated by hyphens.
+      - name: date
+        label: Publish date
+        type: date
+        required: true
+      - name: readTime
+        label: Reading time
+        type: string
+        required: true
+        description: For example, 5 min.
+      - name: summary
+        label: Short summary
+        type: text
+        required: true
+        options:
+          maxlength: 280
+      - name: tags
+        label: Backlink tags
+        type: select
+        list: true
+        required: false
+        description: Used for related work and backlinking; these stay hidden on the Journal index.
+        options:
+          values:
+            - Photography
+            - Videography
+            - Video Editing
+            - Marketing
+            - Brand Consulting
+            - Product Design
+            - Game Development
+            - Server Infrastructure
+            - Social Media Marketing
+            - 3D Design
+            - Minecraft Servers
+            - Graphic Design
+            - Project Management
+      - name: body
+        label: Journal entry
+        type: rich-text
+        required: true
+        description: Write the full entry here. Headings, links, lists, and paragraphs are supported.
+
 settings:
   content:
     merge: true
