@@ -112,7 +112,7 @@ export default async function PhotographyStoryPage({
 
         <section className="photo-story-contact">
           <p className="eyebrow">Need coverage?</p>
-          <h2>Let&apos;s photograph what you&apos;re making.</h2>
+          <h2>What should we remember?</h2>
           <p>Concerts, conventions, events, portraits, and projects that deserve to be remembered properly.</p>
           <a href="mailto:danielhughesps@gmail.com?subject=Photography%20inquiry">
             Request availability
