@@ -118,6 +118,90 @@ content:
             type: string
             required: false
 
+  - name: projects
+    label: Projects
+    type: collection
+    path: content/projects
+    format: json
+    filename: "{fields.slug}.json"
+    view:
+      primary: title
+      fields: [title, category, year, featured]
+      sort: year
+      order: desc
+    fields:
+      - name: title
+        label: Project title
+        type: string
+        required: true
+      - name: slug
+        label: URL slug
+        type: string
+        required: true
+        pattern: "^[a-z0-9-]+$"
+        description: Lowercase words separated by hyphens.
+      - name: year
+        label: Year
+        type: string
+        required: true
+      - name: date
+        label: Project date
+        type: date
+        required: false
+      - name: category
+        label: Project disciplines
+        type: string
+        required: true
+        description: A short discipline line shown with the project.
+      - name: tags
+        label: Tags
+        type: select
+        list: true
+        required: true
+        options:
+          values:
+            - Photography
+            - Videography
+            - Video Editing
+            - Marketing
+            - Brand Consulting
+            - Product Design
+            - Game Development
+            - Server Infrastructure
+            - Social Media Marketing
+            - 3D Design
+            - Minecraft Servers
+            - Graphic Design
+            - Project Management
+      - name: summary
+        label: Short description
+        type: text
+        required: true
+        options:
+          maxlength: 280
+      - name: featured
+        label: Selected work
+        type: boolean
+        description: Include this project in Selected Work on the homepage.
+      - name: accent
+        label: Visual treatment
+        type: select
+        required: true
+        options:
+          values: [world, stage, object]
+      - name: image
+        label: Project image
+        type: image
+        required: false
+        options:
+          extensions: [jpg, jpeg, png, webp]
+          rename: true
+      - name: body
+        label: Project article
+        type: rich-text
+        required: true
+        description: Write the complete case study here. Headings, links, lists, and paragraphs are supported.
+
   - name: journal
     label: Journal entries
     type: collection
