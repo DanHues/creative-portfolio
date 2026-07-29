@@ -100,7 +100,7 @@ export default async function PhotographyStoryPage({
         </header>
 
         <section className="photo-story-note" aria-labelledby="photo-story-note-title">
-          <h2 id="photo-story-note-title">The story behind the photographs</h2>
+          <h2 id="photo-story-note-title">The story behind the lens</h2>
           <p>{album.story || album.description}</p>
         </section>
 
