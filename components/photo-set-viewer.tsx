@@ -20,7 +20,7 @@ export function PhotoSetViewer({
   basePath: string;
 }) {
   const [active, setActive] = useState<number | null>(null);
-  const [visibleCount, setVisibleCount] = useState(8);
+  const [visibleCount, setVisibleCount] = useState(3);
   const touchStart = useRef<number | null>(null);
   const current = active === null ? null : photos[active];
   const visiblePhotos = photos.slice(0, visibleCount);
@@ -141,7 +141,7 @@ export function PhotoSetViewer({
         <button
           className="photo-set-more"
           type="button"
-          onClick={() => setVisibleCount((count) => Math.min(count + 8, photos.length))}
+          onClick={() => setVisibleCount((count) => Math.min(count + 3, photos.length))}
         >
           View more photographs
         </button>
