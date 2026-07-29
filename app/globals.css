@@ -3196,6 +3196,13 @@ body > main { padding-top: 76px; }
   line-height: .95;
   letter-spacing: -.06em;
 }
+.photo-story-note h2 {
+  max-width: 720px;
+  margin-top: 0;
+  font-size: clamp(34px, 4.2vw, 58px);
+  line-height: 1;
+  letter-spacing: -.045em;
+}
 .photo-story-note > p:last-child {
   max-width: 720px;
   margin-top: 24px;
@@ -4533,6 +4540,9 @@ body > main { padding-top: 76px; }
   .photo-story-gallery-head h2,
   .photo-story-contact h2 {
     font-size: clamp(40px, 12vw, 58px);
+  }
+  .photo-story-note h2 {
+    font-size: clamp(32px, 9vw, 44px);
   }
   .photo-story-gallery {
     padding-right: 5vw;
