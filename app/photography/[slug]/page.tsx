@@ -106,14 +106,7 @@ export default async function PhotographyStoryPage({
           <p>{album.story || album.description}</p>
         </section>
 
-        <section className="photo-story-gallery" aria-labelledby="photo-story-gallery-title">
-          <div className="photo-story-gallery-head">
-            <div>
-              <p className="eyebrow">The complete album</p>
-              <h2 id="photo-story-gallery-title">Open any frame.</h2>
-            </div>
-            <p>Click a photograph to view it full size. Use arrows or swipe to move through the set.</p>
-          </div>
+        <section className="photo-story-gallery" aria-label={`${album.title} photographs`}>
           <PhotoSetViewer albumTitle={album.title} photos={photos} basePath={basePath} />
         </section>
 
