@@ -2,6 +2,7 @@ import Link from "next/link";
 import { AboutPortrait } from "@/components/about-portrait";
 import { CyclingWords } from "@/components/cycling-words";
 import { DiscordButton } from "@/components/discord-button";
+import { SocialIcon } from "@/components/social-icon";
 import { DraggableMarquee } from "@/components/draggable-marquee";
 import { ImpactCounters } from "@/components/impact-counters";
 import { JournalReveal } from "@/components/journal-reveal";
@@ -136,7 +137,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <i className="social-mark social-mark-tiktok" aria-hidden="true" />
+                <SocialIcon platform="tiktok" />
                 <span>
                   TikTok
                   <small>@danhues</small>
@@ -147,7 +148,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <i className="social-mark social-mark-youtube" aria-hidden="true" />
+                <SocialIcon platform="youtube" />
                 <span>
                   YouTube
                   <small>@imdanhues</small>
@@ -158,7 +159,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <i className="social-mark social-mark-instagram social-mark-instagram-alt" aria-hidden="true" />
+                <SocialIcon platform="instagram" />
                 <span>
                   Instagram
                   <small>@imdanhues</small>
