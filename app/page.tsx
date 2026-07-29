@@ -38,7 +38,7 @@ export default function Home() {
 
   return (
     <main>
-      <SiteHeader />
+      <SiteHeader floating />
 
       <section className="hero">
         <div className="hero-copy">
