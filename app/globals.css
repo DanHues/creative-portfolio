@@ -154,6 +154,7 @@ body > main { padding-top: 76px; }
   transition: color .2s, border-color .2s, transform .2s;
   cursor: pointer;
 }
+.site-header .availability { color: var(--ink); }
 .availability:hover { color: var(--hot-pink); border-color: var(--hot-pink); transform: translateY(-2px); }
 .availability i {
   display: inline-block;
@@ -1065,6 +1066,7 @@ body > main { padding-top: 76px; }
   align-items: center;
   position: relative;
   overflow: hidden;
+  scroll-margin-top: 54px;
 }
 .about::after {
   content: "";
@@ -3414,6 +3416,76 @@ body > main { padding-top: 76px; }
 .journal-story .story-head { text-align: center; }
 .journal-story .story-head > p:last-child { margin: 0 auto; }
 .journal-story .rich-copy { padding-top: 3vw; }
+
+.journal-entry-page {
+  color: #443746;
+  background:
+    radial-gradient(circle, rgba(92,72,96,.11) 1px, transparent 1.5px) 0 0 / 22px 22px,
+    linear-gradient(135deg, #eee7e3, #f7f1eb 48%, #ebe3e4);
+}
+.journal-entry-page .journal-story {
+  width: min(1040px, calc(100% - 9vw));
+  margin: 0 auto;
+  padding: clamp(76px, 9vw, 132px) 0 clamp(84px, 10vw, 140px);
+}
+.journal-entry-head {
+  padding: clamp(44px, 6vw, 76px) clamp(28px, 6vw, 78px) clamp(66px, 8vw, 104px);
+  position: relative;
+  text-align: center;
+  border: 1px solid rgba(83,62,87,.28);
+  background: rgba(255,252,247,.94);
+  box-shadow: 12px 14px 0 rgba(83,62,87,.08);
+  clip-path: polygon(18px 0, calc(100% - 18px) 0, 100% 18px, 100% calc(100% - 18px), calc(100% - 18px) 100%, 18px 100%, 0 calc(100% - 18px), 0 18px);
+}
+.journal-entry-head::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(83,62,87,.12);
+  pointer-events: none;
+}
+.journal-entry-ornament {
+  display: block;
+  margin-bottom: clamp(28px, 4vw, 48px);
+  color: rgba(82,65,87,.54);
+  font: 9px var(--font-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.journal-entry-head h1 {
+  max-width: 850px;
+  margin: clamp(16px, 2vw, 26px) auto 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 8vw, 102px);
+  font-weight: 400;
+  line-height: .92;
+  letter-spacing: -.065em;
+}
+.journal-entry-head > p:last-child {
+  max-width: 650px;
+  margin: clamp(24px, 3vw, 38px) auto 0;
+  color: rgba(68,55,70,.7);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(17px, 2vw, 23px);
+  line-height: 1.5;
+}
+.journal-entry-paper {
+  width: min(780px, calc(100% - 6vw));
+  margin: clamp(-44px, -3vw, -28px) auto 0;
+  padding: clamp(44px, 6vw, 74px);
+  position: relative;
+  z-index: 2;
+  border: 1px solid rgba(83,62,87,.22);
+  background: #fffdf8;
+  box-shadow: 14px 16px 0 rgba(83,62,87,.09);
+}
+.journal-entry-paper .rich-copy {
+  width: 100%;
+  padding: 0;
+  color: #4a3c4c;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(17px, 1.65vw, 20px);
+}
 
 .subpage-back {
   position: fixed;
