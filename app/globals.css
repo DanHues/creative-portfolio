@@ -3170,9 +3170,10 @@ body > main { padding-top: 76px; }
 }
 .photo-story-note {
   width: min(940px, calc(100% - 10vw));
-  margin: clamp(48px, 6vw, 82px) auto clamp(24px, 3vw, 42px);
+  margin: clamp(-42px, -3vw, -26px) auto clamp(24px, 3vw, 42px);
   padding: clamp(30px, 5vw, 68px);
   position: relative;
+  z-index: 3;
   border: 1px solid rgba(62,37,68,.26);
   background: #fffdfb;
   box-shadow: 13px 15px 0 rgba(75,20,87,.1);
@@ -3227,7 +3228,9 @@ body > main { padding-top: 76px; }
 }
 .photo-set-grid {
   width: min(1320px, 100%);
-  margin: 0 auto;
+  margin: clamp(-70px, -5vw, -52px) auto 0;
+  position: relative;
+  z-index: 2;
   columns: 3 300px;
   column-gap: clamp(14px, 2vw, 28px);
 }
@@ -4523,6 +4526,7 @@ body > main { padding-top: 76px; }
   }
   .photo-story-note {
     width: calc(100% - 10vw);
+    margin-top: -20px;
     padding: 34px 25px;
   }
   .photo-story-note h2,
@@ -4539,7 +4543,10 @@ body > main { padding-top: 76px; }
     flex-direction: column;
     gap: 18px;
   }
-  .photo-set-grid { columns: 1; }
+  .photo-set-grid {
+    margin-top: -48px;
+    columns: 1;
+  }
   .photo-set-item button > span {
     opacity: 1;
     transform: none;
