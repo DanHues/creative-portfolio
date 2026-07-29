@@ -64,7 +64,6 @@ export default async function PhotographyStoryPage({
               />
             ))}
           </div>
-          <p className="eyebrow">Photography archive</p>
           <h1>{album.title}</h1>
 
           <dl className="photo-story-facts">
