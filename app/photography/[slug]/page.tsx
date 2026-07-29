@@ -64,7 +64,7 @@ export default async function PhotographyStoryPage({
               />
             ))}
           </div>
-          <p className="eyebrow">Photoshoot {String(photos.length).padStart(2, "0")}</p>
+          <p className="eyebrow">Photography archive</p>
           <h1>{album.title}</h1>
           <p className="photo-story-context">{album.description}</p>
 
@@ -80,10 +80,6 @@ export default async function PhotographyStoryPage({
             <div>
               <dt>Type</dt>
               <dd>{album.category}</dd>
-            </div>
-            <div>
-              <dt>Album</dt>
-              <dd>{photos.length} photographs</dd>
             </div>
           </dl>
 
