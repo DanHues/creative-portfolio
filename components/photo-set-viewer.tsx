@@ -143,7 +143,7 @@ export function PhotoSetViewer({
           type="button"
           onClick={() => setVisibleCount((count) => Math.min(count + 3, photos.length))}
         >
-          View more photographs
+          Load more
         </button>
       ) : null}
       {lightbox}
