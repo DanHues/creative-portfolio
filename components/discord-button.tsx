@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { SocialIcon } from "@/components/social-icon";
 
 export function DiscordButton({
   className = "",
@@ -35,7 +36,7 @@ export function DiscordButton({
       onClick={copyHandle}
       aria-label="Copy DanHues Discord username"
     >
-      {compact && <i className="social-mark social-mark-discord" aria-hidden="true" />}
+      {compact && <SocialIcon platform="discord" />}
       <span>
         {copied ? "Copied!" : compact ? "Discord" : "Copy Discord"}
         <small>{copied ? "danhues is on your clipboard" : "danhues"}</small>
