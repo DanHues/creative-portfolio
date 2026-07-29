@@ -6,7 +6,13 @@ import { createPortal } from "react-dom";
 import { useEffect, useRef, useState } from "react";
 import { DiscordButton } from "@/components/discord-button";
 
-export function ScrollHeader({ basePath }: { basePath: string }) {
+export function ScrollHeader({
+  basePath,
+  floating = false,
+}: {
+  basePath: string;
+  floating?: boolean;
+}) {
   const [compact, setCompact] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
@@ -21,6 +27,12 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
   }, []);
 
   useEffect(() => {
+    if (!floating) {
+      compactRef.current = false;
+      setCompact(false);
+      return;
+    }
+
     let frame = 0;
     const update = () => {
       frame = 0;
@@ -38,7 +50,7 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
       window.removeEventListener("scroll", requestUpdate);
       if (frame) window.cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [floating]);
 
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
@@ -149,7 +161,7 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
 
   return (
     <>
-    <header className={`site-header${compact ? " compact" : ""}${menuOpen ? " menu-open" : ""}${contactOpen ? " contact-open" : ""}`}>
+    <header className={`site-header${floating ? "" : " page-static"}${compact ? " compact" : ""}${menuOpen ? " menu-open" : ""}${contactOpen ? " contact-open" : ""}`}>
       <Link className="mobile-header-logo" href="/" aria-label="DanHues home">
         <Image
           src={`${basePath}/danhuestext.png`}
