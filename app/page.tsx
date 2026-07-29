@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AboutPortrait } from "@/components/about-portrait";
+import { AboutAnchorSync } from "@/components/about-anchor-sync";
 import { CyclingWords } from "@/components/cycling-words";
 import { DiscordButton } from "@/components/discord-button";
 import { SocialIcon } from "@/components/social-icon";
@@ -39,6 +40,7 @@ export default function Home() {
   return (
     <main>
       <SiteHeader floating />
+      <AboutAnchorSync />
 
       <section className="hero">
         <div className="hero-copy">
