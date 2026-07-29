@@ -25,9 +25,6 @@ export default async function PostPage({
       <SubpageControls backHref="/journal" backLabel="Back to Journal" />
       <article className="story journal-story">
         <header className="journal-entry-head">
-          <span className="journal-entry-ornament" aria-hidden="true">
-            XVII · The inner room
-          </span>
           <p className="eyebrow">
             {formatDate(post.date)} · {post.readTime} read
           </p>
