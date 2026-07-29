@@ -12,6 +12,8 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
   const [contactOpen, setContactOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const closeContactRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLElement>(null);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
   const compactRef = useRef(false);
 
   useEffect(() => {
@@ -59,6 +61,22 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
   useEffect(() => {
     if (contactOpen) closeContactRef.current?.focus();
   }, [contactOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const closeOutsideMenu = (event: PointerEvent) => {
+      const target = event.target as Node;
+      if (
+        menuRef.current?.contains(target) ||
+        menuToggleRef.current?.contains(target)
+      ) return;
+      setMenuOpen(false);
+    };
+
+    document.addEventListener("pointerdown", closeOutsideMenu);
+    return () => document.removeEventListener("pointerdown", closeOutsideMenu);
+  }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
   const openContact = () => {
@@ -143,6 +161,7 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
       </Link>
       <button
         className="mobile-menu-toggle"
+        ref={menuToggleRef}
         type="button"
         aria-controls="site-navigation"
         aria-expanded={menuOpen}
@@ -159,7 +178,7 @@ export function ScrollHeader({ basePath }: { basePath: string }) {
         tabIndex={menuOpen ? 0 : -1}
         onClick={closeMenu}
       />
-      <nav id="site-navigation" aria-label="Main navigation">
+      <nav ref={menuRef} id="site-navigation" aria-label="Main navigation">
         <span className="mobile-nav-label">Explore the work</span>
         <div className="nav-group nav-group-left">
           <Link href="/archive" onClick={closeMenu}>Projects</Link>
