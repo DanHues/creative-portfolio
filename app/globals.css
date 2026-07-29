@@ -50,6 +50,7 @@ body > main { padding-top: 76px; }
   box-shadow: 0 1px 0 rgba(75,20,87,.13);
   transition: height .28s ease, padding .28s ease, background .28s ease, box-shadow .28s ease;
 }
+.site-header.page-static { position: absolute; }
 .site-header.compact {
   height: 54px;
   padding-top: 5px;
