@@ -51,6 +51,14 @@ body > main { padding-top: 76px; }
   transition: height .28s ease, padding .28s ease, background .28s ease, box-shadow .28s ease;
 }
 .site-header.page-static { position: absolute; }
+.archive-home,
+.project-entry-page,
+.journal-home,
+.journal-entry-page,
+.photography-home,
+.photography-story-page {
+  padding-top: 94px;
+}
 .site-header.compact {
   height: 54px;
   padding-top: 5px;
@@ -2506,7 +2514,7 @@ body > main { padding-top: 76px; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 22%;
 }
 .photo-portfolio-hero::after {
   content: "";
@@ -3832,6 +3840,10 @@ body > main { padding-top: 76px; }
     pointer-events: auto;
     transform: translateY(0) scale(1);
   }
+  .site-header.menu-open {
+    position: fixed !important;
+    top: 0;
+  }
   .quick-contact {
     width: calc(100vw - 24px);
     max-height: calc(100dvh - 28px);
@@ -4127,7 +4139,7 @@ body > main { padding-top: 76px; }
     min-height: 620px;
     align-items: end;
   }
-  .photo-hero-art img { object-position: 58% center; }
+  .photo-hero-art img { object-position: 58% 30%; }
   .photo-portfolio-hero::after {
     background:
       linear-gradient(to top, rgba(8,8,18,.94) 0, rgba(8,8,18,.72) 46%, rgba(8,8,18,.08) 78%),
@@ -4343,6 +4355,18 @@ body > main { padding-top: 76px; }
 }
 .is-firefox body > main {
   padding-top: 0;
+}
+.is-firefox .archive-home,
+.is-firefox .project-entry-page,
+.is-firefox .journal-home,
+.is-firefox .journal-entry-page,
+.is-firefox .photography-home,
+.is-firefox .photography-story-page {
+  padding-top: 94px;
+}
+.is-firefox .site-header.menu-open {
+  position: fixed;
+  top: 0;
 }
 .is-firefox .back-to-top {
   display: none;
